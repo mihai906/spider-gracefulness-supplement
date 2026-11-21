@@ -1,0 +1,8 @@
+__pycache__/
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+supplement_source/spider_gracefulness_v2_supplement.aux
+supplement_source/spider_gracefulness_v2_supplement.pdf
