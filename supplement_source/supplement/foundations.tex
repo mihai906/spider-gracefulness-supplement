@@ -1,0 +1,266 @@
+\section{Rooted labeling interfaces and path inputs}
+\label{common:foundations}
+
+All graphs in this manuscript are finite. A path length is its number
+of edges, while $P_n$ denotes a path on $n$ vertices. These conventions
+are especially important when a path $P_L$ is joined to a hub by a new
+edge: the new arm then has length $L$.
+
+\begin{definition}
+Let $T$ be a tree with $m$ edges. A \emph{graceful labeling} is a
+bijection $f:V(T)\to\interval{0}{m}$ such that the edge differences
+$\abs{f(u)-f(v)}$ are precisely $1,\ldots,m$, each once. It is an
+\emph{$\alpha$-labeling of integer index $K$} if every edge has one endpoint
+of label at most $K$ and the other of label greater than $K$,
+where $0\le K\le m$. In particular, the singleton has index zero.
+For a distinguished root $r$, \emph{root-zero} means $f(r)=0$.
+\end{definition}
+
+The rooted spider $\Sp{L_1,\ldots,L_d}$ is obtained by identifying
+one endpoint of each of $d$ otherwise disjoint paths of positive edge
+lengths $L_i$. Its distinguished root is the common hub. We also allow
+$d\le2$, and allow $d=0$ for the one-vertex tree. Repeated lengths are
+written $L^t$ when the multiplicity $t$ is specified.
+
+\begin{definition}
+For a rooted $m$-edge tree $T$, write $k\in\Om(T)$ if there is a
+labeling with root zero, nonroot labels exactly
+$\interval{k+1}{k+m}$, and differences exactly $\interval{1}{m}$.
+Only integers $k\ge0$ are considered. A realization at $k=0$ is a
+hub-zero graceful labeling when the root is a spider hub.
+\end{definition}
+
+\begin{lemma}[Forced index]\label{common:root-index}
+A root-zero $\alpha$-labeling of a spider has index
+\[
+ K=\sum_{i=1}^d\floor{L_i/2}.
+\]
+\end{lemma}
+\begin{proof}
+The root belongs to the lower class. Its bipartition class consists of
+the root and the vertices at positive even distance along the arms,
+and hence has $1+\sum_i\floor{L_i/2}$ vertices. All labels from zero
+through the index occur in this class, and every label occurs once.
+Its size is therefore $K+1$.
+\end{proof}
+
+The classical graceful-tree problem asks for a graceful labeling of every tree. Spiders provide a natural family with one branching vertex. The published five-leg theorem is due to Panpa, Imnang and Wasuanankul~\cite{Panpa2025}; the six-leg rooted-offset approach appears in the 2026 preprint of Rhys~\cite{Rhys2026}. Related constructions appear in Bahls, Lake and Wertheim~\cite{BahlsLakeWertheim2010}, Shan and Zhong~\cite{ShanZhong2026}, and Dumitru and Nacu~\cite{DumitruNacu2026}. The present proofs use the classical path and amalgamation results below, and give the subsequent construction arguments explicitly. The six-leg conclusion itself is not a premise.\par\medskip
+
+\subsection{Classical path results with precise normalizations}
+
+We use the following established path theorem. The $\alpha$-statements
+are due to Rosa and Cattell \cite{Rosa1977,Cattell2007}; the three
+forms are restated as Theorems~2.1--2.3 of \cite{Panpa2025}.
+
+\begin{theorem}[Prescribed labels on paths]\label{common:path-classical}
+For $n\ge2$ the following hold.
+\begin{enumerate}
+\item Any specified vertex of $P_n$ can have label zero in an
+$\alpha$-labeling, except the central vertex of $P_5$.
+\item An endpoint of $P_n$ can have any specified graceful label in
+$\interval{0}{n-1}$.
+\item An endpoint can have any such label in an $\alpha$-labeling,
+except when $n=4s+1$, $s\ge1$, and the label is $s$ or $3s$.
+\end{enumerate}
+The one-vertex path is treated separately with its unique label zero.
+\end{theorem}
+
+In construction formulas we often normalize a path to labels
+$\interval{1}{n}$ instead. This adds one to every label and to the
+cut, preserves differences, and changes the two exceptional labels
+to $s+1$ and $3s+1$.
+
+\begin{corollary}[Rooted pairs]\label{common:alpha-pair}
+A rooted pair $\Sp{a,b}$ has a root-zero $\alpha$-labeling unless
+$(a,b)=(2,2)$. Its index, when it exists, is
+$\floor{a/2}+\floor{b/2}$. Every single arm is root-zero $\alpha$.
+\end{corollary}
+\begin{proof}
+The pair is $P_{a+b+1}$ with the distinguished vertex at distances
+$a,b$ from its endpoints. It is the exceptional rooted $P_5$ exactly
+when $a=b=2$. A rooted single arm is covered by the same theorem, or
+by the Walecki word $0,L,1,L-1,2,L-2,\ldots$.
+\end{proof}
+
+Every rooted pair is nevertheless ordinary hub-zero graceful. The only
+case not supplied by the alpha statement is $\Sp{2,2}$, for which the
+two outward words $(4,1)$ and $(2,3)$ give the colors $4,3,2,1$.
+
+\begin{lemma}[Even-order path interface]\label{common:even-path}
+For $r\ge1$ and $1\le v\le r$, there is an $\alpha$-labeled path
+on $\interval{1}{2r}$, cut at $r$, starting at $r+v$ and ending at
+$v$. There is no exceptional endpoint request.
+\end{lemma}
+\begin{proof}
+Apply the classical endpoint theorem at $r+v$. The two classes of an
+even-order path have equal size, so its normalized cut is $r$ and its
+endpoints are in opposite classes. If their values are $E$ in the
+upper class and $F$ in the lower class, summing positive differences
+by vertex degrees gives
+\[
+ r(2r-1)=2\!\sum_{j=r+1}^{2r}j-2\!\sum_{j=1}^rj-E+F
+             =2r^2-E+F.
+\]
+Thus $E-F=r$, which forces $F=v$.
+\end{proof}
+
+\begin{lemma}[Odd-order path interface]\label{common:odd-path}
+For $u\ge2$ and $u\le X\le2u-1$, an $\alpha$-labeled path on
+$\interval{1}{2u-1}$ with larger class upper, cut $u-1$, starts at
+$X$ and ends at $Y=3u-1-X$, except when
+\[
+ 2(X-1)=3(u-1).
+\]
+For $u=1$ the singleton word $(1)$ is allowed separately.
+\end{lemma}
+\begin{proof}
+The two ends lie in the larger class. For $X>u$, an
+$\alpha$-labeling supplied by the endpoint theorem must place that
+class above the cut. If $X=u$, complementation by $2u-x$ fixes $X$
+and interchanges the two classes if necessary. The forbidden upper
+endpoint is exactly the displayed equality. The other endpoint is
+forced by
+\[
+ (2u-1)(u-1)
+ =2\!\sum_{j=u}^{2u-1}j-2\!\sum_{j=1}^{u-1}j-X-Y
+ =2u^2-X-Y.
+\]
+This yields $X+Y=3u-1$.
+\end{proof}
+
+\begin{lemma}[Ordinary prescribed-first paths]\label{common:prescribed-first-path}
+For every $L\ge1$ and $1\le j\le L$ there is a graceful
+permutation of $\interval{1}{L}$ starting at $j$. Consequently a
+single $L$-arm admits every offset $0\le k<L$.
+\end{lemma}
+\begin{proof}
+The ordinary endpoint theorem supplies the permutation. For clarity,
+even the two endpoint requests excluded only by the stronger
+$\alpha$-theorem have explicit ordinary witnesses. When $L=4s+1$,
+rotate the Walecki word
+$(1,L,2,L-1,\ldots,2s+1)$ so that its entry at zero-based position
+$2s+1$ is first. This entry is $3s+1$. The removed cut edge and the
+added wrap edge both have difference $2s$, so every difference
+$1,\ldots,L-1$ is retained. Complementation gives first label $s+1$.
+The singleton case is immediate. To obtain an offset $k$, choose
+first label $L-k$ and add $k$ to all $L$ labels. The new root edge
+has color $L$, while the internal differences remain $1,\ldots,L-1$.
+\end{proof}
+
+\begin{theorem}[Three-arm hub-zero input]\label{common:hubzero-three}
+\label{app:hubzero-three}
+Every positive three-arm spider has an ordinary graceful labeling
+with hub zero \cite[Theorem~3.2]{Panpa2025}. This input does not assert
+a root-zero $\alpha$-labeling.
+\end{theorem}
+
+\subsection{Interval compositions}
+
+\begin{lemma}[Alpha-offset amalgamation]\label{common:alpha-offset}
+Let $G$ be root-zero $\alpha$ with $g$ edges and cut $K$, and let
+$H$ have $h$ edges and an offset-$K$ realization. Their rooted
+amalgamation is hub-zero graceful.
+\end{lemma}
+\begin{proof}
+Keep lower labels of $G$, raise its upper labels by $h$, and keep
+the offset labels of $H$. Identify roots at zero. The nonroot labels
+occupy, without repetition,
+\[
+ \interval{1}{K},\quad\interval{K+1}{K+h},\quad
+ \interval{K+h+1}{g+h}.
+\]
+The two palettes are $\interval{1}{h}$ and
+$\interval{h+1}{h+g}$. This proves every required inventory.
+\end{proof}
+
+\begin{lemma}[Ordinary alpha amalgamation]\label{common:ordinary-amalgamation}
+Let $G$ be root-zero $\alpha$ with $g$ edges and cut $K$, and let
+$H$ be hub-zero graceful with $h$ edges. Their rooted amalgamation is
+ordinary graceful, with final hub label $K$.
+\end{lemma}
+\begin{proof}
+Reverse labels within the two classes of $G$ by
+\[
+ f^R(v)=\begin{cases}K-f(v),&f(v)\le K,\\
+ g+K+1-f(v),&f(v)>K.\end{cases}
+\]
+Its root is $K$ and an old color $d$ becomes $g+1-d$. Raise its
+uppers by $h$ and translate every label of $H$ by $K$. The common
+root is $K$, and the remaining label blocks are
+$\interval{0}{K-1}$, $\interval{K+1}{K+h}$ and
+$\interval{K+h+1}{g+h}$. The colors are exactly
+$\interval{1}{h}$ and $\interval{h+1}{g+h}$.
+This is the interval form of the classical amalgamation theorem
+\cite{HuangKotzigRosa1982}.
+\end{proof}
+
+\begin{lemma}[Unit stability]\label{common:unit-stability}
+Arbitrarily many unit arms can be added to a hub-zero graceful
+component, or to a root-zero $\alpha$ component while preserving its
+index. An ordinary alpha/hub-zero decomposition therefore survives
+any number of units added to the hub-zero piece before amalgamation.
+\end{lemma}
+\begin{proof}
+For an $m$-edge component, label $v$ new leaves $m+1,\ldots,m+v$.
+Their root edges have precisely these new colors. In the alpha case
+each new leaf lies above the unchanged cut. The last assertion follows
+by applying the preceding amalgamation to the enlarged hub-zero piece.
+\end{proof}
+
+\begin{corollary}[Ordinary hub-zero arm attachment]\label{common:ordinary-attachment}
+A root-zero $\alpha$ piece of cut $K$ accepts an ordinary arm of
+length $L>K$ to form a hub-zero graceful tree.
+\end{corollary}
+\begin{proof}
+Use the single-arm offset $K$ and alpha-offset amalgamation.
+\end{proof}
+
+\begin{lemma}[Alpha-preserving arm attachment]\label{common:alpha-extension}
+If a rooted tree has a root-zero $\alpha$-labeling of cut $K$, an
+arm of length $L$ can be attached at the root, preserving root-zero
+$\alpha$, whenever $L>2K$ and $L\ne4K+1$. The new cut is
+$K+\floor{L/2}$.
+\end{lemma}
+\begin{proof}
+Put $q=L-1$ and $\ell=\floor{(L-1)/2}$. On a separate $P_L$ choose
+an $\alpha$-labeling on $\interval{0}{q}$ with lower endpoint
+$j=\ell-K$. This is in the lower class because $L>2K$. The lower
+exception from the endpoint theorem is exactly $L=4K+1$; the upper
+exception is outside the requested lower half. Let $G$ have $g$ edges.
+Keep its lower labels and raise its uppers by $L$. In the new path
+map lower labels $y$ to $y+K+q-\ell+1$ and upper labels $y$ to
+$y+K-\ell$. Its joining endpoint becomes $L$, and join it to the
+old root zero. The four vertex blocks are
+\[
+ [0,K],\quad[K+1,K+q-\ell],\quad
+ [K+q-\ell+1,K+q+1],\quad[K+L+1,g+L].
+\]
+Empty intervals are omitted. They partition $[0,g+L]$, and every
+edge crosses $K+q-\ell=K+\floor{L/2}$. The new path colors are
+$1,\ldots,L-1$, in reversed order; the joining color is $L$; and
+the old tree supplies $L+1,\ldots,L+g$. This proves the claim.
+\end{proof}
+
+\subsection{Subdivision and the distinction between ordinary and alpha lifts}
+
+\begin{theorem}[Uniform offset subdivision]\label{common:offset-subdivision}
+If $s\in\Om(T)$ and every edge is replaced by a path of $q\ge1$
+edges, then
+\[
+ \interval{qs}{q(s+1)-1}\ \subseteq\ \Om(T[q]).
+\]
+The complete column construction and signed-difference proof are given
+in Section~\ref{app:subdivision}. The input need not be alpha.
+\end{theorem}
+
+In particular ordinary gracefulness is preserved under uniform
+subdivision: root an ordinary labeling at its zero-labeled vertex and
+take $s=0$. That vertex need not be the spider's hub. The underlying
+graph operation multiplies all arm lengths by $q$, independently of
+which vertex was used as the root during construction.
+
+For alpha preservation a stronger hypothesis is used. Section~
+\ref{app:lifts} proves balanced-index alpha subdivision and the ordinary
+perfect-matching lift, with their exact root and index conditions.
+An arbitrary alpha labeling is never silently assumed to survive
+subdivision as an alpha labeling.

@@ -1,0 +1,36 @@
+\section{Equal alpha triples}\label{app:equal-alpha}
+\begin{theorem}\label{ea:all}
+For every integer $L\ge5$, $\Sp{L,L,L}$ has a root-zero alpha labeling.
+\end{theorem}
+\begin{proof}
+The odd lengths have the explicit three-word construction of Proposition~\ref{ok:equal-odd-three}, including the literal lengths five and seven and the full interval inventories for both parities of $(L-1)/2$. It remains to prove the even lengths.
+
+Let $L=2r$, with $r\ge5$ odd. Start from that equal-odd construction for length $2r+1$, in arm order Walecki, A, C. Delete the three leaves, whose labels are $5r+3,5r+1,5r+2$. Decrease remaining labels above $5r+3$ by three. The labels are now $[0,6r]$ with cut $3r$. The Walecki colors are $[4r+1,6r]$. The two other arms formerly supplied $[1,4r+2]$, and their deleted leaf colors are $4r,2r+4$. Thus the shortened source has duplicate colors $4r+1,4r+2$ and holes $4r,2r+4$.
+
+Apply the class-preserving cycles
+\[
+(r-1,\ r+2,\ 3r-2,\ r+1,\ r),\qquad
+(4r-1,\ 4r+2,\ 4r+1,\ 4r+3),
+\]
+where each entry maps to the next cyclically. The resulting source has signed excess
+\[
++\{4r,2r+2,2r+1,2r+1\}
+-\{4,2r+5,4r-3,4r-2\}.
+\]
+The complete fifteen affected incident-edge calculations, both residue-specific repair tables, and all their source coordinates are printed in Section~\ref{templates:equal-even}. For $r=4q+1$ and $r=4q+3$, $q\ge3$, the respective sixteen-edge and fifteen-edge trades cancel exactly this multiset, preserve all vertex degrees and alpha classes, and have a contracted topology consisting of three hub paths, each of affine length $2r$. Theorem~\ref{templates:soundness} proves these are labelings for every parameter in the stated half-lines. The four smaller values $r=5,7,9,11$ are supplied by the complete literal words in Section~\ref{app:auxiliary-finite}. Hence all $L\equiv2\pmod4$, $L\ge10$, are proved.
+
+For the remaining even lengths the starting words are
+\[
+\begin{array}{c|l}
+6&(18,1,17,5,16,2)\\
+ &(15,6,12,7,14,4)\\
+ &(13,9,10,8,11,3)\\[2pt]
+8&(24,1,23,2,22,6,21,3)\\
+ &(19,7,20,9,16,8,18,4)\\
+ &(17,11,15,10,13,12,14,5).
+\end{array}
+\]
+Each has the full label and color inventory and balanced index $3L/2$. Repeatedly halve an even $L\ge6$ while it is divisible by four, stopping at $6$ or $8$ if encountered. This process reaches $6$, $8$, or a value congruent to two modulo four and at least ten. Apply the balanced alpha subdivision theorem of Section~\ref{app:lifts} in reverse order to double those lengths back to $L$. The balanced hypothesis persists because all three arms are even. This proves every even length and the theorem.
+\end{proof}
+
+The corresponding root-zero alpha four-arm result is proved by its full seed formula, defect inventory, four explicit affine repair tables and twenty-one literal small bases in Section~\ref{templates:four-odd}. It is used only for four equal odd lengths at least seven. Ordinary equal-arm offsets, in contrast, are available for every common positive length and every number of arms by subdivision of a star; alpha separation is an additional conclusion requiring the separate constructions above.

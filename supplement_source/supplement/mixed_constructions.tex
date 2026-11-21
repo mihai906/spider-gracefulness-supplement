@@ -1,0 +1,904 @@
+\section{Mixed-parity alpha constructions}
+\label{mc:chapter}
+\label{app:ten-alpha}
+
+This section supplies the mixed-parity constructions used in the
+seven-arm arithmetic cover and the even-minimum eight-arm theorem.
+All arm lengths count edges, and all displayed words omit their common
+initial vertex, whose label is zero.  Intervals in formulas for labels
+or colors are integer intervals.  The prescribed-endpoint path inputs
+are exactly Lemmas~\ref{common:even-path} and~\ref{common:odd-path}.
+Their existence is classical; all subsequent operations and inventories
+are proved here.  In particular, an arbitrary alpha labeling is never
+assumed to have a prescribed Walecki arm.
+
+\subsection{A shortening operation with a prescribed arm}
+\label{mc:shortening}
+
+\begin{lemma}[Maximum-Walecki shortening]\label{mc:shorten}
+Suppose a root-zero alpha labeling of a spider with $N$ edges contains
+the arm
+\[
+ W=(N,1,N-1,2,\ldots,N-s)
+\]
+of length $2s+1$, and every label on the other arms is below $N-s$.
+Deleting the last leaf of $W$ and subtracting one from every remaining
+label above $N-s$ gives a root-zero alpha labeling with that arm
+shortened to $2s$.  The alpha index is unchanged.
+\end{lemma}
+\begin{proof}
+Write $h=N-s$.  Label compression is a bijection onto
+$\interval{0}{N-1}$.  Only labels on $W$ are changed.  The deleted
+edge has color $N-2s$; the remaining colors of $W$, formerly
+$\interval{N-2s+1}{N}$, each decrease by one.  They now give
+$\interval{N-2s}{N-1}$, adjoining the unchanged colors
+$\interval{1}{N-2s-1}$ on the other arms.  Every surviving upper
+label on $W$ is at least $h$, still above the old cut.  Lower labels
+and the root are unchanged, so every edge still crosses that cut.
+\end{proof}
+
+\subsection{Odd--even--odd triples and their shortening}
+\label{mc:oeo}
+
+\begin{proposition}\label{mc:oeo-central}
+Let $a<b<c$ have respective parities odd, even, odd.  If
+$c\le2a-3$, then $\Sp{a,b,c}$ has a root-zero alpha labeling
+with its shortest arm equal to the maximum Walecki word.
+\end{proposition}
+\begin{proof}
+Write $(a,b,c)=(2s+1,2t,2u+1)$, so
+$1\le s<t\le u\le2s-1$.  Put
+\[
+ S=u-t,\qquad T=u-s,\qquad P=s+t-u,\qquad v=P+1.
+\]
+Thus $0\le S<T$, $P\ge T-S+1$, and $1\le v\le u$.
+Take an even-order alpha path on $\interval{1}{2T}$ from upper
+endpoint $2T-S$ to lower endpoint $T-S$.  Raise its uppers by one.
+It now omits label $T+1$ and has colors $\interval{2}{2T}$.
+Raise its uppers by a further $2P$.  Before it place an even-order
+alpha path on $\interval{1}{2P}$ from $P+T-S+1$ to $T-S+1$,
+translated by $T$.  Both requests are legal since
+$1\le T-S+1\le P$.  The join has color $2P$.
+
+The resulting path $Q$ has lower labels $\interval{1}{t}$,
+upper labels $\interval{t+1}{2t+1}\setminus\{t+v\}$, and colors
+\[
+ \interval{1}{2t}\setminus\{2P+1\}.
+\]
+Its first and last labels are $E=2t-s+1$ and $F=t-s$.
+These assertions follow from the adjacent prefix intervals: the
+prefix contributes colors $\interval{1}{2P-1}$ and the old path
+contributes $\interval{2P+2}{2t}$, besides their joining color.
+
+Map the lowers of $Q$ by $x\mapsto x+s$ and the uppers by
+$x\mapsto x+s+2u$.  Call this arm $A$.  Its internal colors are
+$\interval{2u+1}{2u+2t}\setminus\{2u+2P+1\}$ and its root
+color is $2u+2t+1$.
+For arm $B$, take an even-order alpha path on
+$\interval{1}{2u}$ from $u+v$ to $v$, append $2u+v$, and
+translate every label by $s+t$.  Its internal colors are
+$\interval{1}{2u}$, and its root color is
+$s+t+u+v=2u+2P+1$.
+
+The lower labels of $A$ and $B$ are respectively
+$\interval{s+1}{s+t}$ and $\interval{s+t+1}{s+t+u}$.
+The upper block of $B$ is $\interval{s+t+u+1}{s+t+2u}$;
+that of $A$ is $\interval{s+t+2u+1}{s+2t+2u+1}$ with the
+single hole filled by the appended leaf of $B$.
+Set $N=2s+2t+2u+2$ and adjoin
+$W=(N,1,N-1,2,\ldots,N-s)$.  Its labels fill
+$\interval{1}{s}\cup\interval{N-s}{N}$, and its colors are
+$\interval{2t+2u+2}{N}$.  All labels and colors are now consecutive
+without repetition.  All edges cross $s+t+u$, and every label off
+$W$ is below its last leaf.  This proves the pinning as well.
+\end{proof}
+
+\begin{corollary}\label{mc:eeo-central}
+If $a,b$ are even, $6\le a<b<c$, $c$ is odd, and
+$c\le2a-1$, then $\Sp{a,b,c}$ is root-zero alpha.
+\end{corollary}
+\begin{proof}
+Apply Proposition~\ref{mc:oeo-central} to $(a+1,b,c)$:
+the parity inequalities imply $a+1<b<c$, and
+$c\le2(a+1)-3$.  Its explicitly prescribed shortest arm can be
+shortened by Lemma~\ref{mc:shorten}.  This proves exactly the bound
+$c\le2a-1$; a larger bound is not inferred from this operation.
+\end{proof}
+
+\subsection{Even--odd--odd central and repeated triples}
+\label{mc:eoo-central-section}
+
+We use the upper-hole kernels $K(S,U,T,V)$ and their completion from
+Definition~\ref{ok:kernel-definition} and Lemma~\ref{ok:completion}.
+For clarity, their final completion has labels
+\[
+ \interval{1}{T}\ \cup\
+ \bigl(\interval{T+1}{2T+2}\setminus\{T+V\}\bigr),
+\]
+missing color $S+T-U+V$, and ordered endpoints
+$2T-S+2$, $2T+2S-U-V+3$.  Its three completed arm lengths are
+$(2S+1,2T+1,2U+1)$.  That operation explicitly supplies the
+maximum-Walecki shortest arm.  The auxiliary source kernels used in
+growth need not themselves satisfy the bounds required for a final
+completion.
+
+\begin{lemma}[Pinned central AP kernels]\label{mc:eoo-ap}
+For $d\ge1$, $s\ge2d+2$, the spider
+\[
+ \Sp{2s,2s+2d+1,2s+4d+1}
+\]
+is root-zero alpha.  For $d=1$ the stronger range $s\ge2$ holds.
+\end{lemma}
+\begin{proof}
+For $d\ge2$, the following explicit word is a kernel
+$K(d,3d,2d,2)$:
+\[
+\begin{split}
+ &(3d+2),\\
+ &(d+1-j,3d+3+j)\quad(0\le j\le d-1),\\
+ &(1,2d+1),\\
+ &(2d+1-j,2d+2+j)\quad(1\le j\le d-1).
+\end{split}
+\]
+Its lowers partition $\interval{1}{2d}$; its uppers partition
+$\interval{2d+1}{4d+2}\setminus\{2d+2\}$.  The endpoints
+are $3d+2,3d+1$.  The word through its first label $1$ gives
+colors $\interval{2d+1}{4d+1}$, the next edge gives $2d$, and
+the final block, including its join, gives
+$\interval{1}{2d-1}\setminus\{2\}$.  Thus its missing color
+is precisely $2$.  The restriction $d\ge2$ excludes an endpoint
+equal to the label hole.
+
+Apply diagonal growth (Lemma~\ref{ok:diagonal-growth}) with
+$P=s-d\ge d+2$.  In explicit terms its even-order path has upper
+endpoint $P+d+2$ and lower endpoint $d+2$, is translated by $2d$,
+and is put before the kernel after raising the latter's uppers by
+$2P$.  The resulting parameters are
+\[
+ (S,U,T,V)=(s,s+2d,s+d,s-d+2).
+\]
+Here $1\le V\le U$.  Complete this kernel, then shorten its
+prescribed Walecki arm by Lemma~\ref{mc:shorten}.  The resulting
+index is $3s+3d$ and the arm lengths are those claimed.
+
+For $d=1$, use these three literal kernels, in each case with
+$T=s+1$ and $U=s+2$:
+\begin{center}\begin{tabular}{ccp{0.72\textwidth}}
+$s$&$V$&word\\\midrule
+2&2&$(6,1,8,2,4,3,7)$\\
+3&2&$(7,4,5,3,8,2,9,1,10)$\\
+4&4&$(8,2,12,1,10,5,6,4,7,3,11)$.
+\end{tabular}\end{center}
+Direct subtraction checks the full kernel inventories.  For every
+$s\ge5$, grow the first kernel by $P=s-2\ge3$, using even-path
+endpoints $P+3,3$.  This gives parameters $(s,s+2,s+1,s)$.
+Completion and shortening apply in all cases.
+\end{proof}
+
+\begin{proposition}\label{mc:eoo-central}
+If $a\ge6$ is even, $b,c$ are odd, and
+$a<b\le c\le2a+1$, then $\Sp{a,b,c}$ is root-zero alpha.
+\end{proposition}
+\begin{proof}
+First assume $c\le2a-3$.  The odd source $(a+1,b,c)$ lies
+in the pinned odd central construction of
+Lemma~\ref{ok:central-kernel}, apart from its AP plane.
+At $a+1=b=c$ use the explicit equal-odd construction in
+Proposition~\ref{ok:equal-odd-three}; at $a+1<b=c$ one may use
+the pinned repeated kernels of Lemma~\ref{ok:repeated-kernels}.
+On the strict AP plane $a+1+c=2b$, write the lengths as
+$(2s,2s+2d+1,2s+4d+1)$; its central inequality is
+$s\ge2d+2$, so Lemma~\ref{mc:eoo-ap} supplies the missing pin.
+Shortening the stated arm proves this first range.
+
+For the two remaining odd layers write $a=2s$, $b=2t+1$,
+$s\ge3$.  At $c=4s-1$ the source largest half is $2s-1$.
+If $t\le2s-3$, use the explicit odd-prefix boundary construction
+of Lemma~\ref{ok:odd-prefix-boundaries}.  If $t=2s-2$,
+$s\ge4$, use Lemma~\ref{ok:gap-two-kernels}.  The exceptional
+source $(7,9,11)$ uses the $s=3,d=1$ literal kernel of
+Lemma~\ref{mc:eoo-ap}, rather than an unpinned AP existence
+statement.  At $t=2s-1$, the explicit last-ray repeated kernel
+has $V=s$; its even completion endpoint is $3s-1$ on
+$\interval{1}{4s-2}$, an allowed request.
+
+At $c=4s+1$ the reversed boundary construction of
+Lemma~\ref{ok:reverse-boundary} covers $s\le t\le2s$.
+Its repeated endpoint $t=2s$ is the explicit twice-ray kernel with
+$V=s+3$ and even completion endpoint $3s+3$ on
+$\interval{1}{4s}$; this is allowed since $s\ge3$.
+Every cited construction completes by actually adjoining the standard
+maximum-Walecki arm.  Apply Lemma~\ref{mc:shorten} in each case.
+\end{proof}
+
+\begin{proposition}\label{mc:eoo-repeated}
+For every even $a\ge6$ and odd $b>a$, $\Sp{a,b,b}$ is
+root-zero alpha.
+\end{proposition}
+\begin{proof}
+Write $a=2s,b=2t+1$.  The pinned all-odd repeated source has
+$V=s+1$ when $s<t\le2s-2$ or $t\ge2s+1$, $V=s$ at
+$t=2s-1$, and $V=s+3$ at $t=2s$.  At $t=s$ use the explicit
+equal-odd construction with its first Walecki arm.  These are the
+complete repeated constructions of Proposition~\ref{ok:equal-odd-three}
+and Lemma~\ref{ok:repeated-kernels}, and exhaust $t\ge s$.
+All completion requests $t+V$ lie in $\interval{t+1}{2t}$ in
+their stated domains.  Shortening the pinned arm gives the result.
+In particular $b=a+1$ is included without a separate inference
+about pinning of arbitrary all-odd alpha labelings.
+\end{proof}
+
+\subsection{Equal-even near triples}
+\label{mc:eeo-near-section}
+
+\begin{proposition}\label{mc:eeo-near}
+For every even $a\ge6$, $\Sp{a,a,a+1}$ is root-zero alpha.
+\end{proposition}
+\begin{proof}
+There is a useful endpoint operation.  In an $N$-edge root-zero
+alpha labeling, suppose an even arm has first label $H$, last label
+$l$, and $H+l=N+1$.  Replace its word $P$ by
+$(N+1,\operatorname{rev}(P))$.  Reversal retains all old internal
+colors.  The old root color $H$ is replaced by the joining color
+$(N+1)-l=H$, and the new root supplies color $N+1$.
+Alternation and the cut are retained, since the reversed even word
+starts lower and ends upper.  This proves the operation.
+
+Write $a=2r$.  If $r\ge7$ is odd, the appropriate equal-even construction in
+Section~\ref{templates:equal-even} has complementary endpoints
+$H=5r+1,l=r$ on one arm.  For $r\equiv3\pmod4$, this is the
+E recipe of Section~\ref{templates:equal-r3}, with its finite
+evaluations at $r=7,11$.  At $r=3$ the arm
+$(15,6,12,7,14,4)$ has endpoint sum $19$.  For
+$r\equiv1\pmod4$, $r\ge13$, use the alternative recipe of
+Section~\ref{templates:alt}; its contracted component beginning with
+$0,(5r+1)$ has length $2r$ and ends at $r$.
+The same finite template is evaluated and checked at $r=9$.
+The complete edge lists, original positions of their endpoints,
+color-multiset cancellations, and finite weighted-component checks
+are part of Section~\ref{templates:equal-even}; hence this endpoint
+assertion is more than a degree or color calculation.  Apply the
+operation just proved.
+
+When $a$ is divisible by four and $a\ge12$, an equal-even source
+with arms $a/2$ has balanced alpha index.  Corollary~\ref{common:balanced-alpha-matching} gives $\Sp{a,a,a+1}$:
+its unique-odd-arm perfect matching has contree $\Sp{a/2,a/2,a/2}$
+by Corollary~\ref{common:unique-odd-contree}.  The remaining targets $a=8,10$ have these
+literal words, with cuts $12,15$, respectively:
+\[
+\begin{array}{l}
+(25,1,24,2,23,3,21,4);\\
+(19,6,20,8,17,10,18,7,22);\\
+(16,11,14,12,13,9,15,5),
+\end{array}
+\qquad
+\begin{array}{l}
+(31,1,30,2,29,3,28,4,26,5);\\
+(23,7,24,11,22,8,18,13,21,9,27);\\
+(20,14,17,15,16,12,19,10,25,6).
+\end{array}
+\]
+Their full label, color, and separation inventories are checked by
+subtraction.  For completeness, the finite $r=9$ alternative evaluation
+gives the following $a=18$ target with cut $27$:
+\[
+\begin{split}
+ &(54,1,53,2,52,3,51,4,42,14,50,5,49,6,48,7,47,8);\\
+ &(37,25,29,26,28,27,32,24,30,23,34,13,43,12,44,11,45,10);\\
+ &(55,9,38,18,35,17,39,16,40,15,41,22,31,21,36,20,33,19,46).
+\end{split}
+\]
+The cases just listed exhaust every even $a\ge6$.
+\end{proof}
+
+\subsection{Lower-hole kernels for two even long arms}
+\label{mc:lower-kernels}
+
+\begin{definition}\label{mc:lower-kernel}
+A lower-hole kernel $L(s,u,t,H)$ is an alternating word of $2t$
+vertices, starting upper and ending lower, with
+\[
+\begin{array}{ll}
+\text{lower labels:}&\interval{1}{t+1}\setminus\{H\},\\
+\text{upper labels:}&\interval{t+2}{2t+1},\\
+\text{colors:}&\interval{1}{2t}\setminus\{D\},
+ \quad D=s+2t-u+3-H,\\
+\text{endpoints:}&E=2t-s+1,\quad F=t+u-2s-H.
+\end{array}
+\]
+Only the indicated inventory conditions are imposed on auxiliary
+source kernels.  The next lemma states the additional hypotheses
+required to complete one to a spider.
+\end{definition}
+
+\begin{lemma}[Lower-hole completion]\label{mc:lower-completion}
+Let $s\ge1$, $t\ge s$, $u\ge t$, and $1\le H\le t+1$.
+Suppose $L(s,u,t,H)$ exists and
+\[
+ X=u+t-H+1\in\interval{u}{2u-1},\qquad
+ 2(X-1)\ne3(u-1).
+\]
+Then $\Sp{2s+1,2t,2u}$ is root-zero alpha with cut $s+t+u$,
+and its shortest arm is the standard maximum Walecki word.
+\end{lemma}
+\begin{proof}
+Map kernel lowers by $x\mapsto x+s$ and uppers by
+$x\mapsto x+s+2u-1$, producing arm $A$.
+Take the ordinary odd alpha path on $\interval{1}{2u-1}$
+from upper endpoint $X$ to upper endpoint
+$Y=3u-1-X=2u-t+H-2$.  Translate it by $s+t+1$ and append
+the lower leaf $s+H$, obtaining arm $B$.
+
+The internal colors of $A$ are
+$\interval{2u}{2u+2t-1}\setminus\{R\}$, where
+$R=D+2u-1=s+u+2t-H+2$.  Its root color is $2u+2t$.
+The old internal colors of $B$ are $\interval{1}{2u-2}$,
+its appended edge has color $Y+t+1-H=2u-1$, and its root color
+is $X+s+t+1=R$.
+
+For labels, $A$ supplies
+\[
+ (\interval{s+1}{s+t+1}\setminus\{s+H\})
+ \ \cup\ \interval{s+t+2u+1}{s+2t+2u}.
+\]
+The lowers of $B$ fill the omitted $s+H$ and
+$\interval{s+t+2}{s+t+u}$; its uppers fill
+$\interval{s+t+u+1}{s+t+2u}$.
+Thus $A,B$ partition $\interval{s+1}{s+2t+2u}$.
+Set $N=2s+2t+2u+1$ and add
+$W=(N,1,N-1,2,\ldots,N-s)$.  It supplies the two outer label
+intervals and the color interval $\interval{2t+2u+1}{N}$.
+All labels and colors occur once, and every edge crosses $s+t+u$.
+The required strict bound on every label off $W$ also follows.
+\end{proof}
+
+\begin{lemma}[Diagonal growth of lower-hole kernels]
+\label{mc:lower-growth}
+Let $L(s_0,u_0,t_0,H)$ exist, put $g=t_0-s_0\ge1$, and
+choose $P\ge g$.  Then $L(s_0+P,u_0+P,t_0+P,H)$ exists.
+\end{lemma}
+\begin{proof}
+Take an even-order alpha path on $\interval{1}{2P}$ from $P+g$
+to $g$, translate it by $t_0+1$, and prepend it to the old kernel
+after raising the old uppers by $2P$.
+Its last label is $t_0+1+g=2t_0-s_0+1$, and the mapped old
+first label is $2P$ larger, so the join has color $2P$.
+The colors are the new $\interval{1}{2P-1}$, that join, and
+the old palette shifted by $2P$; the new missing color is $D_0+2P$.
+The lower labels consist of the old lower interval with its hole
+and $\interval{t_0+2}{t_0+P+1}$; the uppers form the two
+adjacent intervals
+\[
+ \interval{t_0+P+2}{t_0+2P+1},\qquad
+ \interval{t_0+2P+2}{2t_0+2P+1}.
+\]
+The new first endpoint is $E_0+P$ and its last is $F_0$.
+These are exactly the required endpoints for the asserted parameters.
+\end{proof}
+
+\subsection{The complete distinct central OEE cone}
+\label{mc:oee-central-section}
+
+\begin{proposition}\label{mc:oee-central}
+For positive odd $a$ and positive even $b,c$ satisfying
+$a<b<c\le2a$, $\Sp{a,b,c}$ is root-zero alpha with its
+shortest arm the standard maximum Walecki word.
+\end{proposition}
+\begin{proof}
+Write $(a,b,c)=(2s+1,2t,2u)$, where
+$1\le s<t<u\le2s+1$.
+We first construct all points off the plane
+\begin{equation}\label{mc:oee-plane}
+ 3u=2s+2t+3.
+\end{equation}
+Put $S=u-t-1$, $T=u-s-1$, $P=s+t-u+1$.
+Then $0\le S<T$, $P\ge T-S\ge1$, $T+P=t$.
+Take an even-order alpha path on $\interval{1}{2T}$
+from $2T-S$ to $T-S$ and raise its uppers by $1+2P$.
+Before it put an even-order alpha path on $\interval{1}{2P}$
+from $P+T-S$ to $T-S$, translated by $T+1$.
+The two endpoint requests are valid.  The join has color $2P$,
+so the new word has missing color $D=2P+1$, lower hole
+$H=T+1=u-s$, and endpoints $2t-s+1,t-s$.
+Its full label classes are those of $L(s,u,t,H)$, since the
+prefix supplies the intervening adjacent lower and upper blocks.
+
+The completion request is $X=s+t+1$ on order $2u-1$.
+Its endpoints $X$ and $3u-s-t-2$ lie in
+$\interval{u}{2u-1}$.  The only forbidden upper request is
+$2(X-1)=3(u-1)$, precisely \eqref{mc:oee-plane}.
+Thus Lemma~\ref{mc:lower-completion} proves every off-plane point.
+
+On the plane, first suppose $d=u-t\ge3$.  Set
+\[
+ R=s+t-u+2,\quad W=u-s-2,\quad A=t-s,\quad B=A+1.
+\]
+Here $R+W=t$, $1\le A\le R$ because $u\le2s+2$, and
+$1\le B\le W$ because $d\ge3$.
+Translate an even alpha path on $\interval{1}{2R}$ from
+$R+A$ to $A$ by $W+1$.  Follow it with an even alpha path on
+$\interval{1}{2W}$ from $W+B$ to $B$, keeping its lowers and
+raising its uppers by $2R+1$.
+The two lower intervals are $\interval{1}{W}$ and
+$\interval{W+2}{t+1}$, so $H=W+1=u-s-1$.
+The upper intervals adjoin to $\interval{t+2}{2t+1}$.
+The internal color intervals are $\interval{1}{2R-1}$ and
+$\interval{2R+2}{2t}$, while their join has color $2R+1$.
+The missing color is $2R$, and the endpoints are
+$2t-s+1$ and $t-s+1$, as required by $L(s,u,t,H)$.
+The completion has $X=s+t+2$, $Y=3u-s-t-3$.
+Both are upper; on \eqref{mc:oee-plane}, the forbidden equality
+fails by two, since $2(X-1)=3u-1\ne3u-3$.
+This fills every plane point with $d\ge3$.
+
+For the remaining plane points put $j=s-(3d-2)$.  Then
+\[
+ s=3d-2+j,\quad t=3d-1+2j,\quad u=4d-1+2j,
+ \qquad d\ge1,\ j\ge0.
+\]
+When $j\ge1$, $j\ne d+2,2d-2$, set
+$T=d+j$, $P=2d-2+j$.
+Take an odd alpha path on $\interval{1}{2T+1}$ with larger
+class lower, from $d+2$ to $j$, and raise its uppers by $2P+2$.
+These endpoints sum to $T+2$; its sole forbidden request is
+$j=d+2$.  Before it put an odd alpha path on
+$\interval{1}{2P+1}$ with larger class upper, from
+$2d-1+2j$ to $4d-3+j$, translated by $T+2$.
+Its endpoints sum to $3P+2$; its sole forbidden request is
+$j=2d-2$.
+The combined lower intervals are $\interval{1}{T+1}$ and
+$\interval{T+3}{t+1}$, hence $H=T+2=u-s+1$.
+The upper intervals adjoin to $\interval{t+2}{2t+1}$.
+The two internal palettes are $\interval{1}{2P}$ and
+$\interval{2P+3}{2t}$, and the join has color $2P+1$.
+Thus the missing color is $2P+2$, with the required endpoints
+$2t-s+1,j$.  The odd completion endpoints are
+$6d-3+3j$ and $6d-1+3j$, both upper and distinct; their first
+normalized endpoint differs by one from the forbidden midpoint.
+There is no further exception.
+
+For $d=1$ this leaves $j=0,3$; for $d=2$ it leaves $j=0,2,4$.
+Four have the following literal lower-hole kernels:
+\begin{center}\small
+\begin{tabular}{ccl}
+$(s,t,u)$&$H$&word\\\midrule
+$(1,2,3)$&1&$(4,3,5,2)$\\
+$(4,8,9)$&3&$(13,8,10,9,12,4,14,7,11,5,17,1,16,2,15,6)$\\
+$(6,9,11)$&3&$(13,10,11,9,14,4,16,7,15,8,12,6,17,2,18,1,19,5)$\\
+$(8,13,15)$&3&$(19,11,18,12,17,13,16,14,15,6,24,1,27,2,26,4,25,5,$\\
+&&$22,8,23,7,20,10,21,9)$.
+\end{tabular}\end{center}
+Their completion orders and first labels are respectively
+$(5,5),(17,15),(21,18),(29,26)$, all allowed.
+The last point $(d,j)=(2,0)$ gives $(a,b,c)=(9,10,14)$;
+its literal arm words, with cut $16$, are
+\[
+\begin{split}
+ &(33,1,32,2,31,3,30,4,29);\\
+ &(23,15,18,16,17,13,20,14,19,7);\\
+ &(24,6,28,8,27,10,25,9,22,11,21,12,26,5).
+\end{split}
+\]
+Full subtraction verifies every finite word above.  These branches
+exhaust the plane, and all completions explicitly adjoin the required
+Walecki arm.  Together with the off-plane construction they prove
+the proposition, including its smallest instance $(3,4,6)$.
+\end{proof}
+
+\begin{corollary}\label{mc:eee-central}
+Every all-even triple with $a<b<c\le2a+2$ is root-zero alpha.
+\end{corollary}
+\begin{proof}
+The source $(a+1,b,c)$ satisfies the preceding proposition.
+Shorten its prescribed Walecki arm by Lemma~\ref{mc:shorten}.
+This includes $(2,4,6)$.
+\end{proof}
+
+\subsection{Repeated OEE triples}
+\label{mc:oee-repeated-section}
+
+\begin{lemma}[The adjacent repeated-even family]\label{mc:oee-near}
+For even $b\ge6$, $\Sp{b-1,b,b}$ is root-zero alpha.
+The shortest arm in this lemma is a modified Walecki word; the
+standard-Walecki shortening lemma is not asserted for it.
+\end{lemma}
+\begin{proof}
+Write $b=2u$, $u\ge3$, $N=6u-1$, $K=3u-1$.
+If $u\ne5$, choose an ordinary alpha path on
+$\interval{0}{2u-2}$ starting at $u+1$.  Its larger class is
+upper and its other endpoint is $2u-4$.  Its only possible
+forbidden endpoint request occurs at $u=5$: writing $u=2q+1$,
+the upper forbidden label $3q$ equals $u+1=2q+2$ exactly at
+$q=2$.  Add two to all labels and append the lower label $-1$.
+The resulting word $Q$ has lowers
+$\{-1\}\cup\interval{2}{u}$, uppers
+$\interval{u+1}{2u}$, colors $\interval{1}{2u-1}$, first
+label $u+3$, and last label $-1$.
+
+Use three arms as follows.  First take the maximum Walecki word of
+length $2u-1$, but raise its last lower label from $u-1$ to $u$:
+\[
+ W=(N,1,N-1,2,\ldots,5u+1,u,5u).
+\]
+Its lowers are $\interval{1}{u-2}\cup\{u\}$, its uppers
+are $\interval{5u}{N}$, and its colors are
+$\interval{4u+3}{N}\cup\{4u,4u+1\}$.
+Map the lowers of $Q$ by $x\mapsto x+u$ and its uppers by
+$x\mapsto x+3u-1$, giving an even arm $B$.
+Its lowers are $\{u-1\}\cup\interval{u+2}{2u}$ and its
+uppers are $\interval{4u}{5u-1}$.  It has internal colors
+$\interval{2u}{4u-2}$ and root color $4u+2$.
+For the other even arm $C$ use the pairs
+\[
+ (4u-1-j,2u+1+j)\quad(0\le j\le u-2),
+ \qquad\text{followed by }(3u,u+1).
+\]
+Its lowers are $\interval{2u+1}{3u-1}\cup\{u+1\}$,
+its uppers $\interval{3u}{4u-1}$, its internal colors
+$\interval{1}{2u-1}$, and its root color $4u-1$.
+
+These three lower sets partition $\interval{1}{K}$ and their
+upper intervals partition $\interval{K+1}{N}$.  Their colors,
+in order, partition
+\[
+ \interval{1}{2u-1},\quad\interval{2u}{4u-2},\quad
+ \{4u-1,4u,4u+1,4u+2\},\quad\interval{4u+3}{N}.
+\]
+All edges cross $K$ and the root is zero.
+At $u=5$ use the following literal words, with cut $14$:
+\[
+\begin{split}
+ &(29,1,28,2,27,3,26,5,25);\\
+ &(22,7,24,8,21,9,19,11,20,6);\\
+ &(18,13,17,10,16,14,15,12,23,4).
+\end{split}
+\]
+Their full inventories verify the omitted endpoint case directly.
+\end{proof}
+
+\begin{lemma}[Repeated central range]\label{mc:oee-repeated-central}
+For $s\ge3$ and $2\le k\le s$, there is a root-zero alpha
+labeling of $\Sp{2s+1,2s+2k,2s+2k}$ with standard Walecki
+shortest arm.
+\end{lemma}
+\begin{proof}
+For each $k\ge3$, the word
+\[
+ (2k+1-j,j+1)\quad(0\le j\le k-3),
+ \qquad (k+3,k,k+2,k+1)
+\]
+is $L(0,k,k,k-1)$.  Its lower labels are
+$\interval{1}{k-2}\cup\{k,k+1\}$; its uppers form
+$\interval{k+2}{2k+1}$.  Its descending alternating initial
+colors, the join to the final block, and that block itself give
+\[
+ \interval{6}{2k},\quad\{5\},\quad\{3,2,1\},
+\]
+respectively, with the obvious empty ranges at $k=3$.
+Thus the missing color is four and its endpoints are $2k+1,k+1$.
+Grow it by $P=s\ge k$ using Lemma~\ref{mc:lower-growth}.
+The result has $t=u=s+k$, $H=k-1$, $D=2s+4$.
+The completion request is
+\[
+ X=2s+k+2,\qquad Y=s+2k-3
+\]
+on order $2u-1$.  Both are in the upper interval because $k\ge3$;
+the forbidden equality would require $k=s+5$, impossible when
+$k\le s$.  Lemma~\ref{mc:lower-completion} applies.
+
+For $k=2$ start instead with
+$L(1,3,3,3)=(6,4,5,2,7,1)$ and grow by
+$P=s-1\ge2$.  The resulting completion request on order
+$2s+3$ has endpoints $2s+2,s+3$; its forbidden equality would
+require $s=1$.  It is therefore allowed for every $s\ge3$.
+\end{proof}
+
+\begin{lemma}[The final repeated boundary]\label{mc:oee-repeated-boundary}
+For $s\ge3$, $\Sp{2s+1,4s+2,4s+2}$ is root-zero alpha
+with standard Walecki shortest arm.
+\end{lemma}
+\begin{proof}
+Set $t=u=2s+1$.  Translate a standard maximum-Walecki odd path on
+$\interval{1}{2s+1}$ by $s+2$.  It starts at $3s+3$, ends
+at $2s+3$, has lower labels $\interval{s+3}{2s+2}$ and
+upper labels $\interval{2s+3}{3s+3}$.
+Follow it by an odd alpha path on $\interval{1}{2s+1}$ with
+larger class lower, starting at two and ending at $s$, with its
+uppers raised by $2s+2$.  Use the explicit endpoint-one word
+of Section~\ref{templates:path-words}, shifted from zero-based
+labels by one.  Its last three labels before the upper shift are
+\[
+ (s+1,s+2,s).
+\]
+For odd $s$ this follows from the final base $(1,2,0)$ shifted by
+$s-1$ and then by one; for even $s$ it follows from the final
+base tail $(4,5,3)$ shifted by $s-4$ and then by one.
+These two cases apply for $s\ge3$ and $s\ge4$, respectively.
+Its shifted internal colors are $\interval{2s+3}{4s+2}$.
+The join has color $2s+1$; hence the combined kernel has hole
+$H=s+2$, missing color $2s+2$, and endpoints $3s+3,s$.
+
+Its last edge is $(3s+4,s)$, with color $2s+4$.
+Change only its leaf $s$ to $s+2$.  This fills the old label hole
+and opens the new hole $H'=s$.  The edge color becomes $2s+2$,
+so the new missing color is $D'=2s+4$.
+The new endpoint $s+2$ is exactly $t+u-2s-H'$.
+Thus it is $L(s,2s+1,2s+1,s)$.
+
+Its completion on order $4s+1$ has upper endpoints
+$X=3s+3,Y=3s-1$.  The forbidden equality compares
+$6s+4$ with $6s$, so cannot hold.  Apply
+Lemma~\ref{mc:lower-completion} to obtain the claimed spider.
+\end{proof}
+
+\begin{lemma}[Two odd paths and reflection]\label{mc:two-odd-kernel}
+Let $r,w\ge1$ and $\epsilon\in\{0,1\}$, and put
+\[
+ t=r+w+1,\quad u=s+w+1+\epsilon,\quad H=w+2.
+\]
+Define $X_A=2r+w-s+1$ and $X_B=s-r+2-\epsilon$.
+If
+\[
+\begin{gathered}
+ r+1\le X_A\le2r+1,\qquad 1\le X_B\le w+1,\\
+ 2(X_A-1)\ne3r,\qquad2(X_B-1)\ne w,
+\end{gathered}
+\]
+then $L(s,u,t,H)$ exists.  Moreover, the class permutation
+\[
+ x\longmapsto t+2-x\ (x\le t+1),\qquad
+ x\longmapsto3t+3-x\ (x\ge t+2)
+\]
+maps it to $L(t-s-1,2t-u+2,t,t+2-H)$.
+\end{lemma}
+\begin{proof}
+Take an ordinary odd alpha path on $\interval{1}{2r+1}$
+with larger class upper, starting at $X_A$ and ending at
+$r-w+s+1$, and translate it by $w+2$.
+Follow it by an odd alpha path on $\interval{1}{2w+1}$
+with larger class lower, starting at $X_B$ and ending at
+$w-s+r+\epsilon$; keep its lowers and raise its uppers by
+$2r+2$.  The latter request is the complement of the ordinary
+upper request, so its forbidden equality is exactly the one displayed.
+The two paths give lower intervals $\interval{w+3}{t+1}$ and
+$\interval{1}{w+1}$, and adjacent upper intervals
+$\interval{t+2}{t+r+2}$ and
+$\interval{t+r+3}{2t+1}$.
+Their internal color intervals are $\interval{1}{2r}$ and
+$\interval{2r+3}{2t}$, and the join has color $2r+1+\epsilon$.
+Thus the missing color is $2r+2-\epsilon=D$, and direct substitution
+gives the required endpoints.  The class permutation is a bijection
+of the two label classes.  It changes each color $d$ to $2t+1-d$;
+substitution in the endpoints, hole, and missing color gives exactly
+the asserted new parameters.  It does not reverse the word.
+\end{proof}
+
+\begin{lemma}[The complete large repeated range]
+\label{mc:oee-repeated-large}
+For $S\ge3$, $T\ge2S+2$, $\Sp{2S+1,2T,2T}$ is root-zero
+alpha with standard Walecki shortest arm.
+\end{lemma}
+\begin{proof}
+Apply Lemma~\ref{mc:two-odd-kernel} with source parameters
+\[
+ s=T-S-1,\quad w=S+2-\epsilon,\quad r=T-w-1,
+ \quad u=T+2.
+\]
+Its class reflection gives the target lower-hole parameters
+$(S,T,T,H)$ with $H=r+1$.
+The two source requests and the target completion are all valid if
+\begin{equation}\label{mc:reflected-domain}
+ T\ge2S+3-\epsilon,\quad T\ne3S+3-\epsilon,\quad
+ S\ne4-3\epsilon,\quad T\ne2S+7-2\epsilon.
+\end{equation}
+For completeness, their first endpoints reduce to
+$X_A=T-2+\epsilon$, $X_B=4-2\epsilon$, and
+$X=T+S+3-\epsilon$.  The other completion endpoint is
+$Y=2T-S-4+\epsilon$.
+The three exclusions in \eqref{mc:reflected-domain} are respectively
+the forbidden requests for the first source path, second source path,
+and completion.  Thus none has been silently omitted.
+
+For $\epsilon=1$, all $T\ge2S+2$ are covered except
+$T=3S+2$ and $T=2S+5$.  For $T=3S+2$, the $\epsilon=0$
+conditions hold unless $S=4$ or $S=5$.  For $T=2S+5$, they
+hold unless $S=4$ (the other equality would force $S=2$).
+Consequently exactly the following three finite kernels suffice:
+\begin{center}\small
+\begin{tabular}{ccl}
+$(S,T)$&$H$&word\\\midrule
+$(4,13)$&7&$(23,5,24,4,25,3,26,2,27,1,18,12,17,13,16,14,$\\
+&&$15,8,22,6,21,9,20,10,19,11)$\\
+$(4,14)$&9&$(25,7,24,5,26,6,22,8,23,1,29,2,28,3,27,4,$\\
+&&$17,14,16,15,19,12,18,13,21,10,20,11)$\\
+$(5,17)$&11&$(30,3,35,1,34,4,26,10,27,9,28,8,29,6,32,7,31,$\\
+&&$2,33,5,20,18,19,16,21,17,23,14,22,15,25,12,24,13)$.
+\end{tabular}\end{center}
+These are $L(S,T,T,H)$ by direct complete inventory.
+Their missing colors are $13,12,14$, respectively, and their
+completion requests are $(2T-1,X)=(25,20),(27,20),(33,24)$.
+All three requests are allowed.  Lemma~\ref{mc:lower-completion}
+therefore fills these finite cases, proving the entire range.
+\end{proof}
+
+\begin{proposition}\label{mc:oee-repeated}
+For every odd $a\ge7$ and even $b>a$, $\Sp{a,b,b}$ is
+root-zero alpha.  Except at $b=a+1$, the constructions have the
+standard maximum-Walecki shortest arm.
+\end{proposition}
+\begin{proof}
+Write $a=2s+1,b=2u$, $s\ge3$.  If $u=s+1$ use
+Lemma~\ref{mc:oee-near}.  If $s+2\le u\le2s$ use
+Lemma~\ref{mc:oee-repeated-central}.  At $u=2s+1$ use
+Lemma~\ref{mc:oee-repeated-boundary}.  For $u\ge2s+2$ use
+Lemma~\ref{mc:oee-repeated-large}.  These disjoint ranges exhaust
+all even $b>a$ and have the stated pinning properties.
+\end{proof}
+
+\begin{corollary}\label{mc:eee-repeated}
+For even $a\ge6$ and even $b\ge a+4$, $\Sp{a,b,b}$ is
+root-zero alpha.
+\end{corollary}
+\begin{proof}
+Use Proposition~\ref{mc:oee-repeated} on $(a+1,b,b)$.
+Here $b\ne(a+1)+1$, so the source has a standard Walecki
+shortest arm and Lemma~\ref{mc:shorten} applies.  The modified
+near-family word is not used in this deduction.
+\end{proof}
+
+\subsection{The complete EOO classification}
+\label{construction:all-eoo-alpha3}
+\label{mc:all-eoo-section}
+
+\begin{theorem}\label{mc:all-eoo-large}
+If $a\ge6$ is even and $a<b\le c$ are odd, then
+$\Sp{a,b,c}$ is root-zero alpha.
+\end{theorem}
+\begin{proof}
+Write $a=2s,b=2t+1,c=2u+1$, where $s\ge3$ and
+$s\le t\le u$.  Every odd source shortened below is obtained
+by a construction explicitly appending the maximum-Walecki arm of
+length $2s+1$; an unpinned odd existence theorem is insufficient.
+There are four exhaustive regions.
+
+If $c\le2a+1$, Proposition~\ref{mc:eoo-central} applies.
+
+If $c\ge a+b$, take the root-zero alpha pair $\Sp{a,b}$,
+with cut $s+t$, and apply Lemma~\ref{common:alpha-extension}.
+The only possible exception is
+\begin{equation}\label{mc:eoo-far-resonance}
+ c=4(s+t)+1.
+\end{equation}
+For it use the explicitly pinned repeated odd source
+$\Sp{2s+1,2t+1,2t+1}$ from
+Lemma~\ref{ok:repeated-kernels}.  It has a long upper leaf at
+distance $e\le s+t+1$ above its cut $s+2t$.
+Here is the full leaf-interface check.  At $t=s$, the equal-odd
+formula has long leaves $5s+1,5s+2$ for $s\ge4$; at $s=3$
+its literal equal-seven labeling has smaller long leaf $16$ and
+cut nine.  At $t>s$, the generic repeated parameters give
+\[
+ e_A=t+2s-V+3,\qquad e_B=t+V.
+\]
+For $V=s+1$ choose $e_B=s+t+1$; for $V=s$ choose $e_B=s+t$;
+for $V=s+3$ choose $e_A=s+t$.  These are exactly the three
+parameter choices in the complete repeated construction.
+Shorten its Walecki arm; all its other labels and these distances
+are unchanged.  Append $2z$ vertices to the selected long leaf,
+where $z=2s+t\ge e$, using
+Lemma~\ref{common:upper-leaf-extension}.  The new length is
+$2t+1+2(2s+t)=4(s+t)+1$, as required.
+
+It remains that $c>2a+1$ and $c<a+b$.
+Suppose first $b\ge2a+1$.  The explicit pinned families in
+Lemma~\ref{ok:reverse-boundary} and Section~\ref{ok:short-wedges}
+give this complete selection.  For $b=2a+1$, the middle half
+is $2s$ and the largest half is $2s\le u\le3s-1$.
+Its repeated endpoint uses the twice-ray kernel; the next point
+$u=2s+1$ uses the class-reflected gap-two kernel, with its two
+long carriers interchanged;
+all $u\ge2s+2$ use the reversed wedge with its minus choice.
+For $b=2a+3$, the middle half is $2s+1$ and the largest half
+is at most $3s$; the plus-choice reversed wedge applies throughout.
+For $b\ge2a+5$, put $U=(b-1)/2$, $\delta=(c-b)/2$.
+Then $U\ge2s+2$ and $0\le\delta\le s-1$, exactly the
+complete unequal-short-wedge domain, including its repaired
+$\delta=s-3$ plane.  The indicated formulas, carrier orders,
+and all their path bounds are proved in the cited sections.
+Each completion pins the same Walecki short arm; shorten it.
+
+Finally suppose $b<2a+1$ in that remaining region.  Then
+\[
+ u\ge2s+1,\quad t\le2s-1,\quad u\le s+t-1.
+\]
+Set $k=u-2s$, $h=s+t-u$.  Thus
+\[
+ k,h\ge1,\quad t=s+k+h,\quad u=2s+k,\quad s\ge k+h+1.
+\]
+The explicit transition construction in
+Lemma~\ref{ok:transition-kernels} completes with a prescribed
+Walecki shortest arm whenever $h\ge2$, or $h=1$ and
+$s\ge k+3$.  For $h\ge2$ its source is the elementary kernel
+$K(0,0,h,h+1)$, followed by carrier prefix and asymmetric growth.
+The sole excluded boundary is $h=1,s=k+2$, whose source arms
+are $(2s+1,4s-1,6s-3)$.
+The controlled-edge induction in Lemma~\ref{ok:pinned-ap-ray}
+constructs $K(s,3s-2,2s-1,2)$ for every $s\ge3$ and
+completes it with the required pin.  This boundary also shortens.
+The four regions exhaust the domain and prove the theorem.
+\end{proof}
+
+\begin{theorem}[Full EOO classification]\label{mc:all-eoo}
+For positive integers $a<b\le c$, with $a$ even and $b,c$ odd,
+$\Sp{a,b,c}$ is root-zero alpha if and only if
+$(a,b,c)\ne(2,3,3)$.
+\end{theorem}
+\begin{proof}
+The preceding theorem proves $a\ge6$.
+For $a=2,4$ and $c\ge7$, use the complete minimum-two and
+minimum-four constructions of Section~\ref{app:small-alpha}.
+For $c<7$ the three positive cases have these literal arm words:
+\[
+\begin{array}{ll}
+\Sp{2,3,5}:&(10,1);\ (6,2,9);\ (8,3,5,4,7),\\
+\Sp{2,5,5}:&(12,1);\ (10,4,6,5,8);\ (9,2,7,3,11),\\
+\Sp{4,5,5}:&(14,1,13,2);\ (10,3,8,4,12);\ (9,6,7,5,11).
+\end{array}
+\]
+The full inventories follow by subtraction, with respective cuts
+$4,5,6$ from the forced index formula.
+
+For $\Sp{2,3,3}$ the cut would be three.
+Every upper vertex is a neighbor of the root or a leaf, so none has
+two nonroot lower neighbors.  Color one forces $(3,4)$.
+Color two cannot be $(2,4)$ by this property, so it forces $(3,5)$.
+Lower vertex three now has its full degree two occupied.
+Color three can only be $(1,4)$, $(2,5)$, or $(3,6)$.
+The first two violate the upper-vertex property, and the last gives
+lower vertex three a third neighbor.  Each is impossible.
+This excludes a root-zero alpha labeling of this profile and proves
+the claimed classification.
+\end{proof}
+
+\subsection{The ten inputs and the five-to-four inputs}
+\label{mc:input-summary}
+
+The following table records exactly the constructions justifying
+the seven-arm predicates.  The three lengths are sorted and at
+least six.  Letters indicate their parities, and the forced cut is
+always $\floor{a/2}+\floor{b/2}+\floor{c/2}$.
+\begin{center}\small
+\begin{tabular}{p{.17\linewidth}p{.42\linewidth}p{.32\linewidth}}
+Input&Condition&Proof\\\midrule
+Equal&$a=b=c$&Equal-triple formulas and equal-even repairs\\
+Long&$c>2k$, $c\ne4k+1$, $k=\floor{a/2}+\floor{b/2}$
+ &Lemma~\ref{common:alpha-extension}\\
+OOO central&$c\le2a-1$&Proposition~\ref{ok:central-cone}\\
+EOO central&$c\le2a+1$&Proposition~\ref{mc:eoo-central}\\
+EEO central&$a<b$, $c\le2a-1$&Corollary~\ref{mc:eeo-central}\\
+EEO near&$a=b$, $c=a+1$&Proposition~\ref{mc:eeo-near}\\
+OEE central&$a<b<c\le2a$&Proposition~\ref{mc:oee-central}\\
+OEE repeated&$a<b=c$&Proposition~\ref{mc:oee-repeated}\\
+EEE central&$a<b<c\le2a+2$&Corollary~\ref{mc:eee-central}\\
+EEE repeated&$a<b=c$, $b\ge a+4$&Corollary~\ref{mc:eee-repeated}.
+\end{tabular}\end{center}
+The equal-odd formula is in Proposition~\ref{ok:equal-odd-three};
+equal-even repairs and their exact small bases are in
+Section~\ref{templates:equal-even} and Section~\ref{app:finite-bases}.
+None uses a seven-arm selection theorem.
+
+The manual five-to-four proof additionally uses
+Proposition~\ref{mc:oeo-central} and the EOO near family
+$\Sp{a,a+1,a+1}$ from Proposition~\ref{mc:eoo-repeated}.
+It can use the smaller pre-repair EOO central domain, which is
+contained in Proposition~\ref{mc:eoo-central}.
+Deriving the six-to-four bridge from that manual lemma therefore
+introduces no circularity: the construction layer precedes every
+seven-arm selection and unit-extension argument.
+
+Every infinite assertion here reduces to prescribed-endpoint paths,
+explicit interval operations, a complete induction, or the
+finite-template verification theorem.  Printed finite words and
+finite-template tables form part of those proofs.  Independent graph
+and integer audits provide additional verification; bounded samples
+are not used to infer an infinite family.

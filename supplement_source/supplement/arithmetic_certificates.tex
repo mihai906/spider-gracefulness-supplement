@@ -1,0 +1,76 @@
+\section{Arithmetic certificates and reproducibility}\label{app:seven-certificates}
+This section specifies the computer-assisted part of the proof. A certificate refutes a formula over arbitrary integers. It proves that one of the displayed construction routes is applicable; the mathematical construction appendices separately prove that each route produces a labeling. Neither a bounded search nor the success of a solver is substituted for these two obligations.
+
+\subsection{Exact logical statements}
+
+
+The complete mathematical statement is Article equation~\textup{(\ref*{main-art:seven-failure})}. For each of the $128$ binary vectors $p\in\{0,1\}^7$, introduce integer constants $q_0,\ldots,q_6$, substitute $L_i=2q_i+p_i$, and expand the ten sufficient alpha predicates in Article Table~\ref*{main-art:ten-table}, the four sufficient hub-zero predicates in Article Section~\ref*{main-art:seven-predicates}, and the fifteen triples in Article equation~\textup{(\ref*{main-art:fifteen-list})}. All half-length floors become $q_i$. The assertion is the conjunction of the ordered-domain conditions and failure of all fifteen routes. This finite prescription uniquely defines every assertion and contains no bound above on any variable.
+
+The formulas are defined in \file{proof/seven/formulas.py}. The saved assertions are \file{proof/seven/inputs/P.smt2}, with \code{P} the seven-bit word. The refutations are checked for these saved assertions themselves.
+
+
+The exact odd assertion is Article equation~\textup{(\ref*{main-art:odd-failure})}, using all twelve pair clauses and all stated finite recursive rules. The mixed assertion is the domain for one even shortest arm, together with failure of all stated construction routes, excluding the separately constructed profile $(2,3^7)$. Section~\ref{eight:specification} gives the complete predicate definitions and the guarded triple condition. The exact source-to-normalized-input chain is specified below.
+
+The mixed primary input has fourteen top-level assertions. Replace them, in their original order, by the single assertion of their conjunction; declarations, terms and tokens are preserved. Satisfiability of the original list is by definition satisfiability of that conjunction. The verifier checks exact identity of this normalization. In particular no arithmetic simplification or change of quantifier domain occurs. The CPC proof is bound to the normalized single assertion. The odd input already has a single assertion.
+
+
+
+\subsection{Checking the actual premise}
+An external refutation is useful only if its premise is the intended assertion. The restricted input language here consists of integer constant declarations, ordinary arithmetic and Boolean terms, lexical SMT \code{let} expressions, and acyclic zero-argument CPC definitions. The binder \file{proof/binder.py} performs the following exact procedure.
+\begin{enumerate}
+\item Parse every top-level S-expression with an explicit stack. Strip comments; reject quoted symbols, strings, malformed parentheses and unsupported forms. Require distinct integer declarations and exactly one source assertion.
+\item Expand SMT lexical lets using parallel binding: evaluate every right-hand side in the old environment, install all distinct names together for the body, then restore the previous environment. This excludes both sequential-let substitution and accidental capture.
+\item Expand each CPC alias at its definition, using only earlier aliases. Require fresh names with no collision with declared variables. Require the CPC declaration map to equal the source declaration map and require exactly one global \code{assume} in the entire file.
+\item Intern every atom and ordered application with the exact tuple consisting of its operator and complete child identifiers. The source assertion and the CPC global assumption must have the same resulting identifier. This is structural equality, not a probabilistic hash comparison. No Boolean rewriting or arithmetic simplification is permitted.
+\end{enumerate}
+
+The soundness of this comparison follows by induction on the expression DAG. An atom identifier denotes exactly that atom. An application key determines its operator and ordered list of previously fixed subterms; equal keys therefore have identical expanded expressions. Lexical expansion preserves the language semantics because every let right-hand side is evaluated in the outer scope and aliases are frozen before later local bindings can capture their variables. Thus equal final identifiers establish literal identity after only the permitted abbreviation expansion.
+
+The binder checks premise bodies, rather than the proof calculus. The complete Logos checker must also parse the whole CPC proof, check declarations and types, verify every proof step, close every local assumption scope and accept a closed contradiction. Its global \code{assume} is distinct from a local \code{assume-push}. A malformed assumption name, an integer used as a proposition, an undeclared symbol, or an unclosed local contradiction cannot be accepted merely because the binder finds the same body. These obligations belong to the full checker, which is always required together with the binder.
+
+\subsection{External checker and saved proof objects}
+The checker is Logos, pinned to commit
+\begin{center}\small\texttt{a4ab2f8deada090d96178ee9da22a47b5c834e33}.\end{center}
+The bundled executable has SHA-256
+\begin{center}\small\texttt{30dd5bf36cc5e4d522c5ff3f8fd2a22c8}\par
+\texttt{ca3b1387393cb058f01d6897156ae0a}.\end{center}
+The premise binder has SHA-256
+\begin{center}\small\texttt{ba1d2722931f99954e5f83a7606747b5a}\par
+\texttt{4346f03ca064a37e33c979a1248bbc9}.\end{center}
+The supporting repository contains the executable and the checker source at that commit. Every canonical proof is required to return the literal verdict \code{correct} with exit status zero. None contains an explicit CPC \code{TRUST} step. The trusted base consequently includes the actual checker implementation and its compilation/runtime, the exact premise binder, and the interpretation of the displayed finite formulas. The graph constructions are mathematical proofs and exact arithmetic audits; this work does not assert that they have been encoded in a proof assistant.
+
+The $128$ seven-arm proofs are \file{proof/seven/proofs/P.cpc}. Their total size is $121\,028\,536$ bytes; all $130$ canonical proofs together occupy $162\,974\,929$ bytes.
+
+The odd proof object is \file{proof/eight_odd/proof.cpc}, of $18\,306\,737$ bytes, with SHA-256
+\begin{center}\small\texttt{b1428c3833d075a4dc3792aaca145f4b8}\par
+\texttt{02499c030407e607321f64c91105ad9}.\end{center}
+The odd input is \file{proof/eight_odd/input.smt2}, with SHA-256
+\begin{center}\small\texttt{808107ab5ce53e70e36a0b89e500b497}\par
+\texttt{02496ae4b779832b3543b72b11690a36}.\end{center}
+The mixed proof object is \file{proof/eight_even_min/proof.cpc}, of $23\,639\,656$ bytes, with SHA-256
+\begin{center}\small\texttt{9bac0ecc93b014fc93821760fb85829c}\par
+\texttt{b6ac31f5c814b874d2995f97502d6baa}.\end{center}
+The normalized mixed input is \file{proof/eight_even_min/input.smt2}, with SHA-256
+\begin{center}\small\texttt{9175765aab3210bc0f22b15c3381d8ae}\par
+\texttt{f363eb15acae36ba7068a847712ba4a9}.\end{center}
+The fourteen-assertion mixed source is \file{proof/eight_even_min/input_fourteen_assertions.smt2}, with SHA-256
+\begin{center}\small\texttt{1f2973517759e8be4e200103798a66d1}\par
+\texttt{c4cf8b694f58977fd35a1d2ea56b2d6d}.\end{center}
+
+\subsection{Reproduction}
+The GitHub repository of the article provides this supplement,
+the affine construction data, and the directory \file{proof/}. That
+directory contains the canonical arithmetic inputs, all $130$ CPC
+proof objects, the premise binder, the checker, and the builders of
+the finite tables. From \file{proof/} run
+\begin{Code}
+python3 verify.py --finite
+python3 verify.py --arithmetic
+\end{Code}
+The first command regenerates both complete finite-word appendices, verifying exact required domains, labels, colors, alpha classes, controlled leaves, and the $311$ printed seven-core decompositions, and confirms that the regenerated tables are identical to those printed here. The second binds each actual CPC premise and replays all $128+1+1$ refutations. Its optional \code{--family seven}, \code{--family eight-odd}, and \code{--family eight-even-min} switches select one group. It also verifies exact identity of the fourteen mixed assertions with their normalized conjunction. Python must be run without \code{-O}.
+
+Replay needs only Python's standard library and the bundled checker; it requires no search solver or network access. The checker executable targets x86-64 Linux with glibc. Its source is supplied for rebuilding on other systems.
+
+\subsection{The alpha-triple guard in the even-minimum domain}
+\label{eight:verification}
+In one redundant four-arm hub alternative, the saved mixed input omits the alpha-triple guard of Section~\ref{eight:specification}. The only triples it adds are $(3,3,3)$ and $(2,3,3)$, and every four-arm piece containing one of them already satisfies the short-arm hub alternative. Consequently the omission does not enlarge the hub predicate, and the saved input expresses exactly the displayed predicate.

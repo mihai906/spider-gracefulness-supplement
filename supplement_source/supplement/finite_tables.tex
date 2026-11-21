@@ -1,0 +1,490 @@
+\section{Explicit finite construction certificates}\label{app:finite-bases}
+All words below run outward from a common hub of label zero, unless a different hub is stated. Lengths count edges. A semicolon separates arms; it is not an additional vertex. Every printed labeling is checked by the elementary inventory algorithm of Section~\ref{app:template-certificates}.
+\subsection{Small root-zero alpha bases}\label{app:small-finite-alpha}
+These 24 bases suffice for every alpha component in the 311 seven-core decompositions. They also contain the 23 small positive alpha profiles required in the short-arm case analysis. The cut is the sum of the half-lengths. The printed words themselves, rather than an existence inference from bounded searching, are finite proof inputs.
+\small
+\begin{longtable}{@{}p{0.1\linewidth}@{\hspace{.02\linewidth}}p{0.24\linewidth}@{\hspace{.02\linewidth}}p{0.1\linewidth}@{\hspace{.02\linewidth}}p{0.5\linewidth}@{}}
+\caption{Literal root-zero alpha labelings used by the small-core proof.}\label{tab:finite-alpha}\\
+\toprule
+ID & Lengths & Cut & Arm words\\\midrule
+\endfirsthead
+\toprule
+ID & Lengths & Cut & Arm words\\\midrule
+\endhead
+\midrule\multicolumn{4}{r}{\footnotesize Continued on the next page}\\\endfoot
+\bottomrule\endlastfoot
+\(A_{1}\) & \((2,2,5)\) & \(4\) & \(\begin{array}{l}(9,\allowbreak 1)\\(6,\allowbreak 2)\\(7,\allowbreak 4,\allowbreak 5,\allowbreak 3,\allowbreak 8)\end{array}\)\\[.5em]
+\(A_{2}\) & \((2,3,4)\) & \(4\) & \(\begin{array}{l}(9,\allowbreak 1)\\(7,\allowbreak 3,\allowbreak 8)\\(6,\allowbreak 4,\allowbreak 5,\allowbreak 2)\end{array}\)\\[.5em]
+\(A_{3}\) & \((2,3,5)\) & \(4\) & \(\begin{array}{l}(10,\allowbreak 1)\\(6,\allowbreak 2,\allowbreak 9)\\(8,\allowbreak 3,\allowbreak 5,\allowbreak 4,\allowbreak 7)\end{array}\)\\[.5em]
+\(A_{4}\) & \((2,3,6)\) & \(5\) & \(\begin{array}{l}(11,\allowbreak 1)\\(8,\allowbreak 4,\allowbreak 10)\\(9,\allowbreak 2,\allowbreak 7,\allowbreak 5,\allowbreak 6,\allowbreak 3)\end{array}\)\\[.5em]
+\(A_{5}\) & \((2,4,5)\) & \(5\) & \(\begin{array}{l}(11,\allowbreak 1)\\(7,\allowbreak 5,\allowbreak 6,\allowbreak 3)\\(9,\allowbreak 4,\allowbreak 8,\allowbreak 2,\allowbreak 10)\end{array}\)\\[.5em]
+\(A_{6}\) & \((2,4,6)\) & \(6\) & \(\begin{array}{l}(12,\allowbreak 1)\\(8,\allowbreak 4,\allowbreak 11,\allowbreak 2)\\(10,\allowbreak 5,\allowbreak 7,\allowbreak 6,\allowbreak 9,\allowbreak 3)\end{array}\)\\[.5em]
+\(A_{7}\) & \((2,5,5)\) & \(5\) & \(\begin{array}{l}(12,\allowbreak 1)\\(10,\allowbreak 4,\allowbreak 6,\allowbreak 5,\allowbreak 8)\\(9,\allowbreak 2,\allowbreak 7,\allowbreak 3,\allowbreak 11)\end{array}\)\\[.5em]
+\(A_{8}\) & \((2,5,6)\) & \(6\) & \(\begin{array}{l}(13,\allowbreak 1)\\(8,\allowbreak 5,\allowbreak 7,\allowbreak 6,\allowbreak 10)\\(11,\allowbreak 4,\allowbreak 9,\allowbreak 3,\allowbreak 12,\allowbreak 2)\end{array}\)\\[.5em]
+\(A_{9}\) & \((2,6,6)\) & \(7\) & \(\begin{array}{l}(14,\allowbreak 1)\\(12,\allowbreak 3,\allowbreak 13,\allowbreak 5,\allowbreak 10,\allowbreak 4)\\(11,\allowbreak 7,\allowbreak 8,\allowbreak 6,\allowbreak 9,\allowbreak 2)\end{array}\)\\[.5em]
+\(A_{10}\) & \((3,3,4)\) & \(4\) & \(\begin{array}{l}(10,\allowbreak 1,\allowbreak 9)\\(7,\allowbreak 3,\allowbreak 8)\\(6,\allowbreak 4,\allowbreak 5,\allowbreak 2)\end{array}\)\\[.5em]
+\(A_{11}\) & \((3,3,5)\) & \(4\) & \(\begin{array}{l}(11,\allowbreak 1,\allowbreak 10)\\(6,\allowbreak 2,\allowbreak 9)\\(8,\allowbreak 3,\allowbreak 5,\allowbreak 4,\allowbreak 7)\end{array}\)\\[.5em]
+\(A_{12}\) & \((3,3,6)\) & \(5\) & \(\begin{array}{l}(12,\allowbreak 1,\allowbreak 11)\\(8,\allowbreak 4,\allowbreak 10)\\(9,\allowbreak 2,\allowbreak 7,\allowbreak 5,\allowbreak 6,\allowbreak 3)\end{array}\)\\[.5em]
+\(A_{13}\) & \((3,4,5)\) & \(5\) & \(\begin{array}{l}(12,\allowbreak 1,\allowbreak 11)\\(7,\allowbreak 5,\allowbreak 6,\allowbreak 3)\\(9,\allowbreak 4,\allowbreak 8,\allowbreak 2,\allowbreak 10)\end{array}\)\\[.5em]
+\(A_{14}\) & \((3,4,6)\) & \(6\) & \(\begin{array}{l}(13,\allowbreak 1,\allowbreak 12)\\(8,\allowbreak 4,\allowbreak 11,\allowbreak 2)\\(10,\allowbreak 5,\allowbreak 7,\allowbreak 6,\allowbreak 9,\allowbreak 3)\end{array}\)\\[.5em]
+\(A_{15}\) & \((3,5,5)\) & \(5\) & \(\begin{array}{l}(13,\allowbreak 1,\allowbreak 12)\\(10,\allowbreak 4,\allowbreak 6,\allowbreak 5,\allowbreak 8)\\(9,\allowbreak 2,\allowbreak 7,\allowbreak 3,\allowbreak 11)\end{array}\)\\[.5em]
+\(A_{16}\) & \((3,5,6)\) & \(6\) & \(\begin{array}{l}(14,\allowbreak 1,\allowbreak 13)\\(8,\allowbreak 5,\allowbreak 7,\allowbreak 6,\allowbreak 10)\\(11,\allowbreak 4,\allowbreak 9,\allowbreak 3,\allowbreak 12,\allowbreak 2)\end{array}\)\\[.5em]
+\(A_{17}\) & \((3,6,6)\) & \(7\) & \(\begin{array}{l}(15,\allowbreak 1,\allowbreak 14)\\(12,\allowbreak 3,\allowbreak 13,\allowbreak 5,\allowbreak 10,\allowbreak 4)\\(11,\allowbreak 7,\allowbreak 8,\allowbreak 6,\allowbreak 9,\allowbreak 2)\end{array}\)\\[.5em]
+\(A_{18}\) & \((4,5,5)\) & \(6\) & \(\begin{array}{l}(14,\allowbreak 1,\allowbreak 13,\allowbreak 2)\\(10,\allowbreak 3,\allowbreak 8,\allowbreak 4,\allowbreak 12)\\(9,\allowbreak 6,\allowbreak 7,\allowbreak 5,\allowbreak 11)\end{array}\)\\[.5em]
+\(A_{19}\) & \((4,5,6)\) & \(7\) & \(\begin{array}{l}(15,\allowbreak 1,\allowbreak 14,\allowbreak 2)\\(10,\allowbreak 7,\allowbreak 8,\allowbreak 6,\allowbreak 13)\\(11,\allowbreak 5,\allowbreak 9,\allowbreak 4,\allowbreak 12,\allowbreak 3)\end{array}\)\\[.5em]
+\(A_{20}\) & \((4,6,6)\) & \(8\) & \(\begin{array}{l}(16,\allowbreak 2,\allowbreak 14,\allowbreak 1)\\(15,\allowbreak 5,\allowbreak 13,\allowbreak 6,\allowbreak 12,\allowbreak 3)\\(11,\allowbreak 7,\allowbreak 10,\allowbreak 8,\allowbreak 9,\allowbreak 4)\end{array}\)\\[.5em]
+\(A_{21}\) & \((5,5,5)\) & \(6\) & \(\begin{array}{l}(15,\allowbreak 1,\allowbreak 14,\allowbreak 2,\allowbreak 13)\\(10,\allowbreak 3,\allowbreak 8,\allowbreak 4,\allowbreak 12)\\(9,\allowbreak 6,\allowbreak 7,\allowbreak 5,\allowbreak 11)\end{array}\)\\[.5em]
+\(A_{22}\) & \((5,5,6)\) & \(7\) & \(\begin{array}{l}(16,\allowbreak 1,\allowbreak 15,\allowbreak 2,\allowbreak 14)\\(10,\allowbreak 7,\allowbreak 8,\allowbreak 6,\allowbreak 13)\\(11,\allowbreak 5,\allowbreak 9,\allowbreak 4,\allowbreak 12,\allowbreak 3)\end{array}\)\\[.5em]
+\(A_{23}\) & \((5,6,6)\) & \(8\) & \(\begin{array}{l}(17,\allowbreak 1,\allowbreak 16,\allowbreak 3,\allowbreak 15)\\(14,\allowbreak 5,\allowbreak 13,\allowbreak 6,\allowbreak 12,\allowbreak 2)\\(11,\allowbreak 7,\allowbreak 10,\allowbreak 8,\allowbreak 9,\allowbreak 4)\end{array}\)\\[.5em]
+\(A_{24}\) & \((6,6,6)\) & \(9\) & \(\begin{array}{l}(18,\allowbreak 1,\allowbreak 17,\allowbreak 5,\allowbreak 16,\allowbreak 2)\\(15,\allowbreak 6,\allowbreak 12,\allowbreak 7,\allowbreak 14,\allowbreak 4)\\(13,\allowbreak 9,\allowbreak 10,\allowbreak 8,\allowbreak 11,\allowbreak 3)\end{array}\)\\[.5em]
+\end{longtable}
+\normalsize
+\subsection{Four-arm hub-zero bases}\label{app:four-finite-hubzero}
+The following table covers exactly the 70 sorted four-tuples in $\{2,3,4,5,6\}$. A four-arm spider with a unit arm is obtained by appending a unit leaf to a hub-zero three-arm spider, so no additional finite table with a unit entry is needed.
+\small
+\begin{longtable}{@{}p{0.1\linewidth}@{\hspace{.02\linewidth}}p{0.24\linewidth}@{\hspace{.02\linewidth}}p{0.62\linewidth}@{}}
+\caption{Complete hub-zero four-arm catalog for nonunit lengths at most six.}\label{tab:finite-four}\\
+\toprule
+ID & Lengths & Arm words\\\midrule
+\endfirsthead
+\toprule
+ID & Lengths & Arm words\\\midrule
+\endhead
+\midrule\multicolumn{3}{r}{\footnotesize Continued on the next page}\\\endfoot
+\bottomrule\endlastfoot
+\(H_{1}\) & \((2,2,2,2)\) & \(\begin{array}{l}(8,\allowbreak 1)\\(6,\allowbreak 2)\\(5,\allowbreak 7)\\(3,\allowbreak 4)\end{array}\)\\[.5em]
+\(H_{2}\) & \((2,2,2,3)\) & \(\begin{array}{l}(9,\allowbreak 1)\\(6,\allowbreak 8)\\(4,\allowbreak 3)\\(7,\allowbreak 2,\allowbreak 5)\end{array}\)\\[.5em]
+\(H_{3}\) & \((2,2,2,4)\) & \(\begin{array}{l}(10,\allowbreak 1)\\(5,\allowbreak 7)\\(4,\allowbreak 3)\\(8,\allowbreak 2,\allowbreak 9,\allowbreak 6)\end{array}\)\\[.5em]
+\(H_{4}\) & \((2,2,2,5)\) & \(\begin{array}{l}(11,\allowbreak 1)\\(6,\allowbreak 8)\\(3,\allowbreak 7)\\(9,\allowbreak 2,\allowbreak 10,\allowbreak 5,\allowbreak 4)\end{array}\)\\[.5em]
+\(H_{5}\) & \((2,2,2,6)\) & \(\begin{array}{l}(12,\allowbreak 1)\\(6,\allowbreak 3)\\(5,\allowbreak 7)\\(10,\allowbreak 2,\allowbreak 11,\allowbreak 4,\allowbreak 8,\allowbreak 9)\end{array}\)\\[.5em]
+\(H_{6}\) & \((2,2,3,3)\) & \(\begin{array}{l}(10,\allowbreak 1)\\(3,\allowbreak 7)\\(8,\allowbreak 2,\allowbreak 9)\\(5,\allowbreak 6,\allowbreak 4)\end{array}\)\\[.5em]
+\(H_{7}\) & \((2,2,3,4)\) & \(\begin{array}{l}(11,\allowbreak 1)\\(3,\allowbreak 7)\\(5,\allowbreak 6,\allowbreak 8)\\(9,\allowbreak 2,\allowbreak 10,\allowbreak 4)\end{array}\)\\[.5em]
+\(H_{8}\) & \((2,2,3,5)\) & \(\begin{array}{l}(12,\allowbreak 1)\\(3,\allowbreak 9)\\(5,\allowbreak 7,\allowbreak 6)\\(10,\allowbreak 2,\allowbreak 11,\allowbreak 4,\allowbreak 8)\end{array}\)\\[.5em]
+\(H_{9}\) & \((2,2,3,6)\) & \(\begin{array}{l}(13,\allowbreak 1)\\(7,\allowbreak 5)\\(3,\allowbreak 8,\allowbreak 9)\\(11,\allowbreak 2,\allowbreak 12,\allowbreak 4,\allowbreak 10,\allowbreak 6)\end{array}\)\\[.5em]
+\(H_{10}\) & \((2,2,4,4)\) & \(\begin{array}{l}(12,\allowbreak 1)\\(3,\allowbreak 8)\\(10,\allowbreak 2,\allowbreak 11,\allowbreak 4)\\(6,\allowbreak 7,\allowbreak 9,\allowbreak 5)\end{array}\)\\[.5em]
+\(H_{11}\) & \((2,2,4,5)\) & \(\begin{array}{l}(13,\allowbreak 1)\\(3,\allowbreak 8)\\(7,\allowbreak 9,\allowbreak 5,\allowbreak 6)\\(11,\allowbreak 2,\allowbreak 12,\allowbreak 4,\allowbreak 10)\end{array}\)\\[.5em]
+\(H_{12}\) & \((2,2,4,6)\) & \(\begin{array}{l}(14,\allowbreak 1)\\(5,\allowbreak 8)\\(6,\allowbreak 10,\allowbreak 9,\allowbreak 7)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4,\allowbreak 11,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{13}\) & \((2,2,5,5)\) & \(\begin{array}{l}(14,\allowbreak 1)\\(5,\allowbreak 6)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4,\allowbreak 11)\\(8,\allowbreak 10,\allowbreak 7,\allowbreak 3,\allowbreak 9)\end{array}\)\\[.5em]
+\(H_{14}\) & \((2,2,5,6)\) & \(\begin{array}{l}(15,\allowbreak 1)\\(5,\allowbreak 11)\\(7,\allowbreak 10,\allowbreak 6,\allowbreak 8,\allowbreak 9)\\(13,\allowbreak 2,\allowbreak 14,\allowbreak 4,\allowbreak 12,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{15}\) & \((2,2,6,6)\) & \(\begin{array}{l}(16,\allowbreak 1)\\(6,\allowbreak 11)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4,\allowbreak 13,\allowbreak 3)\\(8,\allowbreak 12,\allowbreak 5,\allowbreak 7,\allowbreak 10,\allowbreak 9)\end{array}\)\\[.5em]
+\(H_{16}\) & \((2,3,3,3)\) & \(\begin{array}{l}(11,\allowbreak 1)\\(9,\allowbreak 2,\allowbreak 10)\\(6,\allowbreak 3,\allowbreak 8)\\(4,\allowbreak 5,\allowbreak 7)\end{array}\)\\[.5em]
+\(H_{17}\) & \((2,3,3,4)\) & \(\begin{array}{l}(12,\allowbreak 1)\\(6,\allowbreak 9,\allowbreak 8)\\(5,\allowbreak 7,\allowbreak 3)\\(10,\allowbreak 2,\allowbreak 11,\allowbreak 4)\end{array}\)\\[.5em]
+\(H_{18}\) & \((2,3,3,5)\) & \(\begin{array}{l}(13,\allowbreak 1)\\(6,\allowbreak 7,\allowbreak 9)\\(3,\allowbreak 10,\allowbreak 5)\\(11,\allowbreak 2,\allowbreak 12,\allowbreak 4,\allowbreak 8)\end{array}\)\\[.5em]
+\(H_{19}\) & \((2,3,3,6)\) & \(\begin{array}{l}(14,\allowbreak 1)\\(8,\allowbreak 3,\allowbreak 5)\\(6,\allowbreak 9,\allowbreak 10)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4,\allowbreak 11,\allowbreak 7)\end{array}\)\\[.5em]
+\(H_{20}\) & \((2,3,4,4)\) & \(\begin{array}{l}(13,\allowbreak 1)\\(5,\allowbreak 8,\allowbreak 6)\\(11,\allowbreak 2,\allowbreak 12,\allowbreak 4)\\(7,\allowbreak 3,\allowbreak 9,\allowbreak 10)\end{array}\)\\[.5em]
+\(H_{21}\) & \((2,3,4,5)\) & \(\begin{array}{l}(14,\allowbreak 1)\\(6,\allowbreak 9,\allowbreak 10)\\(8,\allowbreak 3,\allowbreak 7,\allowbreak 5)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{22}\) & \((2,3,4,6)\) & \(\begin{array}{l}(15,\allowbreak 1)\\(6,\allowbreak 11,\allowbreak 10)\\(7,\allowbreak 9,\allowbreak 5,\allowbreak 8)\\(13,\allowbreak 2,\allowbreak 14,\allowbreak 4,\allowbreak 12,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{23}\) & \((2,3,5,5)\) & \(\begin{array}{l}(15,\allowbreak 1)\\(5,\allowbreak 6,\allowbreak 8)\\(13,\allowbreak 2,\allowbreak 14,\allowbreak 4,\allowbreak 12)\\(9,\allowbreak 3,\allowbreak 10,\allowbreak 7,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{24}\) & \((2,3,5,6)\) & \(\begin{array}{l}(16,\allowbreak 1)\\(6,\allowbreak 9,\allowbreak 7)\\(8,\allowbreak 12,\allowbreak 5,\allowbreak 10,\allowbreak 11)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4,\allowbreak 13,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{25}\) & \((2,3,6,6)\) & \(\begin{array}{l}(17,\allowbreak 1)\\(7,\allowbreak 8,\allowbreak 11)\\(15,\allowbreak 2,\allowbreak 16,\allowbreak 4,\allowbreak 14,\allowbreak 3)\\(9,\allowbreak 13,\allowbreak 5,\allowbreak 10,\allowbreak 12,\allowbreak 6)\end{array}\)\\[.5em]
+\(H_{26}\) & \((2,4,4,4)\) & \(\begin{array}{l}(14,\allowbreak 1)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4)\\(8,\allowbreak 3,\allowbreak 10,\allowbreak 7)\\(6,\allowbreak 5,\allowbreak 9,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{27}\) & \((2,4,4,5)\) & \(\begin{array}{l}(15,\allowbreak 1)\\(9,\allowbreak 3,\allowbreak 10,\allowbreak 6)\\(5,\allowbreak 7,\allowbreak 8,\allowbreak 11)\\(13,\allowbreak 2,\allowbreak 14,\allowbreak 4,\allowbreak 12)\end{array}\)\\[.5em]
+\(H_{28}\) & \((2,4,4,6)\) & \(\begin{array}{l}(16,\allowbreak 1)\\(8,\allowbreak 12,\allowbreak 6,\allowbreak 9)\\(7,\allowbreak 5,\allowbreak 10,\allowbreak 11)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4,\allowbreak 13,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{29}\) & \((2,4,5,5)\) & \(\begin{array}{l}(16,\allowbreak 1)\\(6,\allowbreak 8,\allowbreak 5,\allowbreak 9)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4,\allowbreak 13)\\(10,\allowbreak 3,\allowbreak 11,\allowbreak 12,\allowbreak 7)\end{array}\)\\[.5em]
+\(H_{30}\) & \((2,4,5,6)\) & \(\begin{array}{l}(17,\allowbreak 1)\\(6,\allowbreak 8,\allowbreak 11,\allowbreak 10)\\(9,\allowbreak 13,\allowbreak 5,\allowbreak 12,\allowbreak 7)\\(15,\allowbreak 2,\allowbreak 16,\allowbreak 4,\allowbreak 14,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{31}\) & \((2,4,6,6)\) & \(\begin{array}{l}(18,\allowbreak 1)\\(7,\allowbreak 13,\allowbreak 12,\allowbreak 8)\\(16,\allowbreak 2,\allowbreak 17,\allowbreak 4,\allowbreak 15,\allowbreak 3)\\(10,\allowbreak 5,\allowbreak 14,\allowbreak 6,\allowbreak 9,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{32}\) & \((2,5,5,5)\) & \(\begin{array}{l}(17,\allowbreak 1)\\(15,\allowbreak 2,\allowbreak 16,\allowbreak 4,\allowbreak 14)\\(11,\allowbreak 3,\allowbreak 12,\allowbreak 5,\allowbreak 9)\\(6,\allowbreak 7,\allowbreak 10,\allowbreak 8,\allowbreak 13)\end{array}\)\\[.5em]
+\(H_{33}\) & \((2,5,5,6)\) & \(\begin{array}{l}(18,\allowbreak 1)\\(10,\allowbreak 5,\allowbreak 14,\allowbreak 6,\allowbreak 12)\\(7,\allowbreak 8,\allowbreak 11,\allowbreak 13,\allowbreak 9)\\(16,\allowbreak 2,\allowbreak 17,\allowbreak 4,\allowbreak 15,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{34}\) & \((2,5,6,6)\) & \(\begin{array}{l}(19,\allowbreak 1)\\(7,\allowbreak 10,\allowbreak 8,\allowbreak 12,\allowbreak 13)\\(17,\allowbreak 2,\allowbreak 18,\allowbreak 4,\allowbreak 16,\allowbreak 3)\\(11,\allowbreak 5,\allowbreak 15,\allowbreak 6,\allowbreak 14,\allowbreak 9)\end{array}\)\\[.5em]
+\(H_{35}\) & \((2,6,6,6)\) & \(\begin{array}{l}(20,\allowbreak 1)\\(18,\allowbreak 2,\allowbreak 19,\allowbreak 4,\allowbreak 17,\allowbreak 3)\\(12,\allowbreak 5,\allowbreak 16,\allowbreak 6,\allowbreak 15,\allowbreak 10)\\(8,\allowbreak 7,\allowbreak 13,\allowbreak 9,\allowbreak 11,\allowbreak 14)\end{array}\)\\[.5em]
+\(H_{36}\) & \((3,3,3,3)\) & \(\begin{array}{l}(12,\allowbreak 1,\allowbreak 11)\\(9,\allowbreak 2,\allowbreak 10)\\(6,\allowbreak 3,\allowbreak 8)\\(4,\allowbreak 5,\allowbreak 7)\end{array}\)\\[.5em]
+\(H_{37}\) & \((3,3,3,4)\) & \(\begin{array}{l}(13,\allowbreak 1,\allowbreak 12)\\(6,\allowbreak 9,\allowbreak 8)\\(5,\allowbreak 7,\allowbreak 3)\\(10,\allowbreak 2,\allowbreak 11,\allowbreak 4)\end{array}\)\\[.5em]
+\(H_{38}\) & \((3,3,3,5)\) & \(\begin{array}{l}(14,\allowbreak 1,\allowbreak 13)\\(6,\allowbreak 7,\allowbreak 9)\\(3,\allowbreak 10,\allowbreak 5)\\(11,\allowbreak 2,\allowbreak 12,\allowbreak 4,\allowbreak 8)\end{array}\)\\[.5em]
+\(H_{39}\) & \((3,3,3,6)\) & \(\begin{array}{l}(15,\allowbreak 1,\allowbreak 14)\\(8,\allowbreak 3,\allowbreak 5)\\(6,\allowbreak 9,\allowbreak 10)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4,\allowbreak 11,\allowbreak 7)\end{array}\)\\[.5em]
+\(H_{40}\) & \((3,3,4,4)\) & \(\begin{array}{l}(14,\allowbreak 1,\allowbreak 13)\\(5,\allowbreak 8,\allowbreak 6)\\(11,\allowbreak 2,\allowbreak 12,\allowbreak 4)\\(7,\allowbreak 3,\allowbreak 9,\allowbreak 10)\end{array}\)\\[.5em]
+\(H_{41}\) & \((3,3,4,5)\) & \(\begin{array}{l}(15,\allowbreak 1,\allowbreak 14)\\(6,\allowbreak 9,\allowbreak 10)\\(8,\allowbreak 3,\allowbreak 7,\allowbreak 5)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{42}\) & \((3,3,4,6)\) & \(\begin{array}{l}(16,\allowbreak 1,\allowbreak 15)\\(6,\allowbreak 11,\allowbreak 10)\\(7,\allowbreak 9,\allowbreak 5,\allowbreak 8)\\(13,\allowbreak 2,\allowbreak 14,\allowbreak 4,\allowbreak 12,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{43}\) & \((3,3,5,5)\) & \(\begin{array}{l}(16,\allowbreak 1,\allowbreak 15)\\(5,\allowbreak 6,\allowbreak 8)\\(13,\allowbreak 2,\allowbreak 14,\allowbreak 4,\allowbreak 12)\\(9,\allowbreak 3,\allowbreak 10,\allowbreak 7,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{44}\) & \((3,3,5,6)\) & \(\begin{array}{l}(17,\allowbreak 1,\allowbreak 16)\\(6,\allowbreak 9,\allowbreak 7)\\(8,\allowbreak 12,\allowbreak 5,\allowbreak 10,\allowbreak 11)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4,\allowbreak 13,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{45}\) & \((3,3,6,6)\) & \(\begin{array}{l}(18,\allowbreak 1,\allowbreak 17)\\(7,\allowbreak 8,\allowbreak 11)\\(15,\allowbreak 2,\allowbreak 16,\allowbreak 4,\allowbreak 14,\allowbreak 3)\\(9,\allowbreak 13,\allowbreak 5,\allowbreak 10,\allowbreak 12,\allowbreak 6)\end{array}\)\\[.5em]
+\(H_{46}\) & \((3,4,4,4)\) & \(\begin{array}{l}(15,\allowbreak 1,\allowbreak 14)\\(12,\allowbreak 2,\allowbreak 13,\allowbreak 4)\\(8,\allowbreak 3,\allowbreak 10,\allowbreak 7)\\(6,\allowbreak 5,\allowbreak 9,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{47}\) & \((3,4,4,5)\) & \(\begin{array}{l}(16,\allowbreak 1,\allowbreak 15)\\(9,\allowbreak 3,\allowbreak 10,\allowbreak 6)\\(5,\allowbreak 7,\allowbreak 8,\allowbreak 11)\\(13,\allowbreak 2,\allowbreak 14,\allowbreak 4,\allowbreak 12)\end{array}\)\\[.5em]
+\(H_{48}\) & \((3,4,4,6)\) & \(\begin{array}{l}(17,\allowbreak 1,\allowbreak 16)\\(8,\allowbreak 12,\allowbreak 6,\allowbreak 9)\\(7,\allowbreak 5,\allowbreak 10,\allowbreak 11)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4,\allowbreak 13,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{49}\) & \((3,4,5,5)\) & \(\begin{array}{l}(17,\allowbreak 1,\allowbreak 16)\\(6,\allowbreak 8,\allowbreak 5,\allowbreak 9)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4,\allowbreak 13)\\(10,\allowbreak 3,\allowbreak 11,\allowbreak 12,\allowbreak 7)\end{array}\)\\[.5em]
+\(H_{50}\) & \((3,4,5,6)\) & \(\begin{array}{l}(18,\allowbreak 1,\allowbreak 17)\\(6,\allowbreak 8,\allowbreak 11,\allowbreak 10)\\(9,\allowbreak 13,\allowbreak 5,\allowbreak 12,\allowbreak 7)\\(15,\allowbreak 2,\allowbreak 16,\allowbreak 4,\allowbreak 14,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{51}\) & \((3,4,6,6)\) & \(\begin{array}{l}(19,\allowbreak 1,\allowbreak 18)\\(7,\allowbreak 13,\allowbreak 12,\allowbreak 8)\\(16,\allowbreak 2,\allowbreak 17,\allowbreak 4,\allowbreak 15,\allowbreak 3)\\(10,\allowbreak 5,\allowbreak 14,\allowbreak 6,\allowbreak 9,\allowbreak 11)\end{array}\)\\[.5em]
+\(H_{52}\) & \((3,5,5,5)\) & \(\begin{array}{l}(18,\allowbreak 1,\allowbreak 17)\\(15,\allowbreak 2,\allowbreak 16,\allowbreak 4,\allowbreak 14)\\(11,\allowbreak 3,\allowbreak 12,\allowbreak 5,\allowbreak 9)\\(6,\allowbreak 7,\allowbreak 10,\allowbreak 8,\allowbreak 13)\end{array}\)\\[.5em]
+\(H_{53}\) & \((3,5,5,6)\) & \(\begin{array}{l}(19,\allowbreak 1,\allowbreak 18)\\(10,\allowbreak 5,\allowbreak 14,\allowbreak 6,\allowbreak 12)\\(7,\allowbreak 8,\allowbreak 11,\allowbreak 13,\allowbreak 9)\\(16,\allowbreak 2,\allowbreak 17,\allowbreak 4,\allowbreak 15,\allowbreak 3)\end{array}\)\\[.5em]
+\(H_{54}\) & \((3,5,6,6)\) & \(\begin{array}{l}(20,\allowbreak 1,\allowbreak 19)\\(7,\allowbreak 10,\allowbreak 8,\allowbreak 12,\allowbreak 13)\\(17,\allowbreak 2,\allowbreak 18,\allowbreak 4,\allowbreak 16,\allowbreak 3)\\(11,\allowbreak 5,\allowbreak 15,\allowbreak 6,\allowbreak 14,\allowbreak 9)\end{array}\)\\[.5em]
+\(H_{55}\) & \((3,6,6,6)\) & \(\begin{array}{l}(21,\allowbreak 1,\allowbreak 20)\\(18,\allowbreak 2,\allowbreak 19,\allowbreak 4,\allowbreak 17,\allowbreak 3)\\(12,\allowbreak 5,\allowbreak 16,\allowbreak 6,\allowbreak 15,\allowbreak 10)\\(8,\allowbreak 7,\allowbreak 13,\allowbreak 9,\allowbreak 11,\allowbreak 14)\end{array}\)\\[.5em]
+\(H_{56}\) & \((4,4,4,4)\) & \(\begin{array}{l}(16,\allowbreak 1,\allowbreak 15,\allowbreak 2)\\(12,\allowbreak 3,\allowbreak 14,\allowbreak 4)\\(8,\allowbreak 13,\allowbreak 9,\allowbreak 6)\\(7,\allowbreak 5,\allowbreak 11,\allowbreak 10)\end{array}\)\\[.5em]
+\(H_{57}\) & \((4,4,4,5)\) & \(\begin{array}{l}(17,\allowbreak 1,\allowbreak 16,\allowbreak 2)\\(9,\allowbreak 14,\allowbreak 7,\allowbreak 11)\\(6,\allowbreak 5,\allowbreak 8,\allowbreak 10)\\(13,\allowbreak 3,\allowbreak 15,\allowbreak 4,\allowbreak 12)\end{array}\)\\[.5em]
+\(H_{58}\) & \((4,4,4,6)\) & \(\begin{array}{l}(18,\allowbreak 1,\allowbreak 17,\allowbreak 2)\\(10,\allowbreak 15,\allowbreak 12,\allowbreak 6)\\(7,\allowbreak 11,\allowbreak 9,\allowbreak 8)\\(14,\allowbreak 3,\allowbreak 16,\allowbreak 4,\allowbreak 13,\allowbreak 5)\end{array}\)\\[.5em]
+\(H_{59}\) & \((4,4,5,5)\) & \(\begin{array}{l}(18,\allowbreak 1,\allowbreak 17,\allowbreak 2)\\(8,\allowbreak 6,\allowbreak 7,\allowbreak 11)\\(14,\allowbreak 3,\allowbreak 16,\allowbreak 4,\allowbreak 13)\\(10,\allowbreak 15,\allowbreak 9,\allowbreak 12,\allowbreak 5)\end{array}\)\\[.5em]
+\(H_{60}\) & \((4,4,5,6)\) & \(\begin{array}{l}(19,\allowbreak 1,\allowbreak 18,\allowbreak 2)\\(7,\allowbreak 9,\allowbreak 10,\allowbreak 13)\\(11,\allowbreak 16,\allowbreak 8,\allowbreak 12,\allowbreak 6)\\(15,\allowbreak 3,\allowbreak 17,\allowbreak 4,\allowbreak 14,\allowbreak 5)\end{array}\)\\[.5em]
+\(H_{61}\) & \((4,4,6,6)\) & \(\begin{array}{l}(20,\allowbreak 1,\allowbreak 19,\allowbreak 2)\\(7,\allowbreak 11,\allowbreak 13,\allowbreak 10)\\(16,\allowbreak 3,\allowbreak 18,\allowbreak 4,\allowbreak 15,\allowbreak 5)\\(12,\allowbreak 6,\allowbreak 14,\allowbreak 9,\allowbreak 8,\allowbreak 17)\end{array}\)\\[.5em]
+\(H_{62}\) & \((4,5,5,5)\) & \(\begin{array}{l}(19,\allowbreak 1,\allowbreak 18,\allowbreak 2)\\(15,\allowbreak 3,\allowbreak 17,\allowbreak 4,\allowbreak 14)\\(11,\allowbreak 5,\allowbreak 13,\allowbreak 6,\allowbreak 8)\\(9,\allowbreak 10,\allowbreak 7,\allowbreak 12,\allowbreak 16)\end{array}\)\\[.5em]
+\(H_{63}\) & \((4,5,5,6)\) & \(\begin{array}{l}(20,\allowbreak 1,\allowbreak 19,\allowbreak 2)\\(12,\allowbreak 6,\allowbreak 14,\allowbreak 9,\allowbreak 11)\\(7,\allowbreak 8,\allowbreak 17,\allowbreak 13,\allowbreak 10)\\(16,\allowbreak 3,\allowbreak 18,\allowbreak 4,\allowbreak 15,\allowbreak 5)\end{array}\)\\[.5em]
+\(H_{64}\) & \((4,5,6,6)\) & \(\begin{array}{l}(21,\allowbreak 1,\allowbreak 20,\allowbreak 2)\\(10,\allowbreak 14,\allowbreak 11,\allowbreak 9,\allowbreak 8)\\(17,\allowbreak 3,\allowbreak 19,\allowbreak 4,\allowbreak 16,\allowbreak 5)\\(13,\allowbreak 6,\allowbreak 15,\allowbreak 7,\allowbreak 12,\allowbreak 18)\end{array}\)\\[.5em]
+\(H_{65}\) & \((4,6,6,6)\) & \(\begin{array}{l}(22,\allowbreak 1,\allowbreak 21,\allowbreak 2)\\(18,\allowbreak 3,\allowbreak 20,\allowbreak 4,\allowbreak 17,\allowbreak 5)\\(14,\allowbreak 6,\allowbreak 16,\allowbreak 7,\allowbreak 12,\allowbreak 19)\\(11,\allowbreak 15,\allowbreak 9,\allowbreak 8,\allowbreak 10,\allowbreak 13)\end{array}\)\\[.5em]
+\(H_{66}\) & \((5,5,5,5)\) & \(\begin{array}{l}(20,\allowbreak 1,\allowbreak 19,\allowbreak 2,\allowbreak 18)\\(15,\allowbreak 3,\allowbreak 17,\allowbreak 4,\allowbreak 14)\\(11,\allowbreak 5,\allowbreak 13,\allowbreak 6,\allowbreak 8)\\(9,\allowbreak 10,\allowbreak 7,\allowbreak 12,\allowbreak 16)\end{array}\)\\[.5em]
+\(H_{67}\) & \((5,5,5,6)\) & \(\begin{array}{l}(21,\allowbreak 1,\allowbreak 20,\allowbreak 2,\allowbreak 19)\\(12,\allowbreak 6,\allowbreak 14,\allowbreak 9,\allowbreak 11)\\(7,\allowbreak 8,\allowbreak 17,\allowbreak 13,\allowbreak 10)\\(16,\allowbreak 3,\allowbreak 18,\allowbreak 4,\allowbreak 15,\allowbreak 5)\end{array}\)\\[.5em]
+\(H_{68}\) & \((5,5,6,6)\) & \(\begin{array}{l}(22,\allowbreak 1,\allowbreak 21,\allowbreak 2,\allowbreak 20)\\(10,\allowbreak 14,\allowbreak 11,\allowbreak 9,\allowbreak 8)\\(17,\allowbreak 3,\allowbreak 19,\allowbreak 4,\allowbreak 16,\allowbreak 5)\\(13,\allowbreak 6,\allowbreak 15,\allowbreak 7,\allowbreak 12,\allowbreak 18)\end{array}\)\\[.5em]
+\(H_{69}\) & \((5,6,6,6)\) & \(\begin{array}{l}(23,\allowbreak 1,\allowbreak 22,\allowbreak 2,\allowbreak 21)\\(18,\allowbreak 3,\allowbreak 20,\allowbreak 4,\allowbreak 17,\allowbreak 5)\\(14,\allowbreak 6,\allowbreak 16,\allowbreak 7,\allowbreak 12,\allowbreak 19)\\(11,\allowbreak 15,\allowbreak 9,\allowbreak 8,\allowbreak 10,\allowbreak 13)\end{array}\)\\[.5em]
+\(H_{70}\) & \((6,6,6,6)\) & \(\begin{array}{l}(24,\allowbreak 1,\allowbreak 23,\allowbreak 2,\allowbreak 22,\allowbreak 3)\\(18,\allowbreak 4,\allowbreak 21,\allowbreak 5,\allowbreak 20,\allowbreak 7)\\(12,\allowbreak 19,\allowbreak 8,\allowbreak 17,\allowbreak 9,\allowbreak 14)\\(6,\allowbreak 16,\allowbreak 13,\allowbreak 15,\allowbreak 11,\allowbreak 10)\end{array}\)\\[.5em]
+\end{longtable}
+\normalsize
+\ifSevenVolume
+\subsection{The 311 alpha/hub-zero decompositions}\label{app:seven-finite-decompositions}
+For each row, take the alpha basis $A_i$ and the hub-zero basis $H_j$ from the preceding tables. Their arm multisets combine to the displayed seven-tuple. Apply ordinary alpha amalgamation; add any unit arms to $H_j$ first. Thus each row proves an entire unbounded unit-arm family. Together with the next section these are exactly all $\binom{11}{7}=330$ sorted nonunit seven-tuples with maximum at most six.
+\small
+\begin{longtable}{@{}p{0.48\linewidth}@{\hspace{.02\linewidth}}p{0.15\linewidth}@{\hspace{.02\linewidth}}p{0.15\linewidth}@{\hspace{.02\linewidth}}p{0.16\linewidth}@{}}
+\caption{Complete small seven-core decomposition table.}\label{tab:finite-seven}\\
+\toprule
+Lengths & Alpha base & Hub-zero base & Final hub\\\midrule
+\endfirsthead
+\toprule
+Lengths & Alpha base & Hub-zero base & Final hub\\\midrule
+\endhead
+\midrule\multicolumn{4}{r}{\footnotesize Continued on the next page}\\\endfoot
+\bottomrule\endlastfoot
+\((2,2,2,2,2,2,5)\) & \(A_{1}\) & \(H_{1}\) & \(4\)\\
+\((2,2,2,2,2,3,4)\) & \(A_{2}\) & \(H_{1}\) & \(4\)\\
+\((2,2,2,2,2,3,5)\) & \(A_{1}\) & \(H_{2}\) & \(4\)\\
+\((2,2,2,2,2,3,6)\) & \(A_{4}\) & \(H_{1}\) & \(5\)\\
+\((2,2,2,2,2,4,5)\) & \(A_{1}\) & \(H_{3}\) & \(4\)\\
+\((2,2,2,2,2,4,6)\) & \(A_{6}\) & \(H_{1}\) & \(6\)\\
+\((2,2,2,2,2,5,5)\) & \(A_{1}\) & \(H_{4}\) & \(4\)\\
+\((2,2,2,2,2,5,6)\) & \(A_{1}\) & \(H_{5}\) & \(4\)\\
+\((2,2,2,2,2,6,6)\) & \(A_{9}\) & \(H_{1}\) & \(7\)\\
+\((2,2,2,2,3,3,4)\) & \(A_{2}\) & \(H_{2}\) & \(4\)\\
+\((2,2,2,2,3,3,5)\) & \(A_{1}\) & \(H_{6}\) & \(4\)\\
+\((2,2,2,2,3,3,6)\) & \(A_{4}\) & \(H_{2}\) & \(5\)\\
+\((2,2,2,2,3,4,4)\) & \(A_{2}\) & \(H_{3}\) & \(4\)\\
+\((2,2,2,2,3,4,5)\) & \(A_{1}\) & \(H_{7}\) & \(4\)\\
+\((2,2,2,2,3,4,6)\) & \(A_{2}\) & \(H_{5}\) & \(4\)\\
+\((2,2,2,2,3,5,5)\) & \(A_{1}\) & \(H_{8}\) & \(4\)\\
+\((2,2,2,2,3,5,6)\) & \(A_{1}\) & \(H_{9}\) & \(4\)\\
+\((2,2,2,2,3,6,6)\) & \(A_{4}\) & \(H_{5}\) & \(5\)\\
+\((2,2,2,2,4,4,5)\) & \(A_{1}\) & \(H_{10}\) & \(4\)\\
+\((2,2,2,2,4,4,6)\) & \(A_{6}\) & \(H_{3}\) & \(6\)\\
+\((2,2,2,2,4,5,5)\) & \(A_{1}\) & \(H_{11}\) & \(4\)\\
+\((2,2,2,2,4,5,6)\) & \(A_{1}\) & \(H_{12}\) & \(4\)\\
+\((2,2,2,2,4,6,6)\) & \(A_{6}\) & \(H_{5}\) & \(6\)\\
+\((2,2,2,2,5,5,5)\) & \(A_{1}\) & \(H_{13}\) & \(4\)\\
+\((2,2,2,2,5,5,6)\) & \(A_{1}\) & \(H_{14}\) & \(4\)\\
+\((2,2,2,2,5,6,6)\) & \(A_{1}\) & \(H_{15}\) & \(4\)\\
+\((2,2,2,2,6,6,6)\) & \(A_{9}\) & \(H_{5}\) & \(7\)\\
+\((2,2,2,3,3,3,4)\) & \(A_{2}\) & \(H_{6}\) & \(4\)\\
+\((2,2,2,3,3,3,5)\) & \(A_{1}\) & \(H_{16}\) & \(4\)\\
+\((2,2,2,3,3,3,6)\) & \(A_{4}\) & \(H_{6}\) & \(5\)\\
+\((2,2,2,3,3,4,4)\) & \(A_{2}\) & \(H_{7}\) & \(4\)\\
+\((2,2,2,3,3,4,5)\) & \(A_{1}\) & \(H_{17}\) & \(4\)\\
+\((2,2,2,3,3,4,6)\) & \(A_{2}\) & \(H_{9}\) & \(4\)\\
+\((2,2,2,3,3,5,5)\) & \(A_{1}\) & \(H_{18}\) & \(4\)\\
+\((2,2,2,3,3,5,6)\) & \(A_{1}\) & \(H_{19}\) & \(4\)\\
+\((2,2,2,3,3,6,6)\) & \(A_{4}\) & \(H_{9}\) & \(5\)\\
+\((2,2,2,3,4,4,4)\) & \(A_{2}\) & \(H_{10}\) & \(4\)\\
+\((2,2,2,3,4,4,5)\) & \(A_{1}\) & \(H_{20}\) & \(4\)\\
+\((2,2,2,3,4,4,6)\) & \(A_{2}\) & \(H_{12}\) & \(4\)\\
+\((2,2,2,3,4,5,5)\) & \(A_{1}\) & \(H_{21}\) & \(4\)\\
+\((2,2,2,3,4,5,6)\) & \(A_{1}\) & \(H_{22}\) & \(4\)\\
+\((2,2,2,3,4,6,6)\) & \(A_{2}\) & \(H_{15}\) & \(4\)\\
+\((2,2,2,3,5,5,5)\) & \(A_{1}\) & \(H_{23}\) & \(4\)\\
+\((2,2,2,3,5,5,6)\) & \(A_{1}\) & \(H_{24}\) & \(4\)\\
+\((2,2,2,3,5,6,6)\) & \(A_{1}\) & \(H_{25}\) & \(4\)\\
+\((2,2,2,3,6,6,6)\) & \(A_{4}\) & \(H_{15}\) & \(5\)\\
+\((2,2,2,4,4,4,5)\) & \(A_{1}\) & \(H_{26}\) & \(4\)\\
+\((2,2,2,4,4,4,6)\) & \(A_{6}\) & \(H_{10}\) & \(6\)\\
+\((2,2,2,4,4,5,5)\) & \(A_{1}\) & \(H_{27}\) & \(4\)\\
+\((2,2,2,4,4,5,6)\) & \(A_{1}\) & \(H_{28}\) & \(4\)\\
+\((2,2,2,4,4,6,6)\) & \(A_{6}\) & \(H_{12}\) & \(6\)\\
+\((2,2,2,4,5,5,5)\) & \(A_{1}\) & \(H_{29}\) & \(4\)\\
+\((2,2,2,4,5,5,6)\) & \(A_{1}\) & \(H_{30}\) & \(4\)\\
+\((2,2,2,4,5,6,6)\) & \(A_{1}\) & \(H_{31}\) & \(4\)\\
+\((2,2,2,4,6,6,6)\) & \(A_{6}\) & \(H_{15}\) & \(6\)\\
+\((2,2,2,5,5,5,5)\) & \(A_{1}\) & \(H_{32}\) & \(4\)\\
+\((2,2,2,5,5,5,6)\) & \(A_{1}\) & \(H_{33}\) & \(4\)\\
+\((2,2,2,5,5,6,6)\) & \(A_{1}\) & \(H_{34}\) & \(4\)\\
+\((2,2,2,5,6,6,6)\) & \(A_{1}\) & \(H_{35}\) & \(4\)\\
+\((2,2,2,6,6,6,6)\) & \(A_{9}\) & \(H_{15}\) & \(7\)\\
+\((2,2,3,3,3,3,4)\) & \(A_{2}\) & \(H_{16}\) & \(4\)\\
+\((2,2,3,3,3,3,5)\) & \(A_{1}\) & \(H_{36}\) & \(4\)\\
+\((2,2,3,3,3,3,6)\) & \(A_{4}\) & \(H_{16}\) & \(5\)\\
+\((2,2,3,3,3,4,4)\) & \(A_{2}\) & \(H_{17}\) & \(4\)\\
+\((2,2,3,3,3,4,5)\) & \(A_{1}\) & \(H_{37}\) & \(4\)\\
+\((2,2,3,3,3,4,6)\) & \(A_{2}\) & \(H_{19}\) & \(4\)\\
+\((2,2,3,3,3,5,5)\) & \(A_{1}\) & \(H_{38}\) & \(4\)\\
+\((2,2,3,3,3,5,6)\) & \(A_{1}\) & \(H_{39}\) & \(4\)\\
+\((2,2,3,3,3,6,6)\) & \(A_{4}\) & \(H_{19}\) & \(5\)\\
+\((2,2,3,3,4,4,4)\) & \(A_{2}\) & \(H_{20}\) & \(4\)\\
+\((2,2,3,3,4,4,5)\) & \(A_{1}\) & \(H_{40}\) & \(4\)\\
+\((2,2,3,3,4,4,6)\) & \(A_{2}\) & \(H_{22}\) & \(4\)\\
+\((2,2,3,3,4,5,5)\) & \(A_{1}\) & \(H_{41}\) & \(4\)\\
+\((2,2,3,3,4,5,6)\) & \(A_{1}\) & \(H_{42}\) & \(4\)\\
+\((2,2,3,3,4,6,6)\) & \(A_{2}\) & \(H_{25}\) & \(4\)\\
+\((2,2,3,3,5,5,5)\) & \(A_{1}\) & \(H_{43}\) & \(4\)\\
+\((2,2,3,3,5,5,6)\) & \(A_{1}\) & \(H_{44}\) & \(4\)\\
+\((2,2,3,3,5,6,6)\) & \(A_{1}\) & \(H_{45}\) & \(4\)\\
+\((2,2,3,3,6,6,6)\) & \(A_{4}\) & \(H_{25}\) & \(5\)\\
+\((2,2,3,4,4,4,4)\) & \(A_{2}\) & \(H_{26}\) & \(4\)\\
+\((2,2,3,4,4,4,5)\) & \(A_{1}\) & \(H_{46}\) & \(4\)\\
+\((2,2,3,4,4,4,6)\) & \(A_{2}\) & \(H_{28}\) & \(4\)\\
+\((2,2,3,4,4,5,5)\) & \(A_{1}\) & \(H_{47}\) & \(4\)\\
+\((2,2,3,4,4,5,6)\) & \(A_{1}\) & \(H_{48}\) & \(4\)\\
+\((2,2,3,4,4,6,6)\) & \(A_{2}\) & \(H_{31}\) & \(4\)\\
+\((2,2,3,4,5,5,5)\) & \(A_{1}\) & \(H_{49}\) & \(4\)\\
+\((2,2,3,4,5,5,6)\) & \(A_{1}\) & \(H_{50}\) & \(4\)\\
+\((2,2,3,4,5,6,6)\) & \(A_{1}\) & \(H_{51}\) & \(4\)\\
+\((2,2,3,4,6,6,6)\) & \(A_{2}\) & \(H_{35}\) & \(4\)\\
+\((2,2,3,5,5,5,5)\) & \(A_{1}\) & \(H_{52}\) & \(4\)\\
+\((2,2,3,5,5,5,6)\) & \(A_{1}\) & \(H_{53}\) & \(4\)\\
+\((2,2,3,5,5,6,6)\) & \(A_{1}\) & \(H_{54}\) & \(4\)\\
+\((2,2,3,5,6,6,6)\) & \(A_{1}\) & \(H_{55}\) & \(4\)\\
+\((2,2,3,6,6,6,6)\) & \(A_{4}\) & \(H_{35}\) & \(5\)\\
+\((2,2,4,4,4,4,5)\) & \(A_{1}\) & \(H_{56}\) & \(4\)\\
+\((2,2,4,4,4,4,6)\) & \(A_{6}\) & \(H_{26}\) & \(6\)\\
+\((2,2,4,4,4,5,5)\) & \(A_{1}\) & \(H_{57}\) & \(4\)\\
+\((2,2,4,4,4,5,6)\) & \(A_{1}\) & \(H_{58}\) & \(4\)\\
+\((2,2,4,4,4,6,6)\) & \(A_{6}\) & \(H_{28}\) & \(6\)\\
+\((2,2,4,4,5,5,5)\) & \(A_{1}\) & \(H_{59}\) & \(4\)\\
+\((2,2,4,4,5,5,6)\) & \(A_{1}\) & \(H_{60}\) & \(4\)\\
+\((2,2,4,4,5,6,6)\) & \(A_{1}\) & \(H_{61}\) & \(4\)\\
+\((2,2,4,4,6,6,6)\) & \(A_{6}\) & \(H_{31}\) & \(6\)\\
+\((2,2,4,5,5,5,5)\) & \(A_{1}\) & \(H_{62}\) & \(4\)\\
+\((2,2,4,5,5,5,6)\) & \(A_{1}\) & \(H_{63}\) & \(4\)\\
+\((2,2,4,5,5,6,6)\) & \(A_{1}\) & \(H_{64}\) & \(4\)\\
+\((2,2,4,5,6,6,6)\) & \(A_{1}\) & \(H_{65}\) & \(4\)\\
+\((2,2,4,6,6,6,6)\) & \(A_{6}\) & \(H_{35}\) & \(6\)\\
+\((2,2,5,5,5,5,5)\) & \(A_{1}\) & \(H_{66}\) & \(4\)\\
+\((2,2,5,5,5,5,6)\) & \(A_{1}\) & \(H_{67}\) & \(4\)\\
+\((2,2,5,5,5,6,6)\) & \(A_{1}\) & \(H_{68}\) & \(4\)\\
+\((2,2,5,5,6,6,6)\) & \(A_{1}\) & \(H_{69}\) & \(4\)\\
+\((2,2,5,6,6,6,6)\) & \(A_{1}\) & \(H_{70}\) & \(4\)\\
+\((2,2,6,6,6,6,6)\) & \(A_{9}\) & \(H_{35}\) & \(7\)\\
+\((2,3,3,3,3,3,4)\) & \(A_{2}\) & \(H_{36}\) & \(4\)\\
+\((2,3,3,3,3,3,5)\) & \(A_{3}\) & \(H_{36}\) & \(4\)\\
+\((2,3,3,3,3,3,6)\) & \(A_{4}\) & \(H_{36}\) & \(5\)\\
+\((2,3,3,3,3,4,4)\) & \(A_{2}\) & \(H_{37}\) & \(4\)\\
+\((2,3,3,3,3,4,5)\) & \(A_{2}\) & \(H_{38}\) & \(4\)\\
+\((2,3,3,3,3,4,6)\) & \(A_{2}\) & \(H_{39}\) & \(4\)\\
+\((2,3,3,3,3,5,5)\) & \(A_{3}\) & \(H_{38}\) & \(4\)\\
+\((2,3,3,3,3,5,6)\) & \(A_{3}\) & \(H_{39}\) & \(4\)\\
+\((2,3,3,3,3,6,6)\) & \(A_{4}\) & \(H_{39}\) & \(5\)\\
+\((2,3,3,3,4,4,4)\) & \(A_{2}\) & \(H_{40}\) & \(4\)\\
+\((2,3,3,3,4,4,5)\) & \(A_{2}\) & \(H_{41}\) & \(4\)\\
+\((2,3,3,3,4,4,6)\) & \(A_{2}\) & \(H_{42}\) & \(4\)\\
+\((2,3,3,3,4,5,5)\) & \(A_{2}\) & \(H_{43}\) & \(4\)\\
+\((2,3,3,3,4,5,6)\) & \(A_{2}\) & \(H_{44}\) & \(4\)\\
+\((2,3,3,3,4,6,6)\) & \(A_{2}\) & \(H_{45}\) & \(4\)\\
+\((2,3,3,3,5,5,5)\) & \(A_{3}\) & \(H_{43}\) & \(4\)\\
+\((2,3,3,3,5,5,6)\) & \(A_{3}\) & \(H_{44}\) & \(4\)\\
+\((2,3,3,3,5,6,6)\) & \(A_{3}\) & \(H_{45}\) & \(4\)\\
+\((2,3,3,3,6,6,6)\) & \(A_{4}\) & \(H_{45}\) & \(5\)\\
+\((2,3,3,4,4,4,4)\) & \(A_{2}\) & \(H_{46}\) & \(4\)\\
+\((2,3,3,4,4,4,5)\) & \(A_{2}\) & \(H_{47}\) & \(4\)\\
+\((2,3,3,4,4,4,6)\) & \(A_{2}\) & \(H_{48}\) & \(4\)\\
+\((2,3,3,4,4,5,5)\) & \(A_{2}\) & \(H_{49}\) & \(4\)\\
+\((2,3,3,4,4,5,6)\) & \(A_{2}\) & \(H_{50}\) & \(4\)\\
+\((2,3,3,4,4,6,6)\) & \(A_{2}\) & \(H_{51}\) & \(4\)\\
+\((2,3,3,4,5,5,5)\) & \(A_{2}\) & \(H_{52}\) & \(4\)\\
+\((2,3,3,4,5,5,6)\) & \(A_{2}\) & \(H_{53}\) & \(4\)\\
+\((2,3,3,4,5,6,6)\) & \(A_{2}\) & \(H_{54}\) & \(4\)\\
+\((2,3,3,4,6,6,6)\) & \(A_{2}\) & \(H_{55}\) & \(4\)\\
+\((2,3,3,5,5,5,5)\) & \(A_{3}\) & \(H_{52}\) & \(4\)\\
+\((2,3,3,5,5,5,6)\) & \(A_{3}\) & \(H_{53}\) & \(4\)\\
+\((2,3,3,5,5,6,6)\) & \(A_{3}\) & \(H_{54}\) & \(4\)\\
+\((2,3,3,5,6,6,6)\) & \(A_{3}\) & \(H_{55}\) & \(4\)\\
+\((2,3,3,6,6,6,6)\) & \(A_{4}\) & \(H_{55}\) & \(5\)\\
+\((2,3,4,4,4,4,4)\) & \(A_{2}\) & \(H_{56}\) & \(4\)\\
+\((2,3,4,4,4,4,5)\) & \(A_{2}\) & \(H_{57}\) & \(4\)\\
+\((2,3,4,4,4,4,6)\) & \(A_{2}\) & \(H_{58}\) & \(4\)\\
+\((2,3,4,4,4,5,5)\) & \(A_{2}\) & \(H_{59}\) & \(4\)\\
+\((2,3,4,4,4,5,6)\) & \(A_{2}\) & \(H_{60}\) & \(4\)\\
+\((2,3,4,4,4,6,6)\) & \(A_{2}\) & \(H_{61}\) & \(4\)\\
+\((2,3,4,4,5,5,5)\) & \(A_{2}\) & \(H_{62}\) & \(4\)\\
+\((2,3,4,4,5,5,6)\) & \(A_{2}\) & \(H_{63}\) & \(4\)\\
+\((2,3,4,4,5,6,6)\) & \(A_{2}\) & \(H_{64}\) & \(4\)\\
+\((2,3,4,4,6,6,6)\) & \(A_{2}\) & \(H_{65}\) & \(4\)\\
+\((2,3,4,5,5,5,5)\) & \(A_{2}\) & \(H_{66}\) & \(4\)\\
+\((2,3,4,5,5,5,6)\) & \(A_{2}\) & \(H_{67}\) & \(4\)\\
+\((2,3,4,5,5,6,6)\) & \(A_{2}\) & \(H_{68}\) & \(4\)\\
+\((2,3,4,5,6,6,6)\) & \(A_{2}\) & \(H_{69}\) & \(4\)\\
+\((2,3,4,6,6,6,6)\) & \(A_{2}\) & \(H_{70}\) & \(4\)\\
+\((2,3,5,5,5,5,5)\) & \(A_{3}\) & \(H_{66}\) & \(4\)\\
+\((2,3,5,5,5,5,6)\) & \(A_{3}\) & \(H_{67}\) & \(4\)\\
+\((2,3,5,5,5,6,6)\) & \(A_{3}\) & \(H_{68}\) & \(4\)\\
+\((2,3,5,5,6,6,6)\) & \(A_{3}\) & \(H_{69}\) & \(4\)\\
+\((2,3,5,6,6,6,6)\) & \(A_{3}\) & \(H_{70}\) & \(4\)\\
+\((2,3,6,6,6,6,6)\) & \(A_{4}\) & \(H_{70}\) & \(5\)\\
+\((2,4,4,4,4,4,5)\) & \(A_{5}\) & \(H_{56}\) & \(5\)\\
+\((2,4,4,4,4,4,6)\) & \(A_{6}\) & \(H_{56}\) & \(6\)\\
+\((2,4,4,4,4,5,5)\) & \(A_{5}\) & \(H_{57}\) & \(5\)\\
+\((2,4,4,4,4,5,6)\) & \(A_{5}\) & \(H_{58}\) & \(5\)\\
+\((2,4,4,4,4,6,6)\) & \(A_{6}\) & \(H_{58}\) & \(6\)\\
+\((2,4,4,4,5,5,5)\) & \(A_{5}\) & \(H_{59}\) & \(5\)\\
+\((2,4,4,4,5,5,6)\) & \(A_{5}\) & \(H_{60}\) & \(5\)\\
+\((2,4,4,4,5,6,6)\) & \(A_{5}\) & \(H_{61}\) & \(5\)\\
+\((2,4,4,4,6,6,6)\) & \(A_{6}\) & \(H_{61}\) & \(6\)\\
+\((2,4,4,5,5,5,5)\) & \(A_{5}\) & \(H_{62}\) & \(5\)\\
+\((2,4,4,5,5,5,6)\) & \(A_{5}\) & \(H_{63}\) & \(5\)\\
+\((2,4,4,5,5,6,6)\) & \(A_{5}\) & \(H_{64}\) & \(5\)\\
+\((2,4,4,5,6,6,6)\) & \(A_{5}\) & \(H_{65}\) & \(5\)\\
+\((2,4,4,6,6,6,6)\) & \(A_{6}\) & \(H_{65}\) & \(6\)\\
+\((2,4,5,5,5,5,5)\) & \(A_{5}\) & \(H_{66}\) & \(5\)\\
+\((2,4,5,5,5,5,6)\) & \(A_{5}\) & \(H_{67}\) & \(5\)\\
+\((2,4,5,5,5,6,6)\) & \(A_{5}\) & \(H_{68}\) & \(5\)\\
+\((2,4,5,5,6,6,6)\) & \(A_{5}\) & \(H_{69}\) & \(5\)\\
+\((2,4,5,6,6,6,6)\) & \(A_{5}\) & \(H_{70}\) & \(5\)\\
+\((2,4,6,6,6,6,6)\) & \(A_{6}\) & \(H_{70}\) & \(6\)\\
+\((2,5,5,5,5,5,5)\) & \(A_{7}\) & \(H_{66}\) & \(5\)\\
+\((2,5,5,5,5,5,6)\) & \(A_{7}\) & \(H_{67}\) & \(5\)\\
+\((2,5,5,5,5,6,6)\) & \(A_{7}\) & \(H_{68}\) & \(5\)\\
+\((2,5,5,5,6,6,6)\) & \(A_{7}\) & \(H_{69}\) & \(5\)\\
+\((2,5,5,6,6,6,6)\) & \(A_{7}\) & \(H_{70}\) & \(5\)\\
+\((2,5,6,6,6,6,6)\) & \(A_{8}\) & \(H_{70}\) & \(6\)\\
+\((2,6,6,6,6,6,6)\) & \(A_{9}\) & \(H_{70}\) & \(7\)\\
+\((3,3,3,3,3,3,4)\) & \(A_{10}\) & \(H_{36}\) & \(4\)\\
+\((3,3,3,3,3,3,5)\) & \(A_{11}\) & \(H_{36}\) & \(4\)\\
+\((3,3,3,3,3,3,6)\) & \(A_{12}\) & \(H_{36}\) & \(5\)\\
+\((3,3,3,3,3,4,4)\) & \(A_{10}\) & \(H_{37}\) & \(4\)\\
+\((3,3,3,3,3,4,5)\) & \(A_{10}\) & \(H_{38}\) & \(4\)\\
+\((3,3,3,3,3,4,6)\) & \(A_{10}\) & \(H_{39}\) & \(4\)\\
+\((3,3,3,3,3,5,5)\) & \(A_{11}\) & \(H_{38}\) & \(4\)\\
+\((3,3,3,3,3,5,6)\) & \(A_{11}\) & \(H_{39}\) & \(4\)\\
+\((3,3,3,3,3,6,6)\) & \(A_{12}\) & \(H_{39}\) & \(5\)\\
+\((3,3,3,3,4,4,4)\) & \(A_{10}\) & \(H_{40}\) & \(4\)\\
+\((3,3,3,3,4,4,5)\) & \(A_{10}\) & \(H_{41}\) & \(4\)\\
+\((3,3,3,3,4,4,6)\) & \(A_{10}\) & \(H_{42}\) & \(4\)\\
+\((3,3,3,3,4,5,5)\) & \(A_{10}\) & \(H_{43}\) & \(4\)\\
+\((3,3,3,3,4,5,6)\) & \(A_{10}\) & \(H_{44}\) & \(4\)\\
+\((3,3,3,3,4,6,6)\) & \(A_{10}\) & \(H_{45}\) & \(4\)\\
+\((3,3,3,3,5,5,5)\) & \(A_{11}\) & \(H_{43}\) & \(4\)\\
+\((3,3,3,3,5,5,6)\) & \(A_{11}\) & \(H_{44}\) & \(4\)\\
+\((3,3,3,3,5,6,6)\) & \(A_{11}\) & \(H_{45}\) & \(4\)\\
+\((3,3,3,3,6,6,6)\) & \(A_{12}\) & \(H_{45}\) & \(5\)\\
+\((3,3,3,4,4,4,4)\) & \(A_{10}\) & \(H_{46}\) & \(4\)\\
+\((3,3,3,4,4,4,5)\) & \(A_{10}\) & \(H_{47}\) & \(4\)\\
+\((3,3,3,4,4,4,6)\) & \(A_{10}\) & \(H_{48}\) & \(4\)\\
+\((3,3,3,4,4,5,5)\) & \(A_{10}\) & \(H_{49}\) & \(4\)\\
+\((3,3,3,4,4,5,6)\) & \(A_{10}\) & \(H_{50}\) & \(4\)\\
+\((3,3,3,4,4,6,6)\) & \(A_{10}\) & \(H_{51}\) & \(4\)\\
+\((3,3,3,4,5,5,5)\) & \(A_{10}\) & \(H_{52}\) & \(4\)\\
+\((3,3,3,4,5,5,6)\) & \(A_{10}\) & \(H_{53}\) & \(4\)\\
+\((3,3,3,4,5,6,6)\) & \(A_{10}\) & \(H_{54}\) & \(4\)\\
+\((3,3,3,4,6,6,6)\) & \(A_{10}\) & \(H_{55}\) & \(4\)\\
+\((3,3,3,5,5,5,5)\) & \(A_{11}\) & \(H_{52}\) & \(4\)\\
+\((3,3,3,5,5,5,6)\) & \(A_{11}\) & \(H_{53}\) & \(4\)\\
+\((3,3,3,5,5,6,6)\) & \(A_{11}\) & \(H_{54}\) & \(4\)\\
+\((3,3,3,5,6,6,6)\) & \(A_{11}\) & \(H_{55}\) & \(4\)\\
+\((3,3,3,6,6,6,6)\) & \(A_{12}\) & \(H_{55}\) & \(5\)\\
+\((3,3,4,4,4,4,4)\) & \(A_{10}\) & \(H_{56}\) & \(4\)\\
+\((3,3,4,4,4,4,5)\) & \(A_{10}\) & \(H_{57}\) & \(4\)\\
+\((3,3,4,4,4,4,6)\) & \(A_{10}\) & \(H_{58}\) & \(4\)\\
+\((3,3,4,4,4,5,5)\) & \(A_{10}\) & \(H_{59}\) & \(4\)\\
+\((3,3,4,4,4,5,6)\) & \(A_{10}\) & \(H_{60}\) & \(4\)\\
+\((3,3,4,4,4,6,6)\) & \(A_{10}\) & \(H_{61}\) & \(4\)\\
+\((3,3,4,4,5,5,5)\) & \(A_{10}\) & \(H_{62}\) & \(4\)\\
+\((3,3,4,4,5,5,6)\) & \(A_{10}\) & \(H_{63}\) & \(4\)\\
+\((3,3,4,4,5,6,6)\) & \(A_{10}\) & \(H_{64}\) & \(4\)\\
+\((3,3,4,4,6,6,6)\) & \(A_{10}\) & \(H_{65}\) & \(4\)\\
+\((3,3,4,5,5,5,5)\) & \(A_{10}\) & \(H_{66}\) & \(4\)\\
+\((3,3,4,5,5,5,6)\) & \(A_{10}\) & \(H_{67}\) & \(4\)\\
+\((3,3,4,5,5,6,6)\) & \(A_{10}\) & \(H_{68}\) & \(4\)\\
+\((3,3,4,5,6,6,6)\) & \(A_{10}\) & \(H_{69}\) & \(4\)\\
+\((3,3,4,6,6,6,6)\) & \(A_{10}\) & \(H_{70}\) & \(4\)\\
+\((3,3,5,5,5,5,5)\) & \(A_{11}\) & \(H_{66}\) & \(4\)\\
+\((3,3,5,5,5,5,6)\) & \(A_{11}\) & \(H_{67}\) & \(4\)\\
+\((3,3,5,5,5,6,6)\) & \(A_{11}\) & \(H_{68}\) & \(4\)\\
+\((3,3,5,5,6,6,6)\) & \(A_{11}\) & \(H_{69}\) & \(4\)\\
+\((3,3,5,6,6,6,6)\) & \(A_{11}\) & \(H_{70}\) & \(4\)\\
+\((3,3,6,6,6,6,6)\) & \(A_{12}\) & \(H_{70}\) & \(5\)\\
+\((3,4,4,4,4,4,5)\) & \(A_{13}\) & \(H_{56}\) & \(5\)\\
+\((3,4,4,4,4,4,6)\) & \(A_{14}\) & \(H_{56}\) & \(6\)\\
+\((3,4,4,4,4,5,5)\) & \(A_{13}\) & \(H_{57}\) & \(5\)\\
+\((3,4,4,4,4,5,6)\) & \(A_{13}\) & \(H_{58}\) & \(5\)\\
+\((3,4,4,4,4,6,6)\) & \(A_{14}\) & \(H_{58}\) & \(6\)\\
+\((3,4,4,4,5,5,5)\) & \(A_{13}\) & \(H_{59}\) & \(5\)\\
+\((3,4,4,4,5,5,6)\) & \(A_{13}\) & \(H_{60}\) & \(5\)\\
+\((3,4,4,4,5,6,6)\) & \(A_{13}\) & \(H_{61}\) & \(5\)\\
+\((3,4,4,4,6,6,6)\) & \(A_{14}\) & \(H_{61}\) & \(6\)\\
+\((3,4,4,5,5,5,5)\) & \(A_{13}\) & \(H_{62}\) & \(5\)\\
+\((3,4,4,5,5,5,6)\) & \(A_{13}\) & \(H_{63}\) & \(5\)\\
+\((3,4,4,5,5,6,6)\) & \(A_{13}\) & \(H_{64}\) & \(5\)\\
+\((3,4,4,5,6,6,6)\) & \(A_{13}\) & \(H_{65}\) & \(5\)\\
+\((3,4,4,6,6,6,6)\) & \(A_{14}\) & \(H_{65}\) & \(6\)\\
+\((3,4,5,5,5,5,5)\) & \(A_{13}\) & \(H_{66}\) & \(5\)\\
+\((3,4,5,5,5,5,6)\) & \(A_{13}\) & \(H_{67}\) & \(5\)\\
+\((3,4,5,5,5,6,6)\) & \(A_{13}\) & \(H_{68}\) & \(5\)\\
+\((3,4,5,5,6,6,6)\) & \(A_{13}\) & \(H_{69}\) & \(5\)\\
+\((3,4,5,6,6,6,6)\) & \(A_{13}\) & \(H_{70}\) & \(5\)\\
+\((3,4,6,6,6,6,6)\) & \(A_{14}\) & \(H_{70}\) & \(6\)\\
+\((3,5,5,5,5,5,5)\) & \(A_{15}\) & \(H_{66}\) & \(5\)\\
+\((3,5,5,5,5,5,6)\) & \(A_{15}\) & \(H_{67}\) & \(5\)\\
+\((3,5,5,5,5,6,6)\) & \(A_{15}\) & \(H_{68}\) & \(5\)\\
+\((3,5,5,5,6,6,6)\) & \(A_{15}\) & \(H_{69}\) & \(5\)\\
+\((3,5,5,6,6,6,6)\) & \(A_{15}\) & \(H_{70}\) & \(5\)\\
+\((3,5,6,6,6,6,6)\) & \(A_{16}\) & \(H_{70}\) & \(6\)\\
+\((3,6,6,6,6,6,6)\) & \(A_{17}\) & \(H_{70}\) & \(7\)\\
+\((4,4,4,4,4,5,5)\) & \(A_{18}\) & \(H_{56}\) & \(6\)\\
+\((4,4,4,4,4,5,6)\) & \(A_{19}\) & \(H_{56}\) & \(7\)\\
+\((4,4,4,4,4,6,6)\) & \(A_{20}\) & \(H_{56}\) & \(8\)\\
+\((4,4,4,4,5,5,5)\) & \(A_{18}\) & \(H_{57}\) & \(6\)\\
+\((4,4,4,4,5,5,6)\) & \(A_{18}\) & \(H_{58}\) & \(6\)\\
+\((4,4,4,4,5,6,6)\) & \(A_{19}\) & \(H_{58}\) & \(7\)\\
+\((4,4,4,4,6,6,6)\) & \(A_{20}\) & \(H_{58}\) & \(8\)\\
+\((4,4,4,5,5,5,5)\) & \(A_{18}\) & \(H_{59}\) & \(6\)\\
+\((4,4,4,5,5,5,6)\) & \(A_{18}\) & \(H_{60}\) & \(6\)\\
+\((4,4,4,5,5,6,6)\) & \(A_{18}\) & \(H_{61}\) & \(6\)\\
+\((4,4,4,5,6,6,6)\) & \(A_{19}\) & \(H_{61}\) & \(7\)\\
+\((4,4,4,6,6,6,6)\) & \(A_{20}\) & \(H_{61}\) & \(8\)\\
+\((4,4,5,5,5,5,5)\) & \(A_{18}\) & \(H_{62}\) & \(6\)\\
+\((4,4,5,5,5,5,6)\) & \(A_{18}\) & \(H_{63}\) & \(6\)\\
+\((4,4,5,5,5,6,6)\) & \(A_{18}\) & \(H_{64}\) & \(6\)\\
+\((4,4,5,5,6,6,6)\) & \(A_{18}\) & \(H_{65}\) & \(6\)\\
+\((4,4,5,6,6,6,6)\) & \(A_{19}\) & \(H_{65}\) & \(7\)\\
+\((4,4,6,6,6,6,6)\) & \(A_{20}\) & \(H_{65}\) & \(8\)\\
+\((4,5,5,5,5,5,5)\) & \(A_{18}\) & \(H_{66}\) & \(6\)\\
+\((4,5,5,5,5,5,6)\) & \(A_{18}\) & \(H_{67}\) & \(6\)\\
+\((4,5,5,5,5,6,6)\) & \(A_{18}\) & \(H_{68}\) & \(6\)\\
+\((4,5,5,5,6,6,6)\) & \(A_{18}\) & \(H_{69}\) & \(6\)\\
+\((4,5,5,6,6,6,6)\) & \(A_{18}\) & \(H_{70}\) & \(6\)\\
+\((4,5,6,6,6,6,6)\) & \(A_{19}\) & \(H_{70}\) & \(7\)\\
+\((4,6,6,6,6,6,6)\) & \(A_{20}\) & \(H_{70}\) & \(8\)\\
+\((5,5,5,5,5,5,5)\) & \(A_{21}\) & \(H_{66}\) & \(6\)\\
+\((5,5,5,5,5,5,6)\) & \(A_{21}\) & \(H_{67}\) & \(6\)\\
+\((5,5,5,5,5,6,6)\) & \(A_{21}\) & \(H_{68}\) & \(6\)\\
+\((5,5,5,5,6,6,6)\) & \(A_{21}\) & \(H_{69}\) & \(6\)\\
+\((5,5,5,6,6,6,6)\) & \(A_{21}\) & \(H_{70}\) & \(6\)\\
+\((5,5,6,6,6,6,6)\) & \(A_{22}\) & \(H_{70}\) & \(7\)\\
+\((5,6,6,6,6,6,6)\) & \(A_{23}\) & \(H_{70}\) & \(8\)\\
+\((6,6,6,6,6,6,6)\) & \(A_{24}\) & \(H_{70}\) & \(9\)\\
+\end{longtable}
+\normalsize
+\subsection{The 19 direct hub-zero cores}\label{app:seven-direct-finite}
+These remaining profiles are not negative alpha assertions. The direct hub-zero words displayed here suffice, and arbitrary unit leaves receive successive new maximum labels.
+\small
+\begin{longtable}{@{}p{0.3\linewidth}@{\hspace{.02\linewidth}}p{0.68\linewidth}@{}}
+\caption{Direct hub-zero seven-core certificates.}\label{tab:finite-direct-seven}\\
+\toprule
+Lengths & Arm words\\\midrule
+\endfirsthead
+\toprule
+Lengths & Arm words\\\midrule
+\endhead
+\midrule\multicolumn{2}{r}{\footnotesize Continued on the next page}\\\endfoot
+\bottomrule\endlastfoot
+\((2,2,2,2,2,2,2)\) & \(\begin{array}{l}(14,\allowbreak 1)\\(12,\allowbreak 2)\\(11,\allowbreak 3)\\(9,\allowbreak 13)\\(7,\allowbreak 10)\\(6,\allowbreak 8)\\(5,\allowbreak 4)\end{array}\)\\[.5em]
+\((2,2,2,2,2,2,3)\) & \(\begin{array}{l}(15,\allowbreak 1)\\(10,\allowbreak 3)\\(9,\allowbreak 12)\\(8,\allowbreak 7)\\(5,\allowbreak 11)\\(4,\allowbreak 6)\\(13,\allowbreak 2,\allowbreak 14)\end{array}\)\\[.5em]
+\((2,2,2,2,2,2,4)\) & \(\begin{array}{l}(16,\allowbreak 1)\\(10,\allowbreak 12)\\(9,\allowbreak 8)\\(7,\allowbreak 11)\\(6,\allowbreak 3)\\(5,\allowbreak 13)\\(14,\allowbreak 2,\allowbreak 15,\allowbreak 4)\end{array}\)\\[.5em]
+\((2,2,2,2,2,2,6)\) & \(\begin{array}{l}(18,\allowbreak 1)\\(12,\allowbreak 14)\\(9,\allowbreak 13)\\(8,\allowbreak 7)\\(6,\allowbreak 11)\\(3,\allowbreak 10)\\(16,\allowbreak 2,\allowbreak 17,\allowbreak 4,\allowbreak 15,\allowbreak 5)\end{array}\)\\[.5em]
+\((2,2,2,2,2,3,3)\) & \(\begin{array}{l}(16,\allowbreak 1)\\(9,\allowbreak 10)\\(6,\allowbreak 8)\\(5,\allowbreak 12)\\(4,\allowbreak 7)\\(14,\allowbreak 2,\allowbreak 15)\\(11,\allowbreak 3,\allowbreak 13)\end{array}\)\\[.5em]
+\((2,2,2,2,2,4,4)\) & \(\begin{array}{l}(18,\allowbreak 1)\\(10,\allowbreak 8)\\(7,\allowbreak 11)\\(6,\allowbreak 9)\\(5,\allowbreak 13)\\(16,\allowbreak 2,\allowbreak 17,\allowbreak 4)\\(12,\allowbreak 3,\allowbreak 14,\allowbreak 15)\end{array}\)\\[.5em]
+\((2,2,2,2,3,3,3)\) & \(\begin{array}{l}(17,\allowbreak 1)\\(8,\allowbreak 13)\\(6,\allowbreak 5)\\(4,\allowbreak 11)\\(15,\allowbreak 2,\allowbreak 16)\\(12,\allowbreak 3,\allowbreak 14)\\(10,\allowbreak 7,\allowbreak 9)\end{array}\)\\[.5em]
+\((2,2,2,2,4,4,4)\) & \(\begin{array}{l}(20,\allowbreak 1)\\(9,\allowbreak 10)\\(8,\allowbreak 5)\\(7,\allowbreak 13)\\(18,\allowbreak 2,\allowbreak 19,\allowbreak 4)\\(14,\allowbreak 3,\allowbreak 16,\allowbreak 6)\\(12,\allowbreak 17,\allowbreak 15,\allowbreak 11)\end{array}\)\\[.5em]
+\((2,2,2,3,3,3,3)\) & \(\begin{array}{l}(18,\allowbreak 1)\\(9,\allowbreak 14)\\(6,\allowbreak 5)\\(16,\allowbreak 2,\allowbreak 17)\\(13,\allowbreak 3,\allowbreak 15)\\(11,\allowbreak 4,\allowbreak 7)\\(8,\allowbreak 12,\allowbreak 10)\end{array}\)\\[.5em]
+\((2,2,2,4,4,4,4)\) & \(\begin{array}{l}(22,\allowbreak 1)\\(11,\allowbreak 12)\\(7,\allowbreak 10)\\(20,\allowbreak 2,\allowbreak 21,\allowbreak 4)\\(16,\allowbreak 3,\allowbreak 18,\allowbreak 6)\\(14,\allowbreak 5,\allowbreak 15,\allowbreak 9)\\(8,\allowbreak 13,\allowbreak 17,\allowbreak 19)\end{array}\)\\[.5em]
+\((2,2,3,3,3,3,3)\) & \(\begin{array}{l}(19,\allowbreak 1)\\(7,\allowbreak 5)\\(17,\allowbreak 2,\allowbreak 18)\\(14,\allowbreak 3,\allowbreak 16)\\(12,\allowbreak 4,\allowbreak 13)\\(10,\allowbreak 15,\allowbreak 11)\\(6,\allowbreak 9,\allowbreak 8)\end{array}\)\\[.5em]
+\((2,2,4,4,4,4,4)\) & \(\begin{array}{l}(24,\allowbreak 1)\\(8,\allowbreak 10)\\(22,\allowbreak 2,\allowbreak 23,\allowbreak 4)\\(18,\allowbreak 3,\allowbreak 20,\allowbreak 6)\\(16,\allowbreak 5,\allowbreak 17,\allowbreak 7)\\(13,\allowbreak 19,\allowbreak 14,\allowbreak 21)\\(9,\allowbreak 12,\allowbreak 11,\allowbreak 15)\end{array}\)\\[.5em]
+\((2,3,3,3,3,3,3)\) & \(\begin{array}{l}(20,\allowbreak 1)\\(18,\allowbreak 2,\allowbreak 19)\\(15,\allowbreak 3,\allowbreak 17)\\(13,\allowbreak 4,\allowbreak 14)\\(11,\allowbreak 16,\allowbreak 8)\\(7,\allowbreak 10,\allowbreak 12)\\(6,\allowbreak 5,\allowbreak 9)\end{array}\)\\[.5em]
+\((2,4,4,4,4,4,4)\) & \(\begin{array}{l}(26,\allowbreak 1)\\(24,\allowbreak 2,\allowbreak 25,\allowbreak 4)\\(20,\allowbreak 3,\allowbreak 22,\allowbreak 6)\\(18,\allowbreak 5,\allowbreak 19,\allowbreak 7)\\(15,\allowbreak 23,\allowbreak 12,\allowbreak 14)\\(10,\allowbreak 11,\allowbreak 17,\allowbreak 21)\\(9,\allowbreak 16,\allowbreak 13,\allowbreak 8)\end{array}\)\\[.5em]
+\((3,3,3,3,3,3,3)\) & \(\begin{array}{l}(21,\allowbreak 1,\allowbreak 20)\\(18,\allowbreak 2,\allowbreak 19)\\(15,\allowbreak 3,\allowbreak 17)\\(13,\allowbreak 4,\allowbreak 14)\\(11,\allowbreak 16,\allowbreak 8)\\(7,\allowbreak 10,\allowbreak 12)\\(6,\allowbreak 5,\allowbreak 9)\end{array}\)\\[.5em]
+\((3,4,4,4,4,4,4)\) & \(\begin{array}{l}(27,\allowbreak 1,\allowbreak 26)\\(24,\allowbreak 2,\allowbreak 25,\allowbreak 4)\\(20,\allowbreak 3,\allowbreak 22,\allowbreak 6)\\(18,\allowbreak 5,\allowbreak 19,\allowbreak 7)\\(15,\allowbreak 23,\allowbreak 12,\allowbreak 14)\\(10,\allowbreak 11,\allowbreak 17,\allowbreak 21)\\(9,\allowbreak 16,\allowbreak 13,\allowbreak 8)\end{array}\)\\[.5em]
+\((4,4,4,4,4,4,4)\) & \(\begin{array}{l}(28,\allowbreak 1,\allowbreak 27,\allowbreak 2)\\(24,\allowbreak 3,\allowbreak 26,\allowbreak 4)\\(20,\allowbreak 5,\allowbreak 23,\allowbreak 6)\\(19,\allowbreak 7,\allowbreak 21,\allowbreak 8)\\(16,\allowbreak 25,\allowbreak 17,\allowbreak 22)\\(11,\allowbreak 18,\allowbreak 12,\allowbreak 9)\\(10,\allowbreak 14,\allowbreak 15,\allowbreak 13)\end{array}\)\\[.5em]
+\((4,4,4,4,4,4,5)\) & \(\begin{array}{l}(29,\allowbreak 1,\allowbreak 28,\allowbreak 2)\\(21,\allowbreak 5,\allowbreak 23,\allowbreak 6)\\(19,\allowbreak 7,\allowbreak 22,\allowbreak 8)\\(13,\allowbreak 20,\allowbreak 10,\allowbreak 16)\\(11,\allowbreak 12,\allowbreak 15,\allowbreak 17)\\(9,\allowbreak 14,\allowbreak 18,\allowbreak 26)\\(25,\allowbreak 3,\allowbreak 27,\allowbreak 4,\allowbreak 24)\end{array}\)\\[.5em]
+\((4,4,4,4,4,4,6)\) & \(\begin{array}{l}(30,\allowbreak 1,\allowbreak 29,\allowbreak 2)\\(22,\allowbreak 6,\allowbreak 24,\allowbreak 7)\\(19,\allowbreak 8,\allowbreak 23,\allowbreak 9)\\(13,\allowbreak 21,\allowbreak 14,\allowbreak 17)\\(12,\allowbreak 11,\allowbreak 15,\allowbreak 20)\\(10,\allowbreak 16,\allowbreak 18,\allowbreak 27)\\(26,\allowbreak 3,\allowbreak 28,\allowbreak 4,\allowbreak 25,\allowbreak 5)\end{array}\)\\[.5em]
+\end{longtable}
+\normalsize
+\fi
+\subsection{Exact verification}
+The tables are regenerated by \file{proof/finite/build_finite_tables.py}. It checks every printed base, checks the exact finite profile sets, inverts all 311 decompositions, and then independently rebuilds every seven-core labeling using the particular canonical bases printed above. The source data are \file{proof/finite/data/seven_closure_finite_base_792.jsonl} and \file{proof/finite/data/seven_closure_hubzero4_all_m6.jsonl}. Only the exact 330 nonunit profiles of the first file are used as proof inputs here.

@@ -1,0 +1,623 @@
+\section{Finite affine construction certificates}
+\label{app:template-certificates}
+
+Some construction families use a fixed edge trade whose vertices move
+affinely with the arm lengths.  This section specifies the proof data,
+the verification argument, and the exact parameter coverage of these
+families.  In particular, fitting a formula to several examples is not
+an existence argument here.  Every formula used in a construction is
+checked against its source word on an entire integer ray.
+
+The finite inputs are included in the accompanying machine-readable
+supplement, with the names and hashes in Section~\ref{templates:ledger}.
+All $16$ minimum-two templates and all $216$ minimum-four templates
+are included in full.  The two equal-even repairs, the alternative
+endpoint repair, and the four equal-odd four-arm repairs are also
+printed in Section~\ref{templates:small-tables}, including every
+changed vertex's source arm and depth.  The tables are construction
+instructions; a search program is not needed to instantiate them.
+
+\subsection{Finite word inventories}
+\label{templates:finite-check}
+
+A finite spider certificate specifies a hub label $z$, an ordered list
+of arm lengths, and one complete outward word for each arm.  Put
+$N$ equal to the sum of those lengths.  To check an ordinary graceful
+certificate, check the word lengths and the two multiset identities
+\[
+ \{z\}\uplus\biguplus_i\{P_{i,j}\}=[0,N],\qquad
+ \biguplus_{i,j}|P_{i,j}-P_{i,j-1}|=[1,N],\quad P_{i,0}=z.
+\]
+For a hub-zero certificate also require $z=0$.  For an offset-$k$
+certificate require $z=0$ and replace the first identity on nonroot
+labels by $\biguplus_i\{P_{i,j}\}=[k+1,k+N]$; the color identity
+is unchanged.  For alpha, check $z=0$, the cut
+$K=\sum_i\floor{L_i/2}$, and that depth $j$ is lower exactly when
+$j$ is even.  A graceful permutation on $n$ vertices is checked by
+labels $[0,n-1]$ and successive differences $[1,n-1]$, with the
+stated first value and alpha condition when applicable.
+
+All checks are finite list operations with integer arithmetic.  A
+catalog must additionally have distinct profile keys and exactly
+the required profile set.  Controlled interfaces, such as a pinned
+short word or a specified upper-leaf distance, are checked directly
+on the words.  Thus a finite record's search status or node count
+has no role in its acceptance as a labeling proof.
+
+\subsection{Affine data and source coordinates}
+\label{templates:encoding}
+
+An integer ray has the form $h\in\mathbb Z$, $h\ge h_0$.  A vertex
+name is an affine function $Ah+B$, not a numerical vertex sampled at
+a particular $h$.  The templates use the following three encodings.
+\begin{enumerate}
+\item In \texttt{S2o.jsonl}, \texttt{S2e.jsonl}, and
+\texttt{S4.jsonl}, a pair \texttt{[A,B]} means $Ah+B$.
+The first two files use $b=8h+r$; the third uses $b=48h+r$.
+\item In \texttt{E.json} and \texttt{Alt.json}, a pair
+\texttt{[A,B]} means $(Ar+B)/2$.  The parameter is
+$r=4q+\epsilon$, $q\ge3$, with $\epsilon=1$ or $3$ as specified.
+After substitution, every label and depth is integral affine in $q$.
+\item In \texttt{Q0.json},\ldots,\texttt{Q3.json}, the nested pair
+\texttt{[[a,b],[c,d]]} means $(a/b)q+c/d$.  Here $s=4q+r$,
+$r\in\{0,1,2,3\}$, and $q\ge6$.  The rational representation is
+exact; all actual label and depth coefficients become integers.
+\end{enumerate}
+
+Arm numbers are zero based.  Depth zero is the hub, and the edge of
+depth $j$ joins depths $j-1$ and $j$.  In position tables the arm
+number $-1$ denotes the hub, whose depth and label are zero.
+For an explicitly defined source spider, write
+$F_i(h,j)$ for the label at depth $j$ on source arm $i$, setting
+$F_i(h,0)=0$.  The source formulas, including all exceptional small
+path bases, are specified below and in the common construction
+appendices.
+
+\begin{center}
+\begin{tabular}{p{.28\textwidth}p{.61\textwidth}}
+Field & Mathematical meaning\\\hline
+\texttt{residue}, \texttt{delta} & $r$ and the target long-arm gap $\delta$\\
+\texttt{remove} & List of objects with fields \texttt{u}, \texttt{v},
+\texttt{arm}, \texttt{depth}; these specify a source edge and its two affine labels\\
+\texttt{add} & List of affine endpoint pairs specifying the replacement edges\\
+\texttt{source\_b} & Parameter used during discovery; it is not the lower bound of the proved ray\\
+\texttt{verification.h\_min} & The inclusive verified ray bound $h_0$\\
+\texttt{verification.b\_min} & $8h_0+r$ or $48h_0+r$, respectively\\
+\texttt{removed\_edges}, \texttt{added\_edges} & Remove/add lists in the equal-source and four-odd formats\\
+\texttt{positions} & Affine label-to-source-coordinate table; a dictionary in E/Alt, an object list in the Q files\\
+\texttt{q\_minimum} & Inclusive lower bound six in a Q recipe.
+\end{tabular}
+\end{center}
+The cached \texttt{verification} output is descriptive.  A verifier
+recomputes its obligations from the source words and the edge lists.
+It does not accept the recorded word ``verified'' as a proof premise.
+For the minimum-arm files its remaining output fields are
+\texttt{removed\_edges}, \texttt{symbolic\_constraints}, and
+\texttt{arm\_lengths}, together with copies of the residue and gap.
+An E recipe is selected by the top-level key \texttt{"1"} or
+\texttt{"3"}; an Alt recipe has the same three fields directly.
+In their position dictionaries an entry
+\texttt{"a,b":[i,[c,d]]} means label $(ar+b)/2$ at source arm $i$
+and depth $(cr+d)/2$.  A Q position is instead an object with fields
+\texttt{label}, \texttt{arm}, and \texttt{depth}, decoded using the
+rational-coefficient convention above.
+
+\subsection{Why the finite verification proves an infinite family}
+\label{templates:soundness-section}
+
+The source need not yet have the desired color inventory.  Let its
+signed color defect be
+\[
+ D_0=\mathcal C(G_0)-[1,N],
+\]
+where $[1,N]$ denotes the multiset containing each integer once and
+$\mathcal C(G_0)$ counts edge differences with multiplicity.  In the
+applications below, an interval proof gives $D_0$ as a finite signed
+sum of affine color functions.  For the minimum-two and minimum-four
+sources, $D_0=0$.
+
+\begin{theorem}[Soundness of an affine trade certificate]
+\label{templates:soundness}
+Suppose a source graph on labels $0,\ldots,N(h)$ is an explicitly
+labeled spider for every integer $h\ge h_0$, all its edges cross a
+specified cut $K(h)$, and its signed color defect is the proved
+finite expression $D_0(h)$.  Let $R$ and $A$ be finite affine edge
+lists.  The following checks imply that replacing $R$ by $A$ gives
+a root-zero alpha labeling of the stated target spider for every
+$h\ge h_0$.
+\begin{enumerate}
+\item All participating labels and depths are integral and in range.
+Every recorded vertex is proved to equal its source coordinate
+$F_i(h,j)$.  Distinct recorded vertices never collide on the ray.
+\item Every edge of $R$ occurs at its recorded source arm and depth.
+The lists contain no repeated edges, and every edge of $A$ is absent
+from the retained source graph.  Each added edge crosses $K(h)$.
+\item The endpoint-incidence multisets of $R$ and $A$ agree.  With
+each edge oriented from its lower label to its upper label, its
+color is the positive affine difference of its endpoint functions.
+As a signed multiset of affine functions,
+\begin{equation}\label{templates:color-identity}
+ D_0-\mathcal C(R)+\mathcal C(A)=0.
+\end{equation}
+\item The weighted graph obtained by contracting all untouched path
+intervals has exactly the stated number of hub-to-leaf paths, uses
+every contracted vertex once, and has the stated target arm lengths
+as affine identities.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Fix an arbitrary integer $h\ge h_0$.  The coordinate checks identify
+actual distinct vertices and actual removable edges of the source.
+The retained and added edges therefore define the prescribed graph
+on exactly the original vertex-label set.  In particular, every label
+$0,\ldots,N(h)$ still occurs once, and the hub is still zero.
+All retained and added edges cross the same cut.  Evaluating the
+formal multiset identity \eqref{templates:color-identity} gives the
+complete color multiset $[1,N(h)]$, even if two affine color functions
+happen to coincide at that parameter.  The endpoint-incidence check
+also preserves the degree of every labeled vertex.
+
+To justify the topology check, on each source arm cut exactly the
+edges in $R$.  Every remaining component is an interval of that path.
+Keep its boundary vertices, and replace a nontrivial interval by a
+weighted edge whose weight is its exact number of original edges.
+A singleton component remains a vertex.  Different interval interiors
+are disjoint.  Reintroduce the edges in $A$ with weight one.  Expanding
+the weighted edges recovers precisely the traded graph.  Thus a
+traversal proving that the weighted graph consists of the required
+hub paths proves the same assertion for the full graph, with each
+arm length equal to the sum of its weights.  Exhausting the weighted
+vertices excludes any additional component or cycle.  This proves the
+target topology, and hence the root-zero alpha labeling.  Since $h$
+was arbitrary, the result holds on the whole ray.
+\end{proof}
+
+\subsubsection{Exact operations on an integer ray}
+
+All affine assertions reduce to finite rational arithmetic.  Equality
+means equality of both coefficients.  For $Ah+B\ge c$ on
+$h\ge h_0$, it suffices and is necessary that $A\ge0$ and
+$Ah_0+B\ge c$.  A strict positive inequality is treated with $c=1$
+after integrality has been established.  Distinctness is checked by
+solving $Ah+B=0$: a collision exists precisely when its root is an
+integer at least $h_0$, apart from the constant cases.
+
+When a source word has a piecewise coordinate formula, the verifier
+first selects the appropriate finite base, block index, and residue
+of the depth.  It then proves the inequalities defining that branch
+on the full ray.  Any remaining periodic test is resolved by its
+finitely many residue classes.  Ordering cut depths may be proposed
+using a convenient parameter, but every consecutive difference in
+the proposed order is subsequently proved positive on the whole
+ray.  The proposed order alone supplies no mathematical inference.
+
+The threshold computation used for the minimum-two and minimum-four
+tables can be described explicitly.  Start with $h_0=0$.  Each
+required inequality $Ah+B\ge c$ with $A>0$ raises the bound to
+\[
+ h_0\leftarrow\max\left(h_0,\ceil{(c-B)/A}\right).
+\]
+A constant inequality must already hold, and a negative slope fails
+the selected eventual branch.  The inclusive bounds printed below
+are sufficient certified bounds, not claims of optimal construction
+thresholds.
+
+\subsubsection{Verification pseudocode}
+
+The finite procedure underlying Theorem~\ref{templates:soundness}
+is the following.  Formal colors are stored as coefficient pairs
+with signed multiplicities.
+\begin{verbatim}
+decode the parameter domain, source words, and affine records
+for every participating vertex:
+    prove integrality, source arm/depth, and label identity
+prove all required ranges and vertex distinctness on the ray
+for every removed edge:
+    prove its two depths are consecutive on one source arm
+for every added edge:
+    prove distinctness, absence in the retained source, and cut crossing
+compare the removed and added endpoint-incidence counters
+cancel seed_defect - removed_color_counter + added_color_counter
+on every source arm:
+    sort and certify all cut depths
+    contract each untouched interval with its exact affine length
+insert each added edge with weight one
+traverse every hub branch, rejecting repeated or omitted vertices
+compare the affine path-length multiset with the target lengths
+accept only if every preceding exact check succeeds
+\end{verbatim}
+For example, a removed edge with larger depth $d$ separates an
+untouched interval ending at $d-1$ from one starting at $d$.
+The weight between retained depths $u\le v$ is $v-u$; a zero
+weight contributes a singleton, not a new edge.  This convention
+avoids counting vertices as edges in the topology calculation.
+
+\subsection{The fixed-endpoint path words used by the templates}
+\label{templates:path-words}
+
+Let $P_e(n)$ be an alpha word on $\{0,\ldots,n-1\}$ beginning at
+the lower endpoint $e$, for $e\in\{1,2,3\}$.  The finite bases and
+prefixes specify these words completely.  For $e=1$ the prefixes and
+bases are
+\[
+ Q_1=(1,2,0,3),\qquad
+ \begin{array}{c|l}
+ n& P_1(n)\\\hline
+ 3&(1,2,0)\\
+ 4&(1,2,0,3)\\
+ 6&(1,5,0,3,2,4)\\
+ 9&(1,8,0,6,2,7,4,5,3).
+ \end{array}
+\]
+For $e=2,3$, input \texttt{P.json} gives
+\[
+ Q_2=(2,5,3,4,0,7,1,6),\qquad
+ Q_3=(3,11,0,10,1,8,2,7,4,6,5,9).
+\]
+Its base sizes are respectively
+\[
+ \begin{array}{c|l}
+ e=2&5,6,7,8,10,11,12,17,\\
+ e=3&7,8,9,10,11,12,14,15,16,17,18,25.
+ \end{array}
+\]
+The file's top-level keys are \texttt{"2"} and \texttt{"3"}; each
+has fields \texttt{prefix} and \texttt{bases}, the latter a dictionary
+from the decimal base size to its entire vertex word.  Every one
+of these finite words is checked by the ordinary permutation and
+alpha inventories.
+
+Here is a closed coordinate rule for all larger words.  Choose the
+unique base size $\beta$ congruent to $n$ modulo $4e$, and write
+$n=\beta+4ez$.  For $j=0,\ldots,z-1$, replace a value $x$ of
+$Q_e$ by
+\begin{equation}\label{templates:prefix-coordinate}
+ \begin{cases}
+ x+2ej,&x<2e,\\
+ x+n-4e-2ej,&x\ge2e.
+ \end{cases}
+\end{equation}
+Concatenate these $z$ blocks, followed by $P_e(\beta)+2ez$.
+Equivalently, one prefix extends a word of order $n$ to order
+$n+4e$: raise the upper prefix labels by $n$, then append the old
+word translated by $2e$.  The prefix colors are
+$n+1,\ldots,n+4e-1$, the joining color is $n$, and the old colors
+are $1,\ldots,n-1$.  The lower and upper vertex blocks are
+consecutive and disjoint.  This proves the recurrence, including
+its first endpoint.  The complete permitted domains are
+$n\ge2e+1$, $n\ne4e+1$; the exceptional residue begins instead at
+$n=8e+1$.
+
+\subsection{Sixteen minimum-two templates}
+\label{templates:min2}
+
+Write $b=8h+r$, $0\le r<8$, and let $\delta$ be the long-arm gap.
+For odd $r$, $\delta\in\{0,1\}$; for even $r$,
+$\delta\in\{1,2\}$.  Thus there are exactly $8+8=16$ templates.
+The even repeated case $\delta=0$ is proved separately by the
+balanced-even construction in Section~\ref{app:small-alpha}.
+
+To define the source, put $n=b+\delta+2$ and $k=\floor{b/2}$.
+Start with
+\[
+ (b-1,1),\qquad (b,\,P_1(b-3)+2),
+\]
+where the notation in the second word means concatenation of $b$
+with the translated path.  Raise its labels above $k$ by $n$.
+The added $n$-vertex arm is
+\begin{equation}\label{templates:min2-newword}
+ \begin{cases}
+ (b+2+j,b+1-j)_{j=0}^{b/2},&b\text{ even},\ \delta=0,\\
+ \operatorname{rev}(P_1(n))+k+1,&n\text{ even},\\
+ n+k-\operatorname{rev}(P_1(n)),&n\text{ odd}.
+ \end{cases}
+\end{equation}
+The first line specifies the separately used even repeated source;
+the $16$ repair records use the appropriate other line.  The source
+arm lengths are $(2,b-2,b+\delta+2)$.  Its labels, colors, and
+alpha separation follow from the path recurrence and the middle
+interval attachment; its defect is zero.  Its total size is
+$N=2b+\delta+2$ and the target cut is
+$K=1+\floor{b/2}+\floor{(b+\delta)/2}$.
+
+Each record's \texttt{remove} entry identifies an actual edge in
+one of these three source arms.  Applying its \texttt{add} list and
+the checks of Theorem~\ref{templates:soundness} gives arm lengths
+$(2,b,b+\delta)$ as exact affine identities.  The files
+\texttt{S2o.jsonl} and \texttt{S2e.jsonl} have respectively eight
+records; their exact inclusive thresholds and edge counts are in
+Section~\ref{templates:thresholds}.  For illustration, the first
+minimum-two odd record has $r=1$, $\delta=0$ and begins by removing
+the depth-one edge of arm two with endpoints $0$ and $8h+3$.
+This is the source root edge $0$--$n$, since $n=b+2=8h+3$.
+
+The complete finite complement of the $16$ rays is specified without
+an arbitrary cutoff.  For each row $(r,\delta,b_0)$ in the threshold
+table take
+\begin{equation}\label{templates:min2-finite}
+ \{(2,b,b+\delta):b\equiv r\pmod8,\ b<b_0,\
+ b\ge5\text{ if }r\text{ is odd},\ b\ge6\text{ otherwise}\},
+\end{equation}
+and add $(2,3,9)$ and $(2,4,13)$.  The resulting set has exactly
+$55$ profiles, all recorded in \texttt{F2.jsonl}.  Balanced odd
+seeds have short leaf one; mixed even seeds used for resonance have
+an upper leaf $K+e$ satisfying $2e\le b+4$.  These interfaces are
+checked in addition to the alpha inventory.  The appendix's leaf
+extension then reaches each resonance, and alpha hub attachment
+handles the remaining larger long arm.  This specifies every
+infinite ray and its exact finite remainder.
+
+\subsubsection{The additional pinned-prefix condition for minimum three}
+\label{templates:min3-protection}
+
+The minimum-three proof first uses the same minimum-two templates,
+but preserves the canonical first nine vertices of source arm one.
+Every remove record has arm number one or two.  For a removed edge
+on arm one with depth $ah+d$, add the condition $ah+d\ge10$.
+All such slopes $a$ are positive in the actual records, so the bound
+becomes
+\[
+ h'_0=\max\left(h_0,\max_{\text{arm-one cuts}}
+                      \ceil{(10-d)/a}\right).
+\]
+Recomputing this expression on every record changes only
+$(r,\delta)=(5,1)$: its threshold $b_0=21$ becomes $29$.
+The endpoint-incidence identity adds no new incidence to a vertex
+whose incident edges were frozen, so the protected prefix remains
+the stated source prefix after the trade.
+
+For $b\ge18$, the exact required pinned finite set is
+\[
+ \{(2,18,18)\}\ \cup\!!!
+ \bigcup_{(r,\delta)}
+ \{(2,b,b+\delta):18\le b<8h'_0(r,\delta)+r,\ b\equiv r\pmod8\}.
+\]
+It has $29$ profiles and is supplied completely in
+\texttt{F3p.jsonl}.  Each has the maximum-pinned short word $(N,1)$;
+every even mixed profile also has the upper-leaf bound $2e\le b+4$.
+The even diagonal outside this finite set is handled by the separate
+balanced constructions: $4\mid b$, $b\ge20$, or
+$b\equiv2\pmod4$, $b\ge22$.  The latter has its first cut at
+$b/2-1\ge10$.
+
+For $3\le b\le17$, the exact direct minimum-three finite set is
+\begin{align*}
+ &\{(3,b,b+\delta):3\le b\le17,\ b+\delta\ge7,\\
+ &\hspace{22mm}0\le\delta\le1\ (b\text{ odd}),\quad
+                    0\le\delta\le2\ (b\text{ even})\}\\
+ &\qquad\cup\ \{(3,b,4(1+\floor{b/2})+1):3\le b\le17\}.
+\end{align*}
+It has $44$ profiles, all in \texttt{F3s.jsonl}.  These sets are
+derived from the thresholds and the attachment exception; they do
+not introduce an empirical bound on the theorem.
+
+\subsection{Two hundred sixteen minimum-four templates}
+\label{templates:min4}
+
+Now write $b=48h+r$, $0\le r<48$.  For odd $r$ take
+$\delta=0,1,2,3$; for even $r$ take $\delta=0,1,2,3,4$.
+There are $24\cdot4+24\cdot5=216$ records, one for each required
+residue and near-band gap.
+
+Put $n=b+\delta+4$ and $k=\floor{b/2}$.  Before raising upper
+labels, the two-arm core is
+\[
+ (b,1,b-1,2),\qquad b-2-P_2(b-4).
+\]
+Raise every core label above $k$ by $n$.  The added arm is
+\[
+ \begin{cases}
+ \operatorname{rev}(P_e(n))+k+1,&n\text{ even},\\
+ n+k-\operatorname{rev}(P_e(n)),&n\text{ odd},
+ \end{cases}
+\qquad
+ e=\begin{cases}\floor{n/2}-k-1,&n\text{ even},\\
+ \floor{n/2}-k,&n\text{ odd}.
+ \end{cases}
+\]
+For the required bands $e\in\{1,2,3\}$.  This completely defines
+the source $\Sp{4,b-4,b+\delta+4}$, of total size
+$N=2b+\delta+4$.  Its short word is $(N,1,N-1,2)$.
+The kernel exception $b-4=9$ is excluded by the source domain;
+the threshold or its literal finite complement handles that value.
+
+Every removed edge in \texttt{S4.jsonl} has arm number one or two.
+The endpoint-incidence identity then prevents any new incidence on
+the frozen short arm.  The $216$ trades satisfy the exact color and
+weighted-topology conditions with target lengths $(4,b,b+\delta)$.
+The threshold table prints every $b_0$; the largest is $103$.
+The thresholds arise from the explicit coordinate branches, not from
+specializing the discovered words at a large parameter.
+
+The required finite remainder is exactly
+\begin{equation}\label{templates:min4-finite}
+ \begin{aligned}
+ \{(4,b,b+\delta):{}&b\ge9,\quad b\equiv r\pmod{48},\quad b<b_0(r,\delta),\\
+                  &0\le\delta<4\text{ for odd }r,\quad
+                   0\le\delta<5\text{ for even }r\}.
+ \end{aligned}
+\end{equation}
+It has $139$ profiles, given in \texttt{F4.jsonl}.  Every word has
+the pinned short arm $(N,1,N-1,2)$.  For odd $b$ at $\delta=0$,
+the smaller upper long leaf $K+e$ satisfies $2e\le b+7$; for
+even $b$ at $\delta=1$, the odd long leaf satisfies $2e\le b+8$.
+These are the exact sufficient inequalities for the resonance
+extensions.  The $20$ small auxiliary records for $b=4,\ldots,8$
+are given in \texttt{F45.jsonl}; their individual pinned or alpha-only
+roles are specified in the small-arm proof.
+
+Finally replace a pinned four-word by
+\[
+ (N,1,N-1,2)\longmapsto(N+1,1,N,2,N-1).
+\]
+The label set gains exactly $N+1$; the old short palette
+$[N-3,N]$ becomes $[N-3,N+1]$.  The cut and the other leaf labels
+are unchanged.  Thus every pinned four-arm seed supplies its
+minimum-five seed with the same resonance interface.  The $216$
+ray certificates and their stated finite complements are therefore
+the full finite input for both minimum-four and minimum-five bands.
+
+\subsection{Equal-even repairs and the near EEO family}
+\label{templates:equal-even}
+
+Let $r$ be odd, $r\ge5$.  Start from the explicitly proved equal-odd
+source $\Sp{(2r+1)^3}$, with arm order Walecki, A, C as in
+Proposition~\ref{ok:equal-odd-three}.  Delete the last vertex of each arm;
+their labels are $5r+3,5r+1,5r+2$.  Decrease the remaining labels
+above $5r+3$ by three.  The shortened source has labels $[0,6r]$,
+cut $3r$, three lengths $2r$, and defect
+\[
+ +\{4r+1,4r+2\}-\{4r,2r+4\}.
+\]
+Apply the lower and upper label cycles
+\[
+ (r-1,\ r+2,\ 3r-2,\ r+1,\ r),\qquad
+ (4r-1,\ 4r+2,\ 4r+1,\ 4r+3),
+\]
+where each displayed value maps to the next, cyclically.  These
+permutations stay within their respective classes.  The resulting
+source has the exact defect
+\begin{equation}\label{templates:equal-defect}
+ +\{4r,2r+2,2r+1,2r+1\}
+ -\{4,2r+5,4r-3,4r-2\}.
+\end{equation}
+Only the incident edges of the moved labels need to be inventoried
+to obtain this identity.  On W their depths are $2r-2,2r-1,2r$;
+on A they are $1,\ldots,6,2r-2,2r-1,2r$; on C they are
+$1,2,2r$.  The explicit word coordinates prove that this is the
+complete affected set.
+
+For $r=4q+1$ and $r=4q+3$, $q\ge3$, the two entries of
+\texttt{E.json} replace respectively $16$ and $15$ edges.  Their
+full edge and source-position tables are printed below.  The signed
+identity \eqref{templates:color-identity} cancels
+\eqref{templates:equal-defect}; the weighted graph has three paths
+of length $2r$.  The six small equal sources with lengths
+$6,8,10,14,18,22$ are given explicitly in \texttt{Esmall.json}.
+Balanced subdivision from these sources and the two rays gives
+every even equal length at least six, as proved in the equal-triple
+appendix.
+
+The alternative $15$-edge table \texttt{Alt.json} uses the same
+fixed-label source, but only $r=4q+1$, $q\ge3$.  It has the same
+color and arm-length verification and an additional endpoint check:
+the hub branch beginning at $H=5r+1$ ends at label $r$ and has
+length $2r$.  The standard E recipe for $r=4q+3$ has this endpoint
+property as well.  It is checked by following that particular
+weighted hub branch and summing its exact affine weights.
+
+\begin{lemma}\label{templates:reverse-extend}
+Let a root-zero alpha spider have $N$ edges and an even arm whose
+first and last labels are $H$ and $\ell$, with $H+\ell=N+1$.
+Replacing that word by $(N+1,\operatorname{rev}(P))$ extends the
+arm by one edge and preserves root-zero alpha labeling.
+\end{lemma}
+\begin{proof}
+The new root color is $N+1$.  The next edge has color
+$N+1-\ell=H$, replacing the former root color; all old internal
+colors are unchanged.  The new label is the new maximum.  Reversing
+an even word begins in the lower class, so prepending the new upper
+vertex restores the alternating classes without changing the cut.
+\end{proof}
+
+Apply the lemma with $N=6r$, $H=5r+1$, and $\ell=r$ to obtain
+$\Sp{2r,2r,2r+1}$.  The remaining parameters are fully specified:
+the standard E recipe also works at the finite half-lengths
+$r=7,11$.  For $r=3$, the equal-six arm
+$(15,6,12,7,14,4)$ has endpoint sum $19=6r+1$, so the same
+extension lemma applies with $H=15$, $\ell=4$.
+Alt works directly at $r=9$; $a=8,10$ are literal near profiles.
+If $a\equiv0\pmod4$
+and $a\ge12$, apply Corollary~\ref{common:balanced-alpha-matching}
+to the balanced equal source with lengths $a/2$. The unique-odd-arm
+contree description in Corollary~\ref{common:unique-odd-contree}
+identifies its matching lift with $\Sp{a,a,a+1}$.  Thus
+\[
+ a=8,\quad a=10,\quad a\ge12\ (4\mid a),\quad
+ a\equiv6\pmod8,\quad a\ge18\ (a\equiv2\pmod8)
+\]
+are a disjoint exhaustive partition of the even $a\ge6$.
+The literal targets at $a=6,8,10,14,18,22,26$ are also recorded
+in \texttt{Nsmall.jsonl}.  They supplement the stated universal
+proof rather than replacing it.
+
+\subsection{Four equal odd arms}
+\label{templates:four-odd}\label{construction:equal-odd-alpha4}
+
+Write $s=4q+r$, $r\in\{0,1,2,3\}$, $q\ge6$, and let
+$L=2s+1$.  Let $R_{s,i}(d)$, $i=0,1,2$, be the fully specified
+equal-odd three-arm words of length $2s+1$ in the equal-triple
+appendix, with $i=0$ their Walecki arm.  The unpermuted four-arm
+source has the following complete coordinate rule for $d\ge1$:
+\begin{equation}\label{templates:four-source}
+ \begin{aligned}
+ F_0(s,d)&=\begin{cases}
+ 8s+4-(d-1)/2,&d\text{ odd},\\ d/2,&d\text{ even},
+ \end{cases}\\
+ F_{i+1}(s,d)&=s+R_{s,i}(2s+2-d),\qquad i=0,1,2.
+ \end{aligned}
+\end{equation}
+Set $F_i(s,0)=0$.  Interchange the two pairs of upper labels
+$5s+1\leftrightarrow7s+1$ and $5s+2\leftrightarrow7s+2$.
+These swaps preserve the label set, classes, and four source path
+lengths.  Before the swaps the root-color defect is
+$+\{6s+1,6s+2\}-\{4s+1,4s+2\}$.  Inventorying every edge incident
+to the four moved labels gives the swapped seed defect
+\begin{equation}\label{templates:four-defect}
+ +\{4s-2,4s-1,4s,4s+1,6s+2\}
+ -\{2s+1,2s+2,6s-2,6s-1,6s\}.
+\end{equation}
+The two labels $5s+1,5s+2$ are leaves and have one incident edge
+each; $7s+1,7s+2$ have two.  Their complete local source coordinates
+prove that no incident color is omitted in this calculation.
+Explicitly, the six affected edges and colors are
+\begin{center}\small
+\begin{tabular}{llrr}
+Old edge & New edge & Old color & New color\\\hline
+$(3s-1,5s+1)$ & $(3s-1,7s+1)$ & $2s+2$ & $4s+2$\\
+$(3s+1,5s+2)$ & $(3s+1,7s+2)$ & $2s+1$ & $4s+1$\\
+$(s+1,7s+2)$ & $(s+1,5s+2)$ & $6s+1$ & $4s+1$\\
+$(s+2,7s+2)$ & $(s+2,5s+2)$ & $6s$ & $4s$\\
+$(s+2,7s+1)$ & $(s+2,5s+1)$ & $6s-1$ & $4s-1$\\
+$(s+3,7s+1)$ & $(s+3,5s+1)$ & $6s-2$ & $4s-2$.
+\end{tabular}\end{center}
+The first two edges are the leaf edges of source arms two and three.
+The last four occur on source arm one, at the reversals of depths
+two through six of the original Walecki arm.  Thus the table follows
+directly from \eqref{templates:four-source} and is exhaustive.  Adding
+its signed changes to the pre-swap defect proves
+\eqref{templates:four-defect}.
+
+For each $r$, file \texttt{Qr.json} records the actual removed and
+added edges and their positions in this swapped seed.  The four
+trade sizes are
+\begin{center}
+\begin{tabular}{r|r|r|r}
+$r$ & $L$ & Removed/added edges & Contracted vertices\\\hline
+0 & $8q+1$ & $40/40$ &63\\
+1 & $8q+3$ & $51/51$ &76\\
+2 & $8q+5$ & $48/48$ &73\\
+3 & $8q+7$ & $38/38$ &62.
+\end{tabular}
+\end{center}
+For every entry, source-coordinate identities hold for all $q\ge6$,
+the exact added/removed degree counters agree, and the affine color
+calculation cancels \eqref{templates:four-defect}.  The full position
+lists and both edge columns are printed below.  Weighted traversal
+uses every contracted vertex and returns four paths of length
+$8q+2r+1$, each as an affine identity.  The cut is $4s$ and the
+vertex labels are $[0,8s+4]$.  Theorem~\ref{templates:soundness}
+therefore proves root-zero alpha labeling for every odd $L\ge49$.
+
+The remaining odd $L=7,9,\ldots,47$ have $21$ full literal records
+in \texttt{Qsmall.jsonl}, checked by vertex, color, and alpha
+inventories.  Together they give the equal-four input for every odd
+$L\ge7$.  These finite records and the four rays are distinct
+obligations; proving a ray does not certify its small-parameter
+complement.
+
+\input{supplement/template_threshold_tables}
+\input{supplement/template_equal_defect_tables}
+\input{supplement/template_small_tables}
+\input{supplement/template_input_ledger}

@@ -1,0 +1,63 @@
+\section{Five-to-four hub-zero selection}\label{app:five-to-four}
+\begin{theorem}\label{fs:selection}
+Among any five positive arm lengths, four can be selected whose spider is hub-zero graceful.
+\end{theorem}
+The proof is an integer case argument. It uses the equal and long alpha triples; the OOO central cone $z\le2x-5$; the EOO central cone $z\le2x-3$, $x+1+z\ne2y$; the OEO cone $z\le2x-3$; the EEO cone $x<y$, $z\le2x-1$; and the near triples $(x,x+1,x+1)$ and $(x,x,x+1)$ for even $x$. All lengths in these uses are at least six. The equal-triple construction is in Section~\ref{app:equal-alpha}; the odd and mixed constructions are proved in Sections~\ref{app:odd-kernels} and \ref{app:ten-alpha}. Each triple's alpha index is the sum of its half-length floors.
+
+\begin{proof}
+If a length is at most five, select it and any three other arms and apply Lemma~\ref{seven:four-short}. Thus order the five lengths as $6\le a\le b\le c\le d\le e$ and put
+\[
+A=\floor{a/2},\ B=\floor{b/2},\ C=\floor{c/2},\
+D=\floor{d/2},\ E=\floor{e/2},\quad K=A+B.
+\]
+In particular $A\ge3$.
+If $a=b=c=x$, select these three and $e$. For $e>3\floor{x/2}$, use ordinary attachment to the equal alpha triple. Otherwise
+\[
+\floor{e/2}\le\floor{3\floor{x/2}/2}<x,
+\]
+so equal-triple offsets and insertion at residue zero apply. Hence assume $a,b,c$ are not all equal. Then $K\le c-1$: for odd $c$, $K\le2C=c-1$; for even $c$, failure would require $A=B=C$ and hence $a=b=c$ even.
+
+\medskip\noindent\textit{Case 1: $d>2K$.}
+If $d\ne4K+1$, the long alpha triple $(a,b,d)$ is available and accepts $e$. Indeed $d>2K$ implies $\ceil{d/2}>K$, so $e\ge d>K+D$, its alpha index.
+Suppose $d=4K+1$. If $c=d$, combine alpha pair $(a,b)$ with equal-pair offset $K$ on $(c,d)$, since $K<c$. Assume $c<d$.
+If $c>2K$, use the nonexceptional long alpha triple $(a,b,c)$ and attach $d$. If $c\le2K$ and $C>B$, use $(a,c,d)$: $C\le K$ gives $2(A+C)\le4K<d$, while $d=4(A+C)+1$ would force $C=B$. This triple accepts $e$ by the same ceiling inequality. If $c\le2K$, $C=B$, and $A<B$, use $(b,c,d)$: its long inequality is $d>4B$, and its exceptional equality would force $A=B$.
+The only remaining possibility is $A=B=C=H$. Then $a,b,c$ lie in $\{2H,2H+1\}$, so their triple is equal, EEO near, or EOO near. In each case it is alpha with index $3H$, and $e\ge d=8H+1>3H$. Attach $e$. This finishes Case 1.
+
+\medskip\noindent\textit{Case 2: $d\le2K$.}
+Alpha pair $(a,b)$ and offset pair $(c,d)$ satisfy both high-interval bounds
+\[
+\floor{d/2}\le K\le c-1.
+\]
+They therefore compose unless
+\begin{equation}\label{fs:R}
+d=4c-4K-3.
+\end{equation}
+Assume this equality. It implies $d\equiv1\pmod4$, so $d$ is odd and $D$ is even. If $c=d$, equal-pair offsets work. If $b=c$, combine alpha pair $(a,d)$ with equal offset pair $(b,c)$: writing $b=2B+p$ with $p\in\{0,1\}$, equation~\eqref{fs:R} gives
+\[
+A+D=b+p-A-2<b.
+\]
+Thus assume $b<c<d$.
+
+Since $A\le B$ and $d\le2K\le4B$, the congruence gives $d\le4B-3$. If $b$ is odd this is $d\le2b-5$; hence $(b,c,d)$ is alpha by the OOO cone when $c$ is odd and the OEO cone when $c$ is even. If $b,c$ are even, strict inequality gives $c\ge b+2$ and $d\le2b-3$, so EEO applies. If $b$ is even and $c$ odd, EOO applies except possibly when
+\begin{equation}\label{fs:H}
+b+1+d=2c.
+\end{equation}
+Together with~\eqref{fs:R}, this last equality gives $c=2A+B+1$, $d=4A+1$. Since $c$ is odd, $B$ is even; since $c<d$, $B<2A$, and therefore $B\le2A-2$. Thus $c\le4A-1$. If $a$ is odd, $(a,b,c)$ is OEO central because $4A-1=2a-3$. If $a$ is even, $d\le2K$ also gives $B\ge A+1$, so $b\ge a+2$ and $c\le2a-1$; $(a,b,c)$ is EEO central. We have found an alpha triple $(b,c,d)$, or in the sole exceptional subcase an alpha triple $(a,b,c)$.
+
+If $e$ exceeds the selected triple's index, ordinary attachment finishes. Otherwise consider alpha pair $(a,d)$ with offset pair $(c,e)$ at index $A+D$. Equation~\eqref{fs:R} gives
+\[
+c=K+D/2+1.
+\]
+Since $D\le K\le2B$, this proves $A+D\le c-1$. For the lower bound, if $(a,b,c)$ was selected, failure of attachment gives $e\le A+B+C$. As $B,C\le D$, $\floor{e/2}\le A+D$ follows. If $(b,c,d)$ was selected, failure gives $e\le B+C+D$. Write $c=2C+p$. Equation~\eqref{fs:R} gives
+\[
+B+C-D=2A+3B-3C-2p+2.
+\]
+For $p=1$, $B\le C$ bounds this by $2A$. For $p=0$, $b<c$ forces $B\le C-1$, bounding it by $2A-1$. Hence again $e\le2(A+D)$ and $\floor{e/2}\le A+D$.
+Finally the high-interval exception would require
+\[
+e=4c-4(A+D)-3=4B-2D+1.
+\]
+But $b<c<d$ implies $b\le d-2=2D-1$, so $B\le D-1$ and this value would be at most $2D-3=d-4$, contradicting $e\ge d$. The high pair construction is nonexceptional. Alpha-offset composition supplies the required hub-zero four-arm spider, finishing Case 2 and the proof.
+\end{proof}
+
+The theorem yields the same selection among any six or more arms by taking any five first. Its proof uses neither the seven-arm conclusion nor any solver assertion. This makes its use in the small-arm reduction logically independent of the unbounded seven-arm arithmetic certificate.

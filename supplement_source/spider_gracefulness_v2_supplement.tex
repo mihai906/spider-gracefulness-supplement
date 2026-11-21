@@ -1,0 +1,82 @@
+\input{preamble}
+\newif\ifSevenVolume\SevenVolumetrue
+\makeatletter
+\renewcommand{\@pnumwidth}{2.3em}
+\renewcommand{\@tocrmarg}{3em}
+\renewcommand*\l@section[2]{\addvspace{0.4em}\@dottedtocline{1}{0em}{2.5em}{\bfseries #1}{\bfseries #2}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{2.5em}{4em}}
+\makeatother
+\renewcommand{\thesection}{S\arabic{section}}
+\externaldocument[main-]{spider_gracefulness_v2}
+\fancyhead[L]{\small Graceful labelings of spiders: technical supplement}
+\title{Graceful Labelings of Seven-Arm Spiders\\and Two Eight-Arm Families\\[6pt]\large Technical supplement}
+\input{authors}
+\date{17 November 2026}
+\hypersetup{pdftitle={Graceful Labelings of Seven-Arm Spiders and Two Eight-Arm Families: Technical Supplement}}
+\begin{document}
+\maketitle
+\begin{abstract}
+This supplement contains the detailed mathematical dependencies of
+the accompanying article: rooted path constructions, lifts, offset
+intervals, short-arm proofs, odd and mixed kernels, affine edge
+trades, complete finite inventories, and exact arithmetic certificate
+specifications. Results numbered S belong to this document. References
+to the article are identified explicitly. Together the article and this supplement form the mathematical
+manuscript; the supporting repository supplies the machine-readable
+proof objects and their replay tools.
+\end{abstract}
+
+\subsection*{Notation and dependency guide}
+Lengths count edges; $L^r$ means $r$ repeated arms. An arm word omits
+its initial hub label. All label intervals are integer intervals,
+and an interval with reversed endpoints is empty. The alpha cut of
+a root-zero spider on arms indexed by $I$ is
+$K(I)=\sum_{i\in I}\floor{L_i/2}$. The notation $\Om(T)$ denotes
+the available rooted offsets. The predicates $\mathsf A_7,\mathsf H_7$
+are defined in Article~\ref*{main-art:seven-predicates}. The eight-arm
+predicates are defined in Section~\ref{eight:specification}; within
+that section $\A,\mathsf O,\Hh$ abbreviate the corresponding
+eight-arm predicates in its stated parity domain.
+
+\begin{center}\small
+\begin{tabular}{@{}p{.46\textwidth}p{.46\textwidth}@{}}
+\toprule
+Input used by the article & Location in this supplement\\
+\midrule
+Classical paths and compositions & Section~\ref{common:foundations}\\
+Four arms with a short arm & Lemma~\ref{seven:four-short}\\
+Small alpha triples & Section~\ref{app:small-alpha}\\
+Ten alpha families & Sections~\ref{app:odd-kernels}--\ref{app:ten-alpha}\\
+Five-to-four selection & Theorem~\ref{fs:selection}\\
+All-parameter affine constructions & Section~\ref{app:template-certificates}\\
+Complete finite words and splits & Sections~\ref{app:finite-bases}, \ref{app:auxiliary-finite}\\
+Exact eight-arm rules & Section~\ref{eight:specification}\\
+Arithmetic premise binding and replay & Section~\ref{app:seven-certificates}\\
+\bottomrule
+\end{tabular}
+\end{center}
+The construction proofs and complete inventories below provide the
+inputs used by the article. The accompanying computational data and
+replay tools are identified in Section~\ref{app:seven-certificates}.
+
+\tableofcontents
+\clearpage
+\input{supplement/foundations}
+\input{supplement/short_cores}
+\input{supplement/lifts}
+\input{supplement/offsets}
+\input{supplement/small_alpha}
+\input{supplement/odd_kernels}
+\input{supplement/equal_alpha}
+\input{supplement/mixed_constructions}
+\input{supplement/five_selection}
+\input{supplement/template_certificates}
+\input{supplement/finite_tables}
+\input{supplement/auxiliary_finite}
+\input{supplement/eight_predicates}
+\input{supplement/extensions}
+\input{supplement/arithmetic_certificates}
+\bibliographystyle{plain}
+\bibliography{references}
+\authoraddresses
+\end{document}

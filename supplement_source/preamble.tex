@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=27mm,headheight=14pt]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,array,multicol}
+\usepackage{graphicx,xcolor,fancyhdr,fancyvrb,listings}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xr-hyper}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black,filecolor=blue!45!black,bookmarksnumbered=true]{hyperref}
+\hypersetup{pdfauthor={},pdfcreator={LaTeX},pdfsubject={Graceful labelings of spiders}}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0.18em}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{algorithm}[theorem]{Verification algorithm}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Sp}[1]{S\!\left(#1\right)}
+\newcommand{\Om}{\Omega}
+\newcommand{\A}{\mathsf A}
+\newcommand{\Hh}{\mathsf H}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\interval}[2]{[#1,#2]_{\ZZ}}
+\newcommand{\file}[1]{{\small\path{#1}}}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\providecommand{\cref}[1]{\autoref{#1}}
+\providecommand{\Cref}[1]{\autoref{#1}}
+\newcommand{\sourcefile}[1]{\par\smallskip\noindent\textit{Computational data:} \file{#1}.\par\smallskip}
+\newcommand{\publicationnote}[1]{\par\smallskip\noindent\textit{#1}\par\smallskip}
+\input{supporting_material}
+\newcommand{\providesupplementreference}[3]{%
+  \expandafter\def\csname suppnumber@#1\endcsname{#2}%
+  \expandafter\def\csname supppage@#1\endcsname{#3}}
+\newcommand{\suppref}[2][Section]{#1~\csname suppnumber@#2\endcsname}
+\newcommand{\As}{\mathsf A_7}
+\newcommand{\Hs}{\mathsf H_7}
+\newcommand{\Ae}{\mathsf A_8^{\epsilon}}
+\newcommand{\He}{\mathsf H_8^{\epsilon}}
+\newcommand{\Oe}{\mathsf O_8^{\epsilon}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Graceful labelings of spiders}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,columns=fullflexible,
+ keepspaces=true,showstringspaces=false,frame=single,framerule=0.2pt,
+ rulecolor=\color{black!20},aboveskip=0.7em,belowskip=0.7em}
+\lstnewenvironment{Code}{\lstset{language={}}}{}

@@ -1,0 +1,186 @@
+\section{Further attachment and subdivision consequences}\label{eight:extensions}
+
+\begin{corollary}\label{eight:common-short}
+Let $q\ge1$, $u\ge0$, and $0\le r\le8$.  If $b_1,\ldots,b_r\ge3$
+are odd, then
+\[
+ \Sp{qb_1,\ldots,qb_r,q^u}
+\]
+is graceful.  Likewise, under the hypotheses of
+Article Theorem~\ref*{main-art:even-eight},
+$\Sp{qa,qb_1,\ldots,qb_7,q^u}$ is graceful.
+In particular every eight-arm spider whose lengths have the same
+$2$-adic valuation is graceful.
+\end{corollary}
+\begin{proof}
+Apply the respective theorem before subdivision, with $u$ unit arms,
+and then use ordinary full $q$-subdivision
+(Theorem~\ref{common:offset-subdivision}, at source offset zero).
+Root the ordinary source labeling at whichever vertex has label zero;
+that vertex need not be the hub.  The underlying subdivided spider has
+the displayed lengths.  For the final assertion divide all lengths by
+their common power of two to obtain eight positive odd quotients.
+\end{proof}
+
+\begin{proposition}[Four-path attachment]\label{eight:four-paths}
+Let $G$ be any root-zero alpha-labeled tree of index $K$.  Adjoin four
+positive-length paths $a,b,x,y$ at its root.  If $a+b=K+2$, the
+resulting tree is graceful, also with any number of additional unit
+paths at that root.  When $(a,b)\notin\{(2,2),(3,3)\}$, the two
+paths $x,y$ may instead be replaced by any root-zero alpha-labeled
+tree $T$.
+\end{proposition}
+\begin{proof}
+Suppose first that $(a,b)\notin\{(2,2),(3,3)\}$.  The maximal-pair
+theorem in Section~\ref{app:pair-offsets} gives offset $a+b-2=K$ on
+$\Sp{a,b}$.  Alpha-offset amalgamation with $G$ gives a hub-zero
+component.  If $(x,y)\ne(2,2)$, the two further arms form a root-zero
+alpha pair, which can be ordinarily amalgamated with that component.
+Append the units to the hub-zero component first.
+
+If $(x,y)=(2,2)$, the four attached paths have a short arm, so their
+whole four-arm spider is hub-zero.  Ordinarily amalgamate it with $G$,
+after adjoining the units to the hub-zero piece.  The same direct
+short-arm argument applies if $(a,b)$ is either maximal-offset
+exception: in those cases the four-arm piece has an arm at most three.
+Thus neither a nonexistent maximal offset nor the alpha-pair exception
+is used.  The assertion with a general $T$ follows from the first
+hub-zero component and ordinary alpha amalgamation; its stated
+restriction on $(a,b)$ is retained.
+\end{proof}
+
+\begin{corollary}\label{eight:equal-four-six-core}
+For every odd $L\ge7$ and all positive $a,b$ with $a+b=2L$,
+$\Sp{L,L,L,L,a,b}$ is hub-zero graceful.  Adjoining arbitrary positive
+arms $x,y$ and any number of unit arms gives a graceful spider.
+\end{corollary}
+\begin{proof}
+The equal-odd-four alpha component has index $2L-2$, and the pair has
+maximal offset $a+b-2=2L-2$.  The two forbidden maximal pairs have
+sums four and six, below $2L$, so neither occurs.  This proves the
+hub-zero claim.  The ordinary extension also follows directly from
+Proposition~\ref{eight:four-paths}.
+\end{proof}
+
+\begin{proposition}[Five long paths]\label{eight:five-long-paths}
+Let $G$ be any root-zero alpha-labeled tree of index $K$.  Attach five
+paths with lengths $L_1,\ldots,L_5$ satisfying
+\[
+ L_i>2K,\qquad L_i\ne4K+1\quad(1\le i\le5).
+\]
+The resulting tree is graceful, also after adjoining arbitrary unit
+paths at the same root.
+\end{proposition}
+\begin{proof}
+Select a hub-zero four-arm piece among these five paths by
+Section~\ref{app:five-to-four}.  The unused path attaches to $G$ as a
+root-zero alpha extension by Lemma~\ref{common:alpha-extension}.
+Ordinarily amalgamate it with the selected hub-zero piece, after
+appending the units to that piece.  The hypotheses refer only to the
+original index $K$; no successive growth or hierarchy among the five
+lengths is needed.
+\end{proof}
+
+\begin{proposition}[A mixed five-arm core]\label{eight:double-five-core}
+For every $r\ge2$, the spider
+\[
+ F_r=\Sp{2r,4r,2r+1,2r+1,2r+1}
+\]
+is hub-zero graceful.  Ordinarily amalgamating $F_r$ with any
+root-zero alpha tree $T$, and adjoining any number of unit arms, gives
+a graceful tree.  In particular, for arbitrary odd $a,b,c\ge5$,
+\[
+ \Sp{2r,4r,(2r+1)^3,a,b,c,1^u}
+\]
+is graceful for every $u\ge0$.
+\end{proposition}
+\begin{proof}
+The literal pair $(2)\ ;\ (3,4)$ has offset one on $\Sp{1,2}$.
+Subdivide by $2r$ and choose residue $r$.  The new pair has lengths
+$2r,4r$ and offset $2r+r=3r$.  The equal odd alpha triple has common
+length $2r+1\ge5$ and index $3r$.  Alpha-offset amalgamation yields
+$F_r$.  Append the units there before ordinary amalgamation with $T$.
+For the last statement use the universal odd alpha triple $\Sp{a,b,c}$.
+The restriction $r\ge2$ avoids the unavailable source alpha triple
+$\Sp{3,3,3}$.
+
+For completeness the offset pair needs no path search.  Form $A_r$
+by concatenating the pairs $(4r-j,8r+j+1)$ in the order
+$j=0,\ldots,r-1$.  Form $B_r$ by first concatenating all pairs
+$(6r-j,6r+j+1)$ in that order, and then concatenating all pairs
+$(5r-j,7r+j+1)$ in that order.
+These use $3r+1,\ldots,9r$.  The internal colors of $A_r$ are
+$4r+1,\ldots,6r-1$ and its root color is $4r$.  The internal colors
+of $B_r$ are $1,\ldots,4r-1$ and its root color is $6r$.
+\end{proof}
+
+\begin{proposition}[Three equal paths]\label{eight:three-equal-offsets}
+For every $q\ge1$,
+\[
+ [0,7q-1]\subseteq\Om(\Sp{3q,3q,3q}).
+\]
+Consequently, if a root-zero alpha tree $G$ has index $K\le7q-1$,
+attaching three paths of length $3q$ gives a hub-zero graceful tree.
+Ordinarily amalgamating any second root-zero alpha tree $T$ gives a
+graceful tree, also with arbitrary unit arms.
+\end{proposition}
+\begin{proof}
+Here are offset-$s$ certificates on $\Sp{3,3,3}$ for each $s=0,\ldots,6$:
+\[
+\begin{array}{c|ccc}
+s&\multicolumn{3}{c}{\text{words outward from root zero}}\\ \hline
+0&(4,7,5)&(8,1,6)&(9,3,2)\\
+1&(7,3,6)&(8,2,4)&(9,10,5)\\
+2&(6,5,10)&(7,4,8)&(9,11,3)\\
+3&(6,4,12)&(7,11,8)&(9,10,5)\\
+4&(5,12,6)&(8,7,10)&(9,13,11)\\
+5&(7,13,14)&(8,12,10)&(9,6,11)\\
+6&(7,13,15)&(8,11,12)&(9,14,10)
+\end{array}
+\]
+Each row has labels $s+1,\ldots,s+9$ and colors $1,\ldots,9$.
+Factor-$q$ offset subdivision supplies every offset in
+$[qs,q(s+1)-1]$.  The seven intervals partition $[0,7q-1]$.
+The attachment and ordinary-gluing conclusions follow from the common
+amalgamation lemmas.  Append units to a hub-zero component first.
+\end{proof}
+
+\begin{corollary}\label{eight:nine-family}
+Suppose a nine-arm spider has three equal arms of length $3q$, with
+$q\ge1$, and its other six lengths are odd integers at least five.
+If three of those six have half-length sum at most $7q-1$, the spider
+is graceful, also with arbitrary unit arms.  The remaining three odd
+lengths have no upper bound.  For odd $q$ all nine arms are odd; for
+even $q$ the three designated arms are even.
+\end{corollary}
+\begin{proof}
+Use the bounded-index odd triple as $G$ in
+Proposition~\ref{eight:three-equal-offsets} and the other odd triple as
+$T$.  Both are root-zero alpha since their minima are at least five.
+\end{proof}
+
+\begin{proposition}[Upper pair bands]\label{eight:dyadic-pair-band}
+Let $a,b$ be positive and let $d=2^h$ divide both, where $h\ge0$.
+If $a\ne b$, then
+\[
+ [a+b-2d,a+b-2]\subseteq\Om(\Sp{a,b}).
+\]
+The same conclusion holds for $a=b$ if $a\ge4d$.
+\end{proposition}
+\begin{proof}
+Write $m=a+b$.  For $q=1,2,4,\ldots,d$, the quotient pair is unequal
+and hence avoids $(2,2),(3,3)$.  Its maximal offset is $m/q-2$.
+Factor-$q$ subdivision gives
+\[
+ [m-2q,m-q-1].
+\]
+These intervals abut and their union is $[m-2d,m-2]$.
+For equal arms the smallest quotient is $a/d\ge4$, so every quotient
+still avoids both forbidden maximal pairs and the same proof applies.
+\end{proof}
+
+Uniform full subdivision may be applied to each ordinary graceful
+family proved in this section.  This multiplies every arm length by
+the subdivision factor and turns each unit arm into an arm of that
+common length.  It uses ordinary subdivision, with no assertion that
+alpha separation is preserved.

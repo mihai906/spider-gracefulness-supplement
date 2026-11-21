@@ -1,0 +1,198 @@
+\section{Pair offsets and insertion constructions}\label{app:pair-offsets}
+The generic high interval below is the rooted-offset construction of Rhys \cite[Lemma~5.1]{Rhys2026}. We include its full proof, the complementary low intervals, and the short-pair constructions used in the main theorems.
+
+\subsection{Insertion and the high interval}
+\begin{lemma}\label{po:insertion}
+Let $T$ have $n$ edges and $s+\floor{t/2}\in\Om(T)$, where $t\ge2$ and $0\le s\le\ceil{t/2}-1$. Adjoining a $t$-edge arm at the root gives offset $s$, unless $t=4q+1$ and $s=q$.
+\end{lemma}
+\begin{proof}
+Put $w=\floor{t/2}$. Choose an alpha path word $h$ on $t$ vertices with its first endpoint $i=t-s-1$ in the upper class and lower palette $[0,w-1]$. The endpoint theorem supplies it except at the displayed request. Indeed $i\ge w$, so when $t=4q+1$ only the forbidden upper endpoint $3q$ can occur. In the odd boundary case $i=w$, complementing the classes selects the required palette. Give the new arm labels
+\[
+F(v)=\begin{cases}s+1+h(v),&h(v)<w,\\s+n+1+h(v),&h(v)\ge w.\end{cases}
+\]
+The old and new nonroot label blocks are
+$[s+1,s+w]$, $[s+w+1,s+w+n]$, $[s+w+n+1,s+n+t]$.
+Old differences are $[1,n]$, new internal differences are $[n+1,n+t-1]$, and the joining root edge has difference $n+t$. This proves every inventory claim. The old root colors are unchanged.
+\end{proof}
+
+\begin{lemma}[High pair interval]\label{po:high}
+For $2\le y\le z$ and $\floor{z/2}\le k\le y-1$, offset $k$ exists on $\Sp{y,z}$ unless
+\[
+z\equiv1\pmod4,\qquad 4k=4y-z-3.
+\]
+The construction has root-neighbor labels $y$ and $y+z$.
+\end{lemma}
+\begin{proof}
+Set $w=\floor{z/2}$, $s=y-1-k$, $u=s+w$. Then $0\le u\le y-1$. A prescribed-first ordinary graceful word on $[1,y]$ beginning at $y-u$, translated by $u$, is an offset-$u$ $y$-arm whose root color is $y$. Insert the $z$-arm using Lemma~\ref{po:insertion}. Its capacity holds because $s\le y-1-w\le\ceil{z/2}-1$. The insertion exception is $z=4q+1$, $s=q$, precisely the displayed equality. The resulting offset-$s$ pair has root colors $y,N=y+z$. Reflect all nonroot labels by $N+y-v$. The interval becomes
+\[
+[N+y-(s+N),N+y-(s+1)]=[k+1,k+N].
+\]
+The two root colors exchange, and internal colors are fixed. This proves the conclusion.
+\end{proof}
+
+\begin{lemma}[Divisibility repair]\label{po:three-repair}
+If $6\le y\le z$, $3\mid y,z$, and $\floor{z/2}\le k\le y-1$, the high interval has no exception.
+\end{lemma}
+\begin{proof}
+Only $z\equiv1\pmod4$, $4k=4y-z-3$ needs repair. Modulo three it forces $3\mid k$. Write $y=3Y,z=3Z,k=3K$. Then $Y\ge2$, $Z\equiv3\pmod4$, $Z\ge Y$, and
+$6K\ge3Z-1$, $3K\le3Y-1$. These imply $\floor{Z/2}\le K\le Y-1$. Lemma~\ref{po:high} has no exception at the quotient, since $Z\equiv3\pmod4$. Subdivision by three sends offset $K$ to $3K,3K+1,3K+2$, including $k$.
+\end{proof}
+
+\begin{lemma}[Low pair intervals]\label{po:low}
+For $2\le x\le y$, every $0\le k\le\ceil{x/2}-1$ is available on $\Sp{x,y}$ except possibly $x=4q+1$, $k=q$. This exception is removed when $y\le6q+1$. Also every
+\[
+0\le k\le\ceil{y/2}-1,\qquad k+\floor{y/2}\le x-1
+\]
+is available unless $y=4q+1$, $k=q$.
+\end{lemma}
+\begin{proof}
+Every $y$-arm has all offsets $0,\ldots,y-1$. Insert the $x$-arm with prior offset $k+\floor{x/2}\le x-1$. This gives the first claim. For its exceptional request with $x<y\le6q+1$, instead insert the $y$-arm into a single $x$-arm: $q+\floor{y/2}\le4q=x-1$, and the other capacity holds. Its exception would force $y=4q+1=x$, excluded. The case $x=y$ follows from equal-arm offsets. Finally exchange which arm is inserted to obtain the second displayed interval and its exact exception.
+\end{proof}
+
+\subsection{Complete intervals for minimum at most five}
+\begin{theorem}\label{po:small}
+For $1\le x\le5$ and $n\ge x$, every $0\le k<x$ is in $\Om(\Sp{x,n})$.
+\end{theorem}
+Throughout the proof let $P_M^{(r)}$ denote any ordinary graceful word on $[0,M-1]$ beginning at $M-r$, where $M\ge r$. The prescribed-first theorem proves its existence with no alpha condition. Consequently all the tails in the following constructions exist at every stated threshold.
+
+\subsubsection{Minimum two and three}
+For $n\ge9$ the cracked word
+\[
+Q_n=(2,n,3,n-1,0)\Vert(4+P_{n-5}^{(4)})
+\]
+uses $[0,n]\setminus\{1\}$, begins at $2$, and has internal colors $[1,n-1]$. Its five-vertex prefix supplies $n-2,n-3,n-4,n-1$; its tail begins at $n-5$, giving that joining color, and its internal tail supplies $[1,n-6]$. The small words are
+\[
+\begin{array}{c|l}
+4&(2,0,3,4)\\5&(2,5,3,4,0)\\6&(2,6,4,3,0,5)\\
+7&(2,7,3,0,6,4,5)\\8&(2,8,3,6,5,7,0,4).
+\end{array}
+\]
+With $N=n+2$, the words $(N,2)$ and $N+1-Q_n$ give offset one: their labels are $[2,N+1]$ and colors are $N,N-2$, the long root color $N-1$, and $[1,N-3]$. The two smaller cases are $(4,3)\mid(2,5)$ for $n=2$, and $(5,4)\mid(2,6,3)$ for $n=3$.
+
+Similarly, for $n\ge12$ set
+\[
+R_n=(3,n,2,n-2,4,n-1,0)\Vert(5+P_{n-7}^{(5)}).
+\]
+Its prefix colors are $n-3,n-2,n-4,n-6,n-5,n-1$, namely $[n-6,n-1]$; its joining color is $n-7$ and tail colors are $[1,n-8]$. Its labels are $[0,n]\setminus\{1\}$, first label $3$. The smaller words are
+\[
+\begin{array}{c|l}
+3&(3,2,0)\\5&(3,4,0,2,5)\\6&(3,0,5,4,2,6)\\7&(3,0,6,2,7,5,4)\\
+8&(3,0,7,2,8,4,6,5)\\9&(3,4,6,0,8,5,9,2,7)\\
+10&(3,4,7,0,9,5,10,2,8,6)\\11&(3,5,8,0,10,4,9,2,11,7,6).
+\end{array}
+\]
+With $N=n+3$, use $(N,3,N+2)$ and $N+1-R_n$. The short colors are $N,N-3,N-1$, the long root color is $N-2$, and the remaining colors are $[1,N-4]$. The labels are $[3,N+2]$. At $n=4$ use $(7,5,6)\mid(3,9,4,8)$ instead. This proves offset two for minimum three.
+For offset zero at minimum two or three, take long arm $2+P_n^{(2)}$ and short arm $(n+2,1)$ or $(n+3,1,n+2)$, respectively. For offset one at minimum three take $3+P_n^{(3)}$ and $(n+3,2,n+4)$. Direct subtraction gives long colors $[1,n]$ and all remaining largest colors on the short arm. Thus the complete intervals follow.
+
+\subsubsection{Minimum four}
+Put $N=n+4$. Offsets zero and one use, respectively,
+\[
+(N,1,N-1,2)\mid(3+P_n^{(3)}),\qquad
+(N,3,N+1,2)\mid(4+P_n^{(4)}).
+\]
+The long root color is $n$, its internal palette is $[1,n-1]$, and the short palette is $[n+1,n+4]$. Their labels are $[1,N]$ and $[2,N+1]$.
+For offset two, $n\ge18$, use a cracked word with hole one and first five:
+\[
+Q=(5,n-2,3,n-3,6,n-4,4,n,2,n-1,0)
+\Vert(7+P_{n-11}^{(7)}).
+\]
+The prefix uses low labels $\{0,2,3,4,5,6\}$ and high labels $[n-4,n]$. Its colors, subtracted from $n$, are $7,5,6,9,10,8,4,2,3,1$, exactly $[1,10]$. The tail fills $[7,n-5]$, begins at $n-11$, and supplies the remaining smaller colors. Use spider words $(N,3,N+2,4)\mid(n+5-Q)$. Their label interval is $[3,n+6]$; their colors are $N,N-3,N-1,N-2$ on the short arm, $n$ on the other root edge, and $[1,n-1]$ internally.
+For offset three, $n\ge24$, use
+\[
+\begin{split}
+Q={}&(5,n-2,3,n-1,1,n,6,n-6,8,n-5,4,n-4,7,n-3,0)\\
+&\Vert(9+P_{n-15}^{(9)}).
+\end{split}
+\]
+The low prefix labels are $\{0,1,3,4,5,6,7,8\}$, the high labels are $[n-6,n]$, and its colors subtracted from $n$ are
+$7,5,4,2,1,6,12,14,13,9,8,11,10,3$, exactly $[1,14]$. The tail fills $[9,n-7]$, starts at $n-15$, and supplies the smaller colors. Take $(N,4,N+3,5)\mid(n+6-Q)$. Its labels are $[4,n+7]$; the short colors are $N,n,N-1,N-2$, the long root color is $n+1$, and the remaining colors are $[1,n-1]$. The finite offset-two cases $4\le n\le17$ and offset-three cases $4\le n\le23$ are all printed in Section~\ref{app:auxiliary-finite}.
+
+\subsubsection{Minimum five}
+Put $N=n+5$. Offsets zero and two are
+\[
+(N,1,N-1,2,N-2)\mid(3+P_n^{(3)}),\qquad
+(N,4,N+1,3,N+2)\mid(5+P_n^{(5)}).
+\]
+Each has long colors $[1,n]$ and short colors $[n+1,N]$, with label intervals $[1,N]$ and $[3,N+2]$.
+For offset one, $n\ge13$, put
+\[
+Q=(n-2,2,n,3,n-3,4,n-1,0)\Vert(5+P_{n-8}^{(5)}).
+\]
+This word uses $[0,n]\setminus\{1\}$, begins at $n-2$, and has colors $[1,n-1]$: the prefix, joining edge and tail give $[n-7,n-1]$, $n-8$, and $[1,n-9]$. Take $(N,2,N+1,4,N-1)\mid(3+Q)$. The short colors are $N,N-2,N-1,N-3,N-5$, the long root color is $N-4$, and all other colors are $[1,n-1]$. The labels are $[2,N+1]$.
+
+For offsets three and four the following finite-prefix principle is convenient. Fix a hole $p$, a first label $c$, and $B=2p+c$. Let $L$ be a permutation of $[0,B-1]\setminus\{p\}$ starting at $c$ and ending at zero, and let $U$ permute $[0,B-3]$. If the adjacent sums $L_i+U_i,L_{i+1}+U_i$ are exactly $[1,2B-4]$, the alternating prefix
+\[
+L_0,n-U_0,L_1,n-U_1,\ldots,L_{B-2}
+\]
+has colors $[n-2B+4,n-1]$. For $n\ge3B-3$, append $B+P_{n-2B+3}^{(B)}$. This fills the unused interval $[B,n-B+2]$, begins at $n-2B+3$, and supplies every remaining color. Thus the result is a cracked word $Q$ with hole $p$ and first label $c$.
+For offset three take
+\[
+p=1,\ c=6,\ B=8,\quad L=(6,7,3,5,4,2,0),\quad U=(5,3,2,4,0,1).
+\]
+The adjacent sums are $11,12,10,6,5,7,9,8,4,2,3,1$. For $n\ge21$ use $(N,4,N+3,5,N+2)\mid(N+1-Q)$. Its labels are $[4,N+3]$; the short colors are $N,N-4,N-1,N-2,N-3$, and the long arm supplies $[1,n]$.
+For offset four take
+\[
+p=2,\ c=6,\ B=10,\quad L=(6,3,8,4,1,5,9,7,0),\quad U=(2,4,5,0,1,6,7,3).
+\]
+The adjacent sums are $8,5,7,12,13,9,4,1,2,6,11,15,16,14,10,3$. For $n\ge27$ use $(N,5,N+4,6,N+3)\mid(N+2-Q)$. Its labels are $[5,N+4]$; the short colors are $N,N-5,N-1,N-2,N-3$, the long root color is $N-4=n+1$, and the long internal colors are $[1,n-1]$. All $46$ finite complements, namely $5\le n\le12$ at offset one, $5\le n\le20$ at offset three, and $5\le n\le26$ at offset four, are printed in Section~\ref{app:auxiliary-finite}. Minimum one only asks for offset zero on a rooted path. This completes Theorem~\ref{po:small}.
+
+\subsection{The additional offset two on a pair with a two-arm}\label{po:two-extra}
+For every $n\ge3$, $2\in\Om(\Sp{2,n})$. For $n\ge15$ let
+\[
+Q=(3,n-1,1,n-2,4,n-3,5,n,0)\Vert(6+P_{n-9}^{(6)}).
+\]
+It uses $[0,n]\setminus\{2\}$, begins at $3$, and has colors $[1,n]\setminus\{n-1\}$. Indeed its prefix colors are $n-4,n-2,n-3,n-6,n-7,n-8,n-5,n$, the joining color is $n-9$, and the tail supplies $[1,n-10]$. Put $N=n+2$ and take $(N,3)\mid(N+2-Q)$. The nonroot labels are $[3,N+2]$, the short colors are $N,N-3$, and the long root color is $N-1$; its internal colors give all the other colors without duplication. The twelve finite words for $3\le n\le14$ are printed in Section~\ref{app:auxiliary-finite}. Thus this assertion is uniform for all $n\ge3$.
+
+\subsection{Maximal offsets}\label{po:maximal}
+\begin{theorem}
+For positive $a\le b$, the largest attainable offset on $\Sp{a,b}$ is $a+b-2$, except that this value is unavailable for $(a,b)=(2,2)$ and $(3,3)$.
+\end{theorem}
+\begin{proof}
+Write $m=a+b$. The two root neighbors are distinct labels at most $m$, so their interval beginning at $k+1$ forces $k\le m-2$. To attain equality, excluding temporarily $(1,1),(1,2),(2,2),(3,3)$, set $c=\ceil{a/2}+1$ and $\ell=b-c$. These exclusions give $1\le\ell\le b-1$. Take an ordinary graceful word $q$ on $[1,b-1]$ starting at $\ell$. Partition $[1,m]$ into the words
+\[
+A=(2,m,3,m-1,\ldots)\text{ truncated to length }a,
+\qquad B=(1)\Vert(q+c).
+\]
+For $a=2w$, $A$ uses $[2,w+1]$ and $[m-w+1,m]$; for $a=2w+1$ its lower interval instead ends at $w+2$. In each case $B$ uses the complement. The internal colors of $A$ are $[b,m-2]$, the first internal color of $B$ is $\ell+c-1=b-1$, and its remaining colors are $[1,b-2]$. Add $m-2$ to every nonroot label; the two root colors become $m,m-1$. This supplies every color exactly once. The small pairs $(1,1)$ and $(1,2)$ use final words $(1)\mid(2)$ and $(2)\mid(3,4)$.
+
+At maximal offset the two normalized words after subtracting $m-2$ must begin at $1,2$ and require internal differences $[1,m-2]$. For $(2,2)$ the two terminal assignments $(3,4)$ and $(4,3)$ yield colors $(2,2)$ and $(3,1)$, both invalid. For $(3,3)$, write the words as $(1,x,y)$ and $(2,z,w)$. The following complete table lists all $4!=24$ possibilities and their four internal colors. No row has color multiset $\{1,2,3,4\}$.
+\begin{center}\small\begin{tabular}{cc|cc}
+$(x,y,z,w)$ & Colors & $(x,y,z,w)$ & Colors\\\hline
+$(3,4,5,6)$ & $2,1,3,1$ & $(5,3,4,6)$ & $4,2,2,2$\\
+$(3,4,6,5)$ & $2,1,4,1$ & $(5,3,6,4)$ & $4,2,4,2$\\
+$(3,5,4,6)$ & $2,2,2,2$ & $(5,4,3,6)$ & $4,1,1,3$\\
+$(3,5,6,4)$ & $2,2,4,2$ & $(5,4,6,3)$ & $4,1,4,3$\\
+$(3,6,4,5)$ & $2,3,2,1$ & $(5,6,3,4)$ & $4,1,1,1$\\
+$(3,6,5,4)$ & $2,3,3,1$ & $(5,6,4,3)$ & $4,1,2,1$\\
+$(4,3,5,6)$ & $3,1,3,1$ & $(6,3,4,5)$ & $5,3,2,1$\\
+$(4,3,6,5)$ & $3,1,4,1$ & $(6,3,5,4)$ & $5,3,3,1$\\
+$(4,5,3,6)$ & $3,1,1,3$ & $(6,4,3,5)$ & $5,2,1,2$\\
+$(4,5,6,3)$ & $3,1,4,3$ & $(6,4,5,3)$ & $5,2,3,2$\\
+$(4,6,3,5)$ & $3,2,1,2$ & $(6,5,3,4)$ & $5,1,1,1$\\
+$(4,6,5,3)$ & $3,2,3,2$ & $(6,5,4,3)$ & $5,1,2,1$\\
+\end{tabular}\end{center}
+
+\end{proof}
+
+\subsection{Three-arm offsets}\label{app:triple-offsets}
+\begin{lemma}\label{po:triple-low}
+Let $2\le x\le y\le z$, $w=\floor{x/2}$, and
+$\floor{z/2}-w\le s\le\ceil{x/2}-1$, $s\ge0$. Then $s\in\Om(\Sp{x,y,z})$ unless either $x=4p+1,s=p$, or $z=4q+1,s+w=y-1-q$.
+\end{lemma}
+\begin{proof}
+Put $u=s+w$. Its bounds give $\floor{z/2}\le u\le x-1\le y-1$, so apply the high pair construction to $(y,z)$, then insert the $x$-arm. The two exceptions are exactly those of the two operations.
+\end{proof}
+\begin{lemma}\label{po:repeated-triple}
+For $2\le x\le y$ and $\floor{y/2}\le k\le x-1$, offset $k$ exists on $\Sp{x,y,y}$ except possibly when $y=4q+1$ and $k=3q$ or $k=x-1-q$. When $x=y$, equal-arm offsets remove both exceptions.
+\end{lemma}
+\begin{proof}
+Set $s=x-1-k$, $u=s+\floor{y/2}$. The high pair lemma gives offset $u$ on $\Sp{x,y}$ with root colors $x,x+y$, apart from the first displayed exception. Inserting a $y$-arm gives offset $s$ and root colors $x,x+y,x+2y$, apart from the second. Put $N=x+2y$ and reflect all nonroot labels by $N+x-v$. These three root colors are permuted, internal colors are fixed, and the interval becomes $[k+1,k+N]$. Equal arms have every offset less than their common length.
+\end{proof}
+
+\subsection{Paired hub-zero four-arm spiders}\label{po:paired-four}
+\begin{lemma}
+For all positive $a,b$, $\Sp{a,a,b,b}$ is hub-zero graceful.
+\end{lemma}
+\begin{proof}
+Assume $a\le b$. If $a\ne2$, the alpha pair $\Sp{a,a}$ has index $K=2\floor{a/2}$. For $a<b$, $K<b$; for $a=b$ odd, $K=a-1$. Combine this pair with equal-pair offset $K$ on $\Sp{b,b}$. Equal-even four arms are hub-zero by uniform subdivision of a star. If $a=2$ and $b\ge7$, Theorem~\ref{sa:main} gives alpha $\Sp{2,2,b}$ of index $2+\floor{b/2}<b$, so ordinary hub attachment adds the last arm. The remaining $b=2,3,4,5,6$ occur explicitly in the complete small four-arm table of Section~\ref{app:finite-bases}.
+\end{proof}

@@ -1,0 +1,189 @@
+\section{Subdivision and matching lifts}
+\label{app:lifts}
+
+\subsection{Uniform offset subdivision}\label{app:subdivision}
+We prove Theorem~\ref{common:offset-subdivision} in full. Let $T$ have
+$m$ edges and an offset-$s$ labeling $g$. The zero-edge case is
+immediate, so suppose $m\ge1$. Fix $q\ge1$ and $0\le e<q$. By
+Lemma~\ref{common:prescribed-first-path}, choose a graceful permutation
+$\rho=(\rho_1,\ldots,\rho_q)$ of $[1,q]$ with $\rho_1=q-e$.
+
+Orient $T$ away from its distinguished root. For each old nonroot
+vertex $v$, replace its parent edge by a block of $q$ vertices,
+including the old child and excluding the old parent. Define the column labels in that block by
+\begin{equation}\label{eq:subdivision-columns}
+ B(v,h)=\begin{cases}
+ qg(v)+\rho_h-q+e,&h\text{ odd},\\
+ q(2s+m+1-g(v))+\rho_h-q+e,&h\text{ even}.
+ \end{cases}
+\end{equation}
+Traverse the block in column order $1,\ldots,q$ when the old depth of
+$v$ is odd and in the reverse order when that depth is even. Keep the
+old root at zero. Column parity determines which formula is used;
+depth parity determines only the traversal order.
+
+\paragraph{Vertex labels.}
+As $v$ ranges over the old nonroot vertices, both $g(v)$ and
+$2s+m+1-g(v)$ range over $[s+1,s+m]$. Column $h$ therefore uses
+\[
+ qs+\rho_h+e,\ q(s+1)+\rho_h+e,\ldots,
+ q(s+m-1)+\rho_h+e.
+\]
+The $q$ residues $\rho_h$ permute $[1,q]$, so all nonroot labels are
+exactly $[qs+e+1,qs+e+qm]$, each once.
+
+\paragraph{Connecting colors.}
+The exit of a parent's block and entry of a child's block use the
+same column, either $1$ or $q$. The same affine expression in $g$
+therefore occurs at both ends, so their difference is $q$ times the
+old edge difference. A child of the root starts in column one, whose
+label is $qg(v)$ because $\rho_1=q-e$. Thus the $m$ connecting colors
+are exactly $q,2q,\ldots,mq$.
+
+\paragraph{Internal colors.}
+Put $Z_m=\{1-m,3-m,\ldots,m-1\}$. For two consecutive columns,
+the internal differences over all blocks are $\abs{qz+d}$,
+$z\in Z_m$, where $|d|$ is the corresponding difference of $\rho$.
+Since $Z_m=-Z_m$, the sign of $d$ is immaterial. The magnitudes of
+the $q-1$ successive differences of $\rho$ are $1,\ldots,q-1$.
+Hence the full internal multiset is
+\begin{equation}\label{eq:subdivision-internal-colors}
+ \{\abs{qz+d}:z\in Z_m,\ 1\le d<q\}.
+\end{equation}
+Every value is nonzero, smaller than $qm$, and not divisible by $q$.
+If two signed expressions agree with the same sign, reduction modulo
+$q$ gives $d=d'$ and then $z=z'$. Opposite-sign agreement would give
+$d+d'=q$ and $z+z'=-1$; the latter is impossible because $z,z'$ have
+the same parity. Thus all $m(q-1)$ values are distinct and are exactly
+the required nonmultiples of $q$ in $[1,qm]$. Together with the
+connecting colors, they give every color once. The block construction
+is the actual uniform subdivision of $T$, proving offset $qs+e$.
+All residues $e$ are allowed, completing the proof.
+
+\begin{corollary}[Equal-arm intervals]\label{common:equal-offsets}
+For all positive integers $L,d$, the equal-arm spider $\Sp{L^d}$
+admits every offset $0,\ldots,L-1$.
+\end{corollary}
+\begin{proof}
+Start with the root-zero unit star of degree $d$ and take $q=L$,
+$s=0$. This includes $L=1$.
+\end{proof}
+
+\subsection{Perfect-matching lift}
+\begin{theorem}\label{common:matching-lift}
+Let $T$ have a perfect matching $M$, and let $C$ be the tree obtained
+by contracting every matching edge. If $C$ has a graceful labeling,
+then $T$ is graceful. If a distinguished matching pair of $C$ has
+label zero, either prescribed vertex of that pair may be chosen to
+receive zero in $T$.
+\end{theorem}
+\begin{proof}
+Suppose $C$ has $m$ edges and graceful labeling $g$. Assign to the
+two vertices of its pair $v$ the values
+\[
+ 2g(v),\qquad 2m+1-2g(v).
+\]
+Choose the orientation of the root pair to put zero on the prescribed
+vertex. Propagate orientations along the tree $C$ so that each
+nonmatching edge joins values of the same parity. There is one parent
+constraint per new pair and no cycle, so this is consistent. Vertex
+labels partition $[0,2m+1]$. The nonmatching colors are the even
+values $2|g(v)-g(w)|$, hence $2,4,\ldots,2m$. Matching colors are
+$|4g(v)-(2m+1)|$. They are distinct: equality with opposite signs
+would force $g(v)+g(w)=m+\tfrac12$. There are $m+1$ such odd
+values in $[1,2m+1]$, giving precisely all odd colors.
+\end{proof}
+
+This is the standard Broersma--Hoede construction
+\cite{BroersmaHoede1999}; the proof above specifies the root orientation
+needed here. No alpha conclusion is imposed on an arbitrary contree.
+
+\begin{corollary}\label{common:unique-odd-contree}
+A spider with exactly one odd arm has a perfect matching whose contree
+has arm lengths $\floor{L_i/2}$; zero-length arms are omitted.
+A hub-zero graceful contree gives a hub-zero ordinary labeling of the
+original spider.
+\end{corollary}
+\begin{proof}
+Match the hub with the first vertex of the odd arm, then pair
+successive vertices on every remaining part. Contracting gives the
+stated lengths. Choose the matching-pair orientation from the theorem.
+\end{proof}
+
+\subsection{Balanced alpha subdivision}
+\begin{theorem}\label{common:balanced-alpha-subdivision}
+If a rooted $m$-edge tree has a root-zero alpha labeling $f$ with
+index $k=\floor{m/2}$, its uniform $q$-subdivision is root-zero alpha
+for every positive integer $q$, with index $\floor{qm/2}$.
+\end{theorem}
+\begin{proof}
+Use \eqref{eq:subdivision-columns} with $s=e=0$ and the Walecki
+permutation $\rho=(q,1,q-1,2,\ldots)$, which starts at $q$.
+The preceding proof already gives the correct labels and colors.
+Let $K=\floor{qm/2}$. When $m=2k$, the label in an odd column is
+at most $K$ exactly when the old $f(v)\le k$; an even column reverses
+that condition. For $m=2k+1$, the only possible boundary block is
+resolved by
+\[
+ \rho_h\ge\floor{q/2}+1\quad(h\text{ odd}),\qquad
+ \rho_h\le\floor{q/2}\quad(h\text{ even}).
+\]
+The same class rule follows. Consecutive columns therefore cross
+$K$, and connecting edges do too because their old endpoints are in
+opposite old classes. Root edges have value $qf(v)>K$. Thus every
+edge crosses the new cut and the root remains zero.
+\end{proof}
+
+\begin{corollary}[Balanced alpha matching lift]\label{common:balanced-alpha-matching}
+If the root-zero alpha contree has index $\floor{m/2}$, the
+perfect-matching lift is root-zero alpha of index $m$.
+\end{corollary}
+\begin{proof}
+The two labels of every matching pair sum to $2m+1$ and lie on
+opposite sides of $m$. For an old edge the two $g$-values are on
+opposite sides of $\floor{m/2}$; their even labels lie on opposite
+sides of $m$, as do their odd labels. The same-parity orientation used
+in the matching proof therefore makes every lifted edge cross $m$.
+\end{proof}
+
+\subsection{Leaf extensions with their exact deficits}
+\begin{lemma}\label{common:lower-leaf-extension}
+If a root-zero alpha tree has cut $K$ and a lower leaf of label
+$K-\delta$, then an extension by $2r$ new vertices at that leaf
+preserves root-zero alpha whenever $r\ge\delta+1$. The new cut is
+$K+r$ and the new leaf is $K+r-\delta$.
+\end{lemma}
+\begin{proof}
+Let $n$ be the old edge count. Leave old lower labels fixed and raise old upper labels by $2r$.
+The unused interval is $[K+1,K+2r]$. Take an alpha path on
+$[0,2r-1]$ whose first endpoint is the upper label
+$i=2r-\delta-1$. This is an allowed upper label since
+$r\ge\delta+1$, and an even-order path has no endpoint exception.
+Its opposite endpoint is $i-r=r-\delta-1$ by
+Lemma~\ref{common:even-path}. Add $K+1$ to all its labels and
+join its first vertex to the old leaf $K-\delta$. The joining
+color is $2r$, the internal new colors are $[1,2r-1]$, and the
+shifted old colors are $[2r+1,2r+n]$. All labels are consecutive,
+every edge crosses $K+r$, and the terminal label is
+$K+1+(r-\delta-1)=K+r-\delta$. Root zero is unchanged.
+\end{proof}
+
+\begin{lemma}\label{common:upper-leaf-extension}
+For an upper leaf of label $K+e$, $e\ge1$, extension by $2r$ new
+vertices is possible whenever $r\ge e$. The new cut is $K+r$ and
+the new leaf has label $K+r+e$.
+\end{lemma}
+\begin{proof}
+Let $n$ be the old edge count. Leave old lower labels fixed, raise old upper labels by
+$2r$, and fill the middle interval $[K+1,K+2r]$ with an alpha
+path translated from $[0,2r-1]$. Request its first lower label
+$j=e-1$, which is allowed because $r\ge e$. Its opposite upper
+endpoint is $j+r$. The first new label is $K+e$, at distance
+$2r$ from the raised old leaf $K+e+2r$. The internal new colors
+are $[1,2r-1]$; the old colors are $[2r+1,2r+n]$. Every edge
+crosses $K+r$, the root remains zero, and the final label is
+$K+1+(e-1+r)=K+r+e$.
+\end{proof}
+
+These leaf bounds are essential. Neither lemma asserts that arbitrary
+short independent extensions at several leaves are possible.

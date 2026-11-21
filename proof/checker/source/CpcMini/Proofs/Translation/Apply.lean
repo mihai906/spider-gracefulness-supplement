@@ -1,0 +1,120 @@
+module
+
+public import CpcMini.Proofs.Translation.Datatypes
+import all CpcMini.Proofs.Translation.Datatypes
+public import CpcMini.Proofs.TypePreservation.CoreArith
+import all CpcMini.Proofs.TypePreservation.CoreArith
+
+public section
+
+open Eo
+open SmtEval
+open Smtm
+
+set_option linter.unusedVariables false
+set_option maxHeartbeats 10000000
+
+namespace TranslationProofs
+
+/-- Derives `smtx_typeof_apply_generic` from `head_not_special`. -/
+private theorem smtx_typeof_apply_generic_of_head_not_special
+    (f x : SmtTerm)
+    (hDtSel : ∀ s d i j, f ≠ SmtTerm.DtSel s d i j)
+    (hDtTester : ∀ s d i, f ≠ SmtTerm.DtTester s d i) :
+    generic_apply_type f x := by
+  unfold generic_apply_type
+  cases f <;> simp [__smtx_typeof]
+  · exact False.elim (hDtSel _ _ _ _ rfl)
+  · exact False.elim (hDtTester _ _ _ rfl)
+
+/-- Shows that generic EO application translation satisfies `generic_apply_type`. -/
+theorem eo_to_smt_apply_generic_type
+    (f x : Term)
+    (hNoSel : ∀ s d i j, f ≠ Term.DtSel s d i j) :
+    generic_apply_type (__eo_to_smt f) (__eo_to_smt x) := by
+  apply smtx_typeof_apply_generic_of_head_not_special
+  · intro s d i j
+    exact eo_to_smt_ne_dt_sel f hNoSel s d i j
+  · intro s d i
+    exact eo_to_smt_ne_dt_tester f s d i
+
+/-- Computes `__smtx_typeof` for `translation_not_of_non_none`. -/
+theorem smtx_typeof_translation_not_of_non_none
+    (x : Term) :
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.UOp UserOp.not) x)) ≠ SmtType.None ->
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.UOp UserOp.not) x)) = SmtType.Bool := by
+  intro hNonNone
+  rw [__eo_to_smt.eq_def] at hNonNone
+  have hApplyNN : term_has_non_none_type (SmtTerm.not (__eo_to_smt x)) := by
+    simpa [term_has_non_none_type] using hNonNone
+  have hArg : __smtx_typeof (__eo_to_smt x) = SmtType.Bool := by
+    unfold term_has_non_none_type at hApplyNN
+    rw [typeof_not_eq] at hApplyNN
+    cases h : __smtx_typeof (__eo_to_smt x) <;>
+      simp [native_ite, native_Teq, h] at hApplyNN
+    simp
+  rw [__eo_to_smt.eq_def, typeof_not_eq]
+  simp [native_ite, native_Teq, hArg]
+
+/-- Computes `__smtx_typeof` for `translation_and_of_non_none`. -/
+theorem smtx_typeof_translation_and_of_non_none
+    (x y : Term) :
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.Apply (Term.UOp UserOp.and) x) y)) ≠ SmtType.None ->
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.Apply (Term.UOp UserOp.and) x) y)) = SmtType.Bool := by
+  intro hNonNone
+  rw [__eo_to_smt.eq_def] at hNonNone
+  have hApplyNN :
+      term_has_non_none_type
+        (SmtTerm.and (__eo_to_smt x) (__eo_to_smt y)) := by
+    simpa [term_has_non_none_type] using hNonNone
+  have hArgs := bool_binop_args_bool_of_non_none
+    (op := SmtTerm.and) (typeof_and_eq (__eo_to_smt x) (__eo_to_smt y)) hApplyNN
+  rw [__eo_to_smt.eq_def, typeof_and_eq]
+  simp [native_ite, native_Teq, hArgs.1, hArgs.2]
+
+/-- Computes `__smtx_typeof` for `translation_imp_of_non_none`. -/
+theorem smtx_typeof_translation_imp_of_non_none
+    (x y : Term) :
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.Apply (Term.UOp UserOp.imp) x) y)) ≠ SmtType.None ->
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.Apply (Term.UOp UserOp.imp) x) y)) = SmtType.Bool := by
+  intro hNonNone
+  rw [__eo_to_smt.eq_def] at hNonNone
+  have hApplyNN :
+      term_has_non_none_type
+        (SmtTerm.imp (__eo_to_smt x) (__eo_to_smt y)) := by
+    simpa [term_has_non_none_type] using hNonNone
+  have hArgs := bool_binop_args_bool_of_non_none
+    (op := SmtTerm.imp) (typeof_imp_eq (__eo_to_smt x) (__eo_to_smt y)) hApplyNN
+  rw [__eo_to_smt.eq_def, typeof_imp_eq]
+  simp [native_ite, native_Teq, hArgs.1, hArgs.2]
+
+/-- Computes `__smtx_typeof` for `translation_eq_of_non_none`. -/
+theorem smtx_typeof_translation_eq_of_non_none
+    (x y : Term) :
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.Apply (Term.UOp UserOp.eq) x) y)) ≠ SmtType.None ->
+    __smtx_typeof (__eo_to_smt (Term.Apply (Term.Apply (Term.UOp UserOp.eq) x) y)) = SmtType.Bool := by
+  intro hNonNone
+  rw [__eo_to_smt.eq_def] at hNonNone
+  have hApplyNN :
+      term_has_non_none_type
+        (SmtTerm.eq (__eo_to_smt x) (__eo_to_smt y)) := by
+    simpa [term_has_non_none_type] using hNonNone
+  rw [__eo_to_smt.eq_def]
+  exact eq_term_typeof_of_non_none (t1 := __eo_to_smt x) (t2 := __eo_to_smt y) hApplyNN
+
+/-- Extracts the common non-`None` operand type from a non-`None` SMT equality type. -/
+theorem smtx_typeof_eq_non_none
+    {T U : SmtType}
+    (h : __smtx_typeof_eq T U ≠ SmtType.None) :
+    T = U ∧ T ≠ SmtType.None := by
+  by_cases hNone : T = SmtType.None
+  · subst hNone
+    exfalso
+    exact h (by simp [__smtx_typeof_eq, __smtx_typeof_guard, native_ite, native_Teq])
+  · by_cases hEq : T = U
+    · exact ⟨hEq, hNone⟩
+    · exfalso
+      exact h (by
+        simp [__smtx_typeof_eq, __smtx_typeof_guard, native_ite, native_Teq, hNone, hEq])
+
+end TranslationProofs

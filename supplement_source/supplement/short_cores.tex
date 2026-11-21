@@ -1,0 +1,223 @@
+\section{Small-arm inputs and the short four-arm theorem}\label{shared:short-cores}
+\subsection{Construction inputs for small arms}
+\label{seven:small-inputs}
+
+The following are the precise small-arm inputs needed in this section.
+Their proofs and their complete finite tables are in
+Sections~\ref{app:small-alpha}, \ref{app:pair-offsets}, and
+\ref{app:finite-bases}.
+
+\begin{proposition}\label{seven:small-alpha}
+The spider $\Sp{s,a,b}$ has a root-zero alpha labeling in each of the
+following cases:
+\begin{enumerate}
+\item $s=1$, provided $(a,b)\ne(2,2)$;
+\item $s\in\{2,3,4,5\}$, $s\le a\le b$, and $b\ge7$;
+\item $s\in\{2,3,4,5\}$ and $a=b=6$.
+\end{enumerate}
+\end{proposition}
+
+The first assertion follows by adjoining a new maximum leaf to the
+prescribed-zero alpha path on the other two arms.  For the second,
+the appendix supplies explicit near-band constructions and their
+resonance repairs.  To specify exactly what those proofs must establish,
+put $e=\floor{s/2}$ and $k=e+\floor{a/2}$.  The alpha extension lemma
+already gives every $b>2k$ other than $b=4k+1$.  Thus the additional
+construction obligations are exactly
+\begin{center}
+\begin{tabular}{c|c|c|c}
+$s$ & parity of $a$ & near band & resonance\\ \hline
+$2,3$ & odd & $a\le b\le a+1$ & $b=2a+3$\\
+$2,3$ & even & $a\le b\le a+2$ & $b=2a+5$\\
+$4,5$ & odd & $a\le b\le a+3$ & $b=2a+7$\\
+$4,5$ & even & $a\le b\le a+4$ & $b=2a+9$.
+\end{tabular}
+\end{center}
+Only values with $b\ge7$ are asserted in the second part.  The
+small-arm appendices prove these bands by explicit path formulas,
+fixed affine edge trades with all-parameter topology checks, and their
+exhaustive finite complements.  In particular, a finite experiment
+inside a near band is not used as an existence argument outside it.
+The third part consists of the four stated literal alpha labelings.
+
+\begin{proposition}\label{seven:small-pairs}
+For $x\in\{2,3,4,5\}$ and $n\ge x$,
+\[
+   \{0,\ldots,x-1\}\subseteq\Om(\Sp{x,n}).
+\]
+In addition, $2\in\Om(\Sp{2,n})$ for every $n\ge3$.
+\end{proposition}
+
+The pair appendix gives the cracked-permutation formulas, the ordinary
+graceful tails, and every finite starting word needed here.  The prescribed-first ordinary path theorem supplies each graceful
+tail in the stated range; the displayed prefixes partition all labels and colors.  Consequently these are uniform
+statements for every $n$ in the displayed ranges.
+
+We also use the hub-zero three-arm theorem
+(Theorem~\ref{common:hubzero-three}).  The finite basis denoted below by
+$F_4$ consists of all $\binom84=70$ sorted four-tuples with
+entries in $\{2,\ldots,6\}$, each accompanied by a hub-zero graceful
+labeling.  Verification of a finite labeling is explained in
+Section~\ref{templates:finite-check}; the full words belong to
+Section~\ref{app:finite-bases}.
+
+\subsection{Four arms with a short arm}
+\label{seven:four-short-section}
+
+\begin{lemma}\label{seven:four-short}
+Every four-arm spider with an arm of length at most five has a
+hub-zero graceful labeling.
+\end{lemma}
+\begin{proof}
+An arm of length one can be added by a new maximum leaf to the
+hub-zero labeling of the other three arms.  It therefore remains to
+treat minimum lengths two, three, four, and five.  In each case, if
+the largest length is at most six, $F_4$ applies.  Hence throughout
+the remaining argument the largest length $c$ is at least seven.
+
+\medskip\noindent
+\emph{Minimum two.}
+Write the lengths as $2\le a\le b\le c$, with an additional arm of
+length two.  Proposition~\ref{seven:small-alpha}, together with the
+nine literal small positive cores in the finite appendix, supplies
+$\Sp{2,a,b}$ except possibly when
+\begin{equation}\label{seven:min2-exceptions}
+ (a,b)\in\{(2,2),(2,3),(2,4),(2,6),(3,3),(4,4)\}.
+\end{equation}
+The nine positive cores are
+\[
+ (2,2,5),\ (2,3,4),\ (2,3,5),\ (2,3,6),\ (2,4,5),\
+ (2,4,6),\ (2,5,5),\ (2,5,6),\ (2,6,6).
+\]
+No nonexistence claim about the exceptional cores is required.
+
+For a supplied alpha core its index is
+$J=1+\floor{a/2}+\floor{b/2}\le b+1$.  If $c\ge b+2$, then
+$c>J$ and ordinary attachment applies.  If $c=b$, necessarily $b\ge7$.
+When $a=2$, $J=2+\floor{b/2}<b$, so attachment still applies.
+When $a\ge3$, use instead the alpha pair $\Sp{2,a}$, whose index
+$1+\floor{a/2}\le b-1$ lies in the equal-pair offset interval for
+$\Sp{b,b}$.  If $c=b+1$, attachment applies except when $a=b$ is
+even.  In that remaining case $b\ge6$; the alpha pair $\Sp{2,c}$
+has index $1+b/2\le b-1$ and can be combined with the equal pair
+$\Sp{b,b}$.  This also includes $b=6,c=7$.
+
+For the pairs $(2,2),(2,4),(2,6),(4,4)$ in
+\eqref{seven:min2-exceptions}, at most one of the four arms is odd.
+Halving every even length and flooring the possible odd length gives
+a four-arm contree with a unit arm.  That contree is hub-zero graceful
+by the first paragraph.  The ordinary full-subdivision or
+perfect-matching lift of the foundations gives the required
+root-zero labeling of the target.  For $(a,b)=(2,3)$, compose the
+alpha pair $\Sp{2,3}$, of index two, with the offset-two pair
+$\Sp{2,c}$.  For $(a,b)=(3,3)$, use the same alpha pair with the
+offset-two pair $\Sp{3,c}$.  Proposition~\ref{seven:small-pairs}
+provides both offsets.  This exhausts minimum two.
+
+\medskip\noindent
+\emph{Minimum three.}
+Write the spider as $\Sp{3,a,b,c}$ with $3\le a\le b\le c$.
+The supplied positive alpha cores $\Sp{3,a,b}$ include every case
+except possibly $(a,b)=(3,3)$ and $(4,4)$.  For $b\le6$, the
+eight positive literal cores are
+\[
+ (3,3,4),\ (3,3,5),\ (3,3,6),\ (3,4,5),\
+ (3,4,6),\ (3,5,5),\ (3,5,6),\ (3,6,6).
+\]
+For a positive core, $J=1+\floor{a/2}+\floor{b/2}\le b+1$.
+Thus $c\ge b+2$ is an ordinary attachment.  If $c=b$, the index
+$1+\floor{a/2}$ of $\Sp{3,a}$ is at most $b-1$; combine it with
+the equal offset pair $\Sp{b,b}$.  If $c=b+1$, attachment fails
+only when $a=b$ is even.  Then $b\ge6$ and the alpha pair
+$\Sp{3,c}$ has index $1+b/2\le b-1$, so the same equal-pair
+composition applies.  For the exceptional core $(a,b)=(3,3)$, use
+the alpha pair $\Sp{3,3}$ of index two and the offset-two pair
+$\Sp{3,c}$.  For $(a,b)=(4,4)$, use the alpha pair $\Sp{3,4}$ of
+index three and the offset-three pair $\Sp{4,c}$.  These offsets
+are covered by Proposition~\ref{seven:small-pairs}.
+
+\medskip\noindent
+\emph{Minimum four or five.}
+Write $\Sp{s,a,b,c}$, where $s\in\{4,5\}$ and
+$s\le a\le b\le c$.  The small-alpha theorem and the six literal
+cores
+\[
+ (4,5,5),\ (4,5,6),\ (4,6,6),\
+ (5,5,5),\ (5,5,6),\ (5,6,6)
+\]
+give an alpha core $\Sp{s,a,b}$ except possibly for
+\begin{equation}\label{seven:min4-exceptions}
+ (s,a,b)=(4,4,4),\ (4,4,5),\ (4,4,6).
+\end{equation}
+For the first and third exceptional cores, there is at most one odd
+arm in the target four-arm spider.  Its halved contree contains a
+two-arm, so the already established minimum-two case and the ordinary
+parity lift apply.  The same argument covers $\Sp{4,4,5,c}$ when
+$c$ is even.  When $c$ is odd, compose the alpha pair $\Sp{4,4}$
+of index four with the offset-four pair $\Sp{5,c}$; here $c\ge7$,
+and Proposition~\ref{seven:small-pairs} applies.
+
+Now suppose that the alpha core is supplied.  Put
+\[
+ k=2+\floor{a/2},\qquad J=k+\floor{b/2}.
+\]
+If $c>J$, attach $c$.  Hence assume $c\le J$.  We have $k\le b-1$:
+the only possible failure with $s\le a\le b$ would be $a=b=4$,
+already in \eqref{seven:min4-exceptions}.  If $c=b$, use the alpha
+pair $\Sp{s,a}$ and the equal offset pair $\Sp{b,b}$.
+Assume therefore $c>b$.  The inequalities
+$b\le c\le k+\floor{b/2}$ give $\ceil{b/2}\le k$, and hence
+$\floor{c/2}\le k$.  The HIGH pair lemma then gives the desired
+offset $k$ on $\Sp{b,c}$ unless
+\begin{equation}\label{seven:small-resonance}
+ c=4q+1,\qquad k=b-1-q
+\end{equation}
+for an integer $q\ge1$.
+
+We reduce this resonance exactly.  Equations
+\eqref{seven:small-resonance} and $c\le J$ imply
+\[
+ \floor{a/2}=b-q-3,\qquad
+ 5q+2\le b+\floor{b/2}.
+\]
+Since $a\le b$, $b\le2q+6$.  Therefore
+\[
+ 5q+2\le b+\floor{b/2}\le3q+9,
+\]
+which forces $q\le3$.  If $q=1$, then $c=5>b$ forces $b\le4$,
+whereas $7\le b+\floor{b/2}$ forces $b\ge5$, a contradiction.
+If $q=2$, then $c=9$, $b=8$, and $a\in\{6,7\}$.
+If $q=3$, then $c=13$, $b=12$, and $a=12$.
+
+The repeated case $a=b$ has another equal-pair composition.  In this
+case $q=b-3-\floor{b/2}$, and the alpha pair $\Sp{s,c}$ has index
+$2+2q$, equal to $b-4$ for even $b$ and $b-3$ for odd $b$.
+This is an available offset on $\Sp{b,b}$.  Consequently only
+\[
+ \Sp{s,6,8,9},\qquad \Sp{s,7,8,9},\qquad s\in\{4,5\},
+\]
+remain.  For $\Sp{s,6,8,9}$ use the alpha pair $\Sp{s,8}$ of
+index six and the following offset-six pair on $\Sp{6,9}$:
+\begin{align*}
+ &(15,13,14,20,7,21),\\
+ &(12,16,11,8,19,9,18,10,17).
+\end{align*}
+Its labels are $[7,21]$ and its colors are $[1,15]$.  It can also
+be obtained by factor-three offset subdivision of the offset-two
+pair $(5,7)\mid(4,3,6)$ on $\Sp{2,3}$.
+
+For $\Sp{4,7,8,9}$, the following words, read from hub zero, have
+lengths $4,9,8,7$:
+\begin{align*}
+ &(28,1,27,2),\\
+ &(24,3,26,4,23,5,25,8,22),\\
+ &(16,6,21,9,20,11,19,12),\\
+ &(13,7,10,15,17,18,14).
+\end{align*}
+They use every label and color from one through $28$ once.
+Replace the first word by $(29,1,28,2,27)$ to obtain
+$\Sp{5,7,8,9}$: the short color interval $[25,28]$ becomes
+$[25,29]$, and all other edges are unchanged.  This finishes the
+last two profiles, and the proof of the lemma.
+\end{proof}
+

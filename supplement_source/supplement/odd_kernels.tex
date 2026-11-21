@@ -1,0 +1,1257 @@
+\section{Odd kernels and pair-offset constructions}
+\label{ok:chapter}\label{app:odd-kernels}
+
+This section supplies the path constructions behind the odd three-arm
+$\alpha$ theorem and the additional odd-pair offset intervals. A word
+lists the labels of a path in their order. When it describes an arm,
+the hub label zero is understood to precede the word. All intervals
+below are intervals of integers; an interval with its lower endpoint
+larger than its upper endpoint is empty. Concatenation does not
+identify the last entry of one word with the first entry of the next.
+
+The only prescribed-path existence inputs are Lemmas~\ref{common:even-path}
+and~\ref{common:odd-path}. Every use of the odd-order input checks its
+exception explicitly. The small-minimum three-arm constructions are
+proved in Section~\ref{app:small-alpha}. All other constructions used
+here are given below, including their literal initial words.
+
+\subsection{The kernel calculus}
+\label{ok:calculus}
+
+\begin{definition}[Odd kernel]\label{ok:kernel-definition}
+For integral parameters $S,U,T,V$, with $T\ge1$, a word of type
+$K(S,U,T,V)$ has $2T+1$ entries and the following inventories:
+\begin{align}
+ \text{lower labels}&=[1,T], \nonumber\\
+ \text{upper labels}&=[T+1,2T+2]\setminus\{T+V\},\label{ok:kernel-labels}\\
+ \text{internal differences}
+   &=[1,2T+1]\setminus\{D\},
+ \qquad D=S+T-U+V, \label{ok:kernel-colors}\\
+ \text{ordered endpoints}&=(E,F),\nonumber\\
+ E&=2T-S+2,\qquad F=2T+2S-U-V+3. \label{ok:kernel-ends}
+\end{align}
+Entries alternate between the two classes and both endpoints are
+upper. In particular the displayed hole, missing color, and endpoints
+must lie in their specified ranges. A kernel means an actual word
+with these properties, rather than merely a feasible parameter tuple.
+\end{definition}
+
+The parameters of an auxiliary kernel need not be parameters of a
+spider completion. In particular $U=0$ and $V>U$ are allowed in
+source kernels. The restriction $1\le V\le U$ is imposed when an
+even path of half-order $U$ is used to complete or extract a kernel.
+
+\begin{lemma}[Completion of a kernel]\label{ok:completion}
+Suppose $p$ is $K(s,u,t,v)$, where $s,t,u\ge1$ and $1\le v\le u$.
+Then $\Sp{2s+1,2t+1,2u+1}$ has a root-zero $\alpha$-labeling of
+index $s+t+u$. Its first arm can be chosen as the maximum Walecki word
+\[
+ W=(N,1,N-1,2,\ldots,N-s),\qquad N=2s+2t+2u+3.
+\]
+Every label on the other two arms is smaller than $N-s$.
+\end{lemma}
+\begin{proof}
+Map a lower entry $x$ of $p$ to $x+s$, and an upper entry to
+$x+s+2u$; call the resulting arm $A$. Take the even path on
+$[1,2u]$ from upper endpoint $u+v$ to lower endpoint $v$, append
+$2u+v$, and add $s+t$ to all of its entries; call this arm $B$.
+Lemma~\ref{common:even-path} applies because $1\le v\le u$.
+
+The lower labels of the three arms are respectively
+$[1,s]$, $[s+1,s+t]$, and $[s+t+1,s+t+u]$. Put $K=s+t+u$.
+The upper labels of $B$ before its appended entry are
+$[K+1,s+t+2u]$. The upper labels of $A$ are
+\[
+ [s+t+2u+1,s+2t+2u+2]\setminus\{s+t+2u+v\};
+ \]
+the appended entry of $B$ fills that hole. Finally $W$ supplies
+$[N-s,N]$. These are disjoint consecutive blocks, with the one
+explicit hole filled once, so the nonroot labels are exactly $[1,N]$.
+All edges cross $K$.
+
+The internal colors of $A$ are
+$[2u+1,2t+2u+1]\setminus\{D+2u\}$, and its root edge has color
+$s+2u+E=2t+2u+2$. The internal colors of $B$ are $[1,2u]$:
+its appended edge has color $2u$. Its root edge has color
+\[
+ s+t+u+v=D+2u.
+ \]
+The $2s+1$ edges of $W$, including its root edge, have consecutive
+colors $[2t+2u+3,N]$. The three inventories partition $[1,N]$.
+\end{proof}
+
+\begin{lemma}[Diagonal growth]\label{ok:diagonal-growth}
+Let $p$ be $K(S,U,T,V)$, put $d=T-S$, and assume $d\ge0$.
+For every $P\ge d+2$ one obtains
+\[
+ K(S+P,U+P,T+P,V+P).
+\]
+\end{lemma}
+\begin{proof}
+Take an even path $q$ on $[1,2P]$ from upper $P+d+2$ to lower
+$d+2$. Its endpoints are allowed because $1\le d+2\le P$.
+Add $T$ to every entry of $q$. In the old word keep lower entries
+fixed and raise upper entries by $2P$. Prepend the translated $q$.
+
+The new lower labels are $[1,T]\cup[T+1,T+P]$.
+The new upper blocks are $[T+P+1,T+2P]$ and
+$[T+2P+1,2T+2P+2]\setminus\{T+V+2P\}$.
+Thus the new hole is $(T+P)+(V+P)$. The prefix contributes
+$[1,2P-1]$ and its last label is $T+d+2=E$.
+The old first label became $E+2P$, so the join has color $2P$.
+Every old color increases by $2P$. The new palette is therefore
+$[1,2(T+P)+1]\setminus\{D+2P\}$, as required.
+The new endpoints are
+$T+P+d+2=2(T+P)-(S+P)+2$ and $F+2P$.
+Substitution in \eqref{ok:kernel-ends} proves the asserted parameters.
+\end{proof}
+
+\begin{lemma}[Carrier prefix]\label{ok:carrier-prefix}
+From $K(S,U,T,V)$ and any $w\ge S+1$ one obtains
+\[
+ K(S,U+w,T+w,V).
+\]
+\end{lemma}
+\begin{proof}
+Take the even path on $[1,2w]$ from upper $2w-S$ to lower $w-S$.
+The inequality $w\ge S+1$ places both endpoints in their classes.
+Raise its upper entries by $2T+2$. Prepend it to the old word with
+every old entry raised by $w$.
+
+The prefix lower block $[1,w]$ and old lower block $[w+1,w+T]$
+are consecutive. The old upper block ends at $2T+w+2$ and the
+prefix upper block is $[2T+w+3,2T+2w+2]$. The unique hole is
+$T+V+w$. The prefix internal palette is
+$[2T+3,2T+2w+1]$. Its final lower entry is $w-S$, while the old
+first entry becomes $E+w$, so their join has color $2T+2$.
+The old differences are unchanged. The first endpoint is
+$2w-S+2T+2=2(T+w)-S+2$, and the last is $F+w$.
+The missing color is unchanged since
+$S+(T+w)-(U+w)+V=D$.
+\end{proof}
+
+\begin{lemma}[Asymmetric growth]\label{ok:asymmetric-growth}
+From $K(S,U,T,V)$ and an integer
+\[
+ P\ge1,\qquad P\ge U+V-2S,
+ \]
+one obtains $K(S+P,U+2P,T+P,V)$.
+\end{lemma}
+\begin{proof}
+Put
+\[
+ \ell=F+P-2T-2=P+2S-U-V+1.
+ \]
+The growth bound gives $\ell\ge1$. Since the old endpoint satisfies
+$F\le2T+2$, we also have $\ell\le P$. Raise all old entries by $P$.
+Append the even path on $[1,2P]$ from lower $\ell$ to upper
+$\ell+P$, raising just its upper entries by $2T+2$.
+
+The old labels lie in $[P+1,2T+P+2]$ except the translated hole.
+The appended lower and upper labels fill respectively $[1,P]$ and
+$[2T+P+3,2T+2P+2]$. They alternate across the new cut $T+P$.
+The old colors are unchanged; the join has color
+$(F+P)-\ell=2T+2$, and the new internal colors are
+$[2T+3,2T+2P+1]$. The endpoints become $E+P,F+2P$.
+These inventories have the stated parameters and the same missing
+color $D$.
+\end{proof}
+
+\begin{lemma}[Reversal and class reflection]\label{ok:reversal}
+\label{ok:reflection}
+Reversing the word of a kernel gives the parameter transformation
+\[
+ J(S,U,T,V)=(U+V-2S-1,\ 2U+V-3S-1,\ T,\ V).
+ \tag{J}
+ \label{ok:J}
+ \]
+Complementing the labels separately within their classes, without
+reversing the word, gives
+\[
+ R(S,U,T,V)=(T-S+1,\ 2T-U+2,\ T,\ T-V+3).
+ \tag{R}
+ \label{ok:R}
+ \]
+Both transformations are involutions on their realizable kernel
+inventories.
+\end{lemma}
+\begin{proof}
+For $J$, retain all labels. Substitution shows that the new first
+endpoint is $F$, the new last endpoint is $E$, and the missing color
+remains $D$. The classes and all other inventories are unchanged.
+Applying the displayed affine transformation twice gives the identity.
+
+For $R$ replace a lower entry $x$ by $T+1-x$ and an upper entry
+$y$ by $3T+3-y$. This permutes each full class interval. The old
+hole $T+V$ becomes $2T-V+3=T+(T-V+3)$. Every edge of color
+$y-x$ becomes an edge of color $2T+2-(y-x)$. Its missing color is
+therefore $2T+2-D$. The new endpoints are $3T+3-E$ and $3T+3-F$.
+Substitution gives exactly \eqref{ok:R}; the label map is itself an
+involution. Reversal is a separate operation: it is used in addition
+to reflection only when explicitly stated.
+\end{proof}
+
+\subsubsection{Elementary seeds and a controlled-edge step}
+
+\begin{lemma}[Three elementary sources]\label{ok:elementary-seeds}
+The following kernels exist.
+\begin{enumerate}
+\item For $d\ge1$,
+\[
+ Z_d=(2d+2,1,2d+1,2,2d,\ldots,d,d+2)
+       \quad\hbox{is }K(0,d,d,1).
+ \]
+\item For $r\ge2$, an even path on $[1,2r]$ from upper $r+2$
+to lower $2$, followed by $2r+2$, is
+$K(r,r,r,r+1)$.
+\item For $h\ge2$, an even path on $[1,2h]$ from lower $2$ to
+upper $h+2$, preceded by $2h+2$, is $K(0,0,h,h+1)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+In the first word the upper entries are $2d+2,2d+1,\ldots,d+2$;
+its consecutive differences are $2d+1,2d,\ldots,2$.
+Thus its label hole is $d+1$, color hole is $1$, and its endpoints
+are $2d+2,d+2$, proving the first assertion.
+
+In the second assertion the even path supplies $[1,2r-1]$ and
+the appended edge has color $2r$. The omitted label is $2r+1$,
+the missing color is $2r+1$, and the endpoints are $r+2,2r+2$.
+In the third assertion the prepended edge has color $2h$.
+The omitted label and missing color are both $2h+1$, and the
+endpoints are $2h+2,h+2$. These agree with the kernel formulas.
+The even-path requests have $2\le r$ and $2\le h$ respectively,
+so all their prescribed endpoints are valid.
+\end{proof}
+
+\begin{lemma}[A controlled-edge enlargement]\label{ok:controlled-step}
+Suppose a kernel $K(S,U,T,V)$ contains the edge $(2,T+1)$ and
+$T\ge2$. There is a kernel
+\[
+ K(S+2,U+4,T+4,V+2)
+ \]
+which contains the new controlled edge $(2,T+5)$.
+\end{lemma}
+\begin{proof}
+Raise old lower labels by $2$ and old upper labels by $6$.
+The mapped cut is $T+4$. The old label blocks are $[3,T+2]$ and
+$[T+7,2T+8]$ with the old hole raised by $6$. The fresh labels are
+\[
+ 1,2,T+3,T+4;\qquad T+5,T+6,2T+9,2T+10.
+ \]
+The old controlled edge maps to $(4,T+7)$, with color $T+3$.
+Replace this edge, using the reverse order if necessary, by
+\begin{equation}
+ (4,2T+10,1,2T+9,2,T+5,T+4,T+6,T+3,T+7).
+ \label{ok:controlled-chain}
+\end{equation}
+Its nine colors in order are
+\[
+ (2T+6,2T+9,2T+8,2T+7,T+3,1,2,3,4).
+ \]
+The old controlled color is retained. Every other old color rose by
+$4$, so the new colors added are exactly
+$[1,4]\cup[2T+6,2T+9]$. This gives the new palette with missing
+color $D+4$. All fresh entries occur once and cross the new cut.
+The hole and both endpoints have risen by $6$.
+These are precisely the changes specified by the new parameters.
+The replacement contains $(2,T+5)$. Replacing one edge of a path
+by a path through eight fresh vertices preserves a single path, so
+there is no separate connectivity assumption.
+\end{proof}
+
+\subsection{All positive odd three-arm spiders}
+\label{construction:all-odd-alpha3}
+
+We first give the constructions for minimum arm at least five. The
+two smaller minima and the single negative profile are treated at the
+end of the section.
+
+\subsubsection{Equal and repeated largest arms}
+
+\begin{proposition}[Three equal odd arms]\label{ok:equal-odd-three}
+For every $r\ge2$, $\Sp{(2r+1)^3}$ is root-zero $\alpha$, with
+index $3r$, and its first arm is the maximum Walecki word.
+\end{proposition}
+\begin{proof}
+At $r=2$ use
+\[
+ (15,1,14,2,13)\mid(10,3,8,4,12)\mid(9,6,7,5,11);
+ \]
+at $r=3$ use
+\[
+ (21,1,20,2,19,3,18)\mid
+ (14,5,15,7,12,6,17)\mid(13,9,10,8,11,4,16).
+ \]
+Their lower labels are respectively $[1,6]$ and $[1,9]$,
+and direct successive subtraction gives their full color intervals.
+
+Now let $r\ge4$, $N=6r+3$, and $K=3r$.
+For upper list $(U_0,\ldots,U_r)$ and lower list
+$(L_0,\ldots,L_{r-1})$, interleaving means the word
+$(U_0,L_0,U_1,\ldots,L_{r-1},U_r)$.
+Take the first arm to be
+\[
+ W=(N,1,N-1,2,\ldots,r,N-r).
+ \]
+Its lower block is $[1,r]$, upper block $[5r+3,6r+3]$, and
+palette $[4r+3,6r+3]$. For arm $A$ interleave
+\begin{align*}
+ U_A&=(4r+1,4r-1,4r+3,4r+4,\ldots,5r+1),\\
+ L_A&=(2r-1,2r,2r-2,2r-3,\ldots,r+1).
+\end{align*}
+Its root color is $4r+1$, its first four internal colors are
+$2r+2,2r,2r-1,2r+3$, and the remaining colors are consecutively
+$2r+5,\ldots,4r$. Hence
+\begin{equation}
+ C_A=\{4r+1,2r-1,2r,2r+2,2r+3\}\cup[2r+5,4r].
+ \label{ok:equal-three-A}
+\end{equation}
+
+If $r$ is even, take
+\[
+ L_C=(2r+1,\ldots,3r-3,3r-1,3r,3r-2).
+ \]
+The upper list begins with $4r+2$, then appends
+$(4r-3-2j,4r-2j)$ for $0\le j\le r/2-3$, and finally appends
+$(3r+2,3r+1,3r+4,5r+2)$. An empty loop is omitted.
+The root color and first internal color are $4r+2,2r+1$.
+Each loop packet contributes
+\[
+ 2r-4-4j,\quad2r-5-4j,\quad2r-2-4j,\quad2r-3-4j.
+ \]
+Their union is $[7,2r-2]$. The seven final internal colors are
+$5,3,2,1,4,6,2r+4$. Thus the complete palette is
+\begin{equation}
+ C_C=[1,2r-2]\cup\{2r+1,2r+4,4r+2\}.
+ \label{ok:equal-three-C}
+\end{equation}
+If $r$ is odd, so $r\ge5$, use instead
+\[
+ L_C=(2r+1,\ldots,3r-3,3r,3r-1,3r-2).
+ \]
+The upper list begins with $4r+2$, then appends the same pairs
+for $0\le j\le(r-7)/2$, then appends
+$(3r+3,3r+5,3r+1,3r+2,5r+2)$.
+The packets give $[9,2r-2]$ and the final nine colors are
+$7,6,8,5,1,2,3,4,2r+4$, giving the same
+\eqref{ok:equal-three-C}.
+
+The lower lists partition $[1,3r]$. Arm $A$ has upper set
+$\{4r-1,4r+1\}\cup[4r+3,5r+1]$; arm $C$ has upper set
+\[
+ ([3r+1,4r+2]\setminus\{4r-1,4r+1\})\cup\{5r+2\}.
+ \]
+Together with the upper block of $W$ these partition
+$[3r+1,6r+3]$. Every edge crosses $3r$.
+The three disjoint palettes
+\eqref{ok:equal-three-A}, \eqref{ok:equal-three-C}, and that of
+$W$ partition $[1,6r+3]$. This proves every inventory.
+\end{proof}
+
+\begin{lemma}[Repeated-arm kernel sources]\label{ok:repeated-kernels}
+For $s\ge2$ and $t>s$, there is a kernel $K(s,t,t,v)$ with
+$1\le v\le t$. More precisely:
+\begin{enumerate}
+\item If $s<t\le2s-2$, one can take $v=s+1$.
+\item If $t\ge2s+1$, one can take $v=s+1$.
+\item If $t=2s-1$, one can take $v=s$.
+\item If $t=2s$ and $s\ge3$, one can take $v=s+3$.
+At $(s,t)=(2,4)$ one can take $v=2$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+In the first case put $d=t-s$, so $1\le d\le s-2$.
+Apply diagonal growth with $P=s$ to $Z_d=K(0,d,d,1)$.
+The required inequality is $s\ge d+2$, and the result is
+$K(s,t,t,s+1)$.
+
+In the second case start with $K(s,s,s,s+1)$ from
+Lemma~\ref{ok:elementary-seeds} and apply carrier prefix with
+$w=t-s\ge s+1$. This gives the same standard parameters.
+The apparent failure $s+1>s$ in the initial source is harmless:
+completion is used only after the prefix, when $s+1\le t$.
+
+For $t=2s-1$ the desired label hole is $3s-1$, missing color
+$2s$, and endpoints $3s,3s+2$. Two initial words are
+\begin{align*}
+ P_2&=(6,3,4,2,7,1,8),\\
+ P_3&=(9,4,7,5,6,2,10,3,12,1,11).
+\end{align*}
+Both contain $(2,t+1)$ and have exactly the stated inventories.
+Lemma~\ref{ok:controlled-step} changes $(s,t,t,s)$ to
+$(s+2,t+4,t+4,s+2)$. Since $t+4=2(s+2)-1$, its two initial
+words give every $s\ge2$.
+
+For $t=2s$, $s\ge3$, take the standard source
+$K(s-1,2s,2s,s)$ from the second case. First reflect within
+classes and then reverse its word. The composite $J\circ R$ gives
+$K(s,2s,2s,s+3)$: its hole is $3s+3$, missing color $2s+3$,
+and ordered endpoints $3s+2,3s$. Here $s+3\le2s$.
+For the isolated case $(2,4)$ the word
+\[
+ (8,3,5,4,7,1,10,2,9)
+ \]
+is $K(2,4,4,2)$; its hole is $6$, missing color $4$, and
+endpoints $8,9$. These four cases exhaust $t>s$.
+\end{proof}
+
+\begin{corollary}\label{ok:repeated-alpha}
+For odd $5\le a\le b$, $\Sp{a,b,b}$ is root-zero $\alpha$ and
+admits a maximum Walecki $a$-arm. For $a<b$ this follows from
+Lemma~\ref{ok:completion} and Lemma~\ref{ok:repeated-kernels};
+for $a=b$ it follows from Proposition~\ref{ok:equal-odd-three}.
+\end{corollary}
+
+\subsubsection{The interior central cone and its arithmetic progressions}
+
+\begin{lemma}[The non-AP central kernel]\label{ok:central-kernel}
+Let
+\[
+ 1\le s\le t\le u\le2s-2,\qquad u>s,\qquad u\ne2t-s.
+ \]
+There is a kernel $K(s,u,t,s+t-u+1)$.
+\end{lemma}
+\begin{proof}
+Put
+\[
+ S=u-t,\quad T=u-s,\quad U=2u-s-t=S+T,\quad P=s+t-u.
+ \]
+Then $0\le S\le T$, $T\ge1$, $U\ge1$, and
+$P\ge T-S+2$. Apply Lemma~\ref{common:odd-path} to the
+$2T+1$-vertex path with upper first entry $2T-S+1$.
+Its other endpoint is $T+S+1$. The first entry is between
+$T+1$ and $2T+1$. The excluded request is
+\[
+ 2(2T-S)=3T\quad\Longleftrightarrow\quad T=2S
+ \quad\Longleftrightarrow\quad u=2t-s,
+ \]
+which is excluded in the hypothesis. The normalization in
+Lemma~\ref{common:odd-path} also handles $S=T$, when the prescribed
+entry is the first upper entry.
+
+Raise every upper entry of this ordinary path by one. The new label
+hole is $T+1$, the missing color is $1$, and its endpoints are
+$2T-S+2,T+S+2$. Thus it is $K(S,U,T,1)$.
+Diagonal growth by $P$ gives $K(s,u,t,P+1)$.
+Finally $1\le P+1\le u$, since $U\ge1$ and $u=U+P$.
+\end{proof}
+
+\begin{lemma}[An explicit near-maximum-hole word]\label{ok:near-max-word}
+For $q\ge2$ the following concatenation is a path word:
+\[
+ (3q+1),\quad
+ (q+j,3q-j)_{j=0}^{q-1},\quad
+ (2q,4q+2),\quad
+ (j,4q+1-j)_{j=1}^{q-1}.
+ \tag{*}\label{ok:near-max-formula}
+ \]
+Its lower labels are $[1,2q]$, its upper labels are
+$[2q+1,4q+2]\setminus\{4q+1\}$, its colors are
+$[1,4q+1]\setminus\{4q\}$, and its endpoints are $3q+1,3q+2$.
+\end{lemma}
+\begin{proof}
+The lower packets are $[q,2q-1]$, $\{2q\}$, and $[1,q-1]$.
+The upper packets are $\{3q+1\}$, $[2q+1,3q]$,
+$\{4q+2\}$, and $[3q+2,4q]$. These are disjoint and give
+the stated label sets.
+
+Through the entry $2q$, the differences are exactly $[1,2q+1]$:
+the first is $2q+1$, the first loop supplies alternating descending
+even and odd differences down to $2$, and the following edge gives
+$1$. The next edge gives $2q+2$. The remaining edges give all of
+$[2q+3,4q+1]$ except $4q$: the within-pair differences are
+$4q+1-2j$, and the joins give the intervening even differences.
+All edges cross $2q$. The first and last entries are as asserted.
+\end{proof}
+
+\begin{lemma}[Pinned central AP kernels]\label{ok:ap-central}
+If $d\ge2$ and $s\ge2d+2$, there is
+\[
+ K(s,s+2d,s+d,s-d+2).
+ \]
+For $d=1$ and every $s\ge2$ there is also a kernel completing
+$\Sp{2s+1,2s+3,2s+5}$.
+\end{lemma}
+\begin{proof}
+In \eqref{ok:near-max-formula} put $q=d$. Reflect its lower
+labels by $2d+1-x$ and upper labels by $6d+3-x$. Its new hole
+is $2d+2$, missing color $2$, and endpoints $3d+2,3d+1$.
+These are exactly $K(d,3d,2d,2)$. Equivalently the reflected word
+is the following explicit concatenation:
+\[
+ (3d+2),\quad
+ (d+1-j,3d+3+j)_{j=0}^{d-1},\quad
+ (1,2d+1),\quad
+ (2d+1-j,2d+2+j)_{j=1}^{d-1}.
+ \]
+Apply diagonal growth with $P=s-d\ge d+2$. The result has
+parameters $(s,s+2d,s+d,s-d+2)$, and its final hole parameter
+is between $1$ and $s+2d$.
+
+For $d=1$ the following three literal kernels supply $s=2,3,4$:
+\begin{align*}
+ K(2,4,3,2)&=(6,1,8,2,4,3,7),\\
+ K(3,5,4,2)&=(7,4,5,3,8,2,9,1,10),\\
+ K(4,6,5,4)&=(8,2,12,1,10,5,6,4,7,3,11).
+\end{align*}
+Their respective label holes are $5,6,9$ and missing colors
+$3,4,7$, so direct subtraction checks all three.
+For $s\ge5$, diagonally grow the first word by $P=s-2\ge3$.
+It gives $K(s,s+2,s+1,s)$, with $1\le s\le s+2$.
+The completion lemma applies in every case, with the Walecki
+short arm retained.
+\end{proof}
+
+\begin{corollary}\label{ok:interior-cone}
+If $5\le a\le b\le c\le2a-5$ are odd, then
+$\Sp{a,b,c}$ is root-zero $\alpha$.
+\end{corollary}
+\begin{proof}
+Write $a=2s+1$, $b=2t+1$, $c=2u+1$.
+The equal case uses Proposition~\ref{ok:equal-odd-three}.
+The non-AP case uses Lemmas~\ref{ok:central-kernel}
+and~\ref{ok:completion}. In the remaining case put
+$t=s+d$, $u=s+2d$, $d\ge1$.
+The cone condition implies $s\ge2d+2$, so
+Lemma~\ref{ok:ap-central} applies. This covers the complete
+arithmetic-progression exception of the ordinary odd-path request.
+\end{proof}
+
+\subsubsection{The two central boundary layers}
+
+\begin{lemma}[Odd-prefix boundary kernels]\label{ok:odd-prefix-boundaries}
+For $\epsilon\in\{0,1\}$, suppose
+\[
+ u=2s-1+\epsilon,\qquad
+ s\ge3+\epsilon,\qquad s\le t\le2s-3-\epsilon.
+ \]
+Then there is $K(s,u,t,t-s+3)$.
+\end{lemma}
+\begin{proof}
+Put
+\[
+ T=s-1,\quad P=t-s+1,\quad L=2s-t-2-\epsilon,\quad v=P+2.
+ \]
+Here $T,P\ge1$ and $1\le L\le T$.
+Take the even path on $[1,2T]$ from lower $L$ to upper $T+L$,
+raising its upper entries by $2P+2$. Prepend the odd Walecki
+word on $[1,2P+1]$, starting at $2P+1$ and ending at $P+1$,
+translated by $T$.
+
+The lower blocks are $[1,T]$ and $[T+1,t]$. The upper blocks
+are $[t+1,T+2P+1]$ and $[T+2P+3,2t+2]$.
+The label hole is $T+2P+2=t+v$.
+The prefix colors are $[1,2P]$; the old even path contributes
+$[2P+3,2t+1]$; and their join has color
+\[
+ (T+P+1)-L=2P+1+\epsilon.
+ \]
+Thus the sole missing color is $2P+2-\epsilon=s+t-u+v$.
+The endpoints are
+\[
+ T+2P+1=2t-s+2,\qquad
+ T+L+2P+2=t+s+1-\epsilon.
+ \]
+The second is $2t+2s-u-v+3$, proving the claimed kernel.
+The inequalities also give $1\le v\le u$ when completion is wanted.
+There is no odd-order prescribed endpoint in this argument: the odd
+prefix is an explicit word.
+\end{proof}
+
+\begin{lemma}[The gap-two boundary kernels]\label{ok:gap-two-kernels}
+For every $s\ge4$ there is
+\[
+ K(s,2s-1,2s-2,s+3).
+ \]
+Consequently $\Sp{a,2a-5,2a-3}$ is root-zero $\alpha$ for
+every odd $a\ge5$.
+\end{lemma}
+\begin{proof}
+For the displayed kernel the carrier is $T=2s-2$, the hole is
+$3s+1$, missing color $2s+2$, and endpoints $3s-2,3s-3$.
+At $s=4$ and $s=7$ use the controlled initial words
+\begin{align*}
+ P_4={}&(10,4,11,3,12,1,14,2,7,6,8,5,9),\\
+ P_7={}&(19,7,20,6,21,4,25,1,26,3,23,5,24,2,\\
+       &\hspace{9mm}13,12,14,11,15,10,16,9,17,8,18).
+\end{align*}
+They contain $(2,T+1)$ and have exactly the inventories just stated.
+Lemma~\ref{ok:controlled-step} supplies $s\mapsto s+2$.
+The $s=4$ word covers all even $s\ge4$, and the $s=7$ word
+all odd $s\ge7$. The one remaining value, $s=5$, is supplied by
+\[
+ (13,6,9,8,10,4,18,1,17,2,15,5,14,3,11,7,12).
+ \]
+No controlled edge is required in this isolated word.
+Since $s+3\le2s-1$ for $s\ge4$, completion is valid.
+
+At $a=7$ the profile is $(7,9,11)$, supplied by the
+$s=3,d=1$ word in Lemma~\ref{ok:ap-central}.
+At $a=5$ it is $(5,5,7)$ and uses the complete
+minimum-five theorem in Section~\ref{app:small-alpha}.
+\end{proof}
+
+\begin{lemma}[The reverse boundary]\label{ok:reverse-boundary}
+For $s\ge2$ and $s\le t\le2s$, the spider
+$\Sp{2s+1,2t+1,4s+1}$ is root-zero $\alpha$.
+For $t<2s$ it has a completing kernel $K(s,2s,t,t-s+1)$.
+\end{lemma}
+\begin{proof}
+First suppose $t<2s$ and put $r=t-s$, so $0\le r\le s-1$.
+We construct the standard source $K(r,t,t,r+1)$.
+For $r=0$ use $Z_t$. For $r=1$ use
+\[
+ B_3=(7,3,4,2,8,1,6),\qquad
+ B_4=(9,3,5,4,8,1,10,2,7)
+ \tag{B}\label{ok:B-small}
+ \]
+when $t=3,4$, respectively. They are $K(1,t,t,2)$.
+For $t\ge5$, apply carrier prefix of size $w=t-3\ge2$ to
+$B_3$; its even upper endpoint is $2w-1$.
+For $r\ge2$, the inequality $t=s+r\ge2r+1$ permits the
+standard short-wedge source in Lemma~\ref{ok:repeated-kernels}.
+Reversal $J$ gives exactly $K(s,2s,t,r+1)$.
+Its hole parameter satisfies $1\le r+1\le s\le2s$.
+When $t=2s$, use the twice-carrier case of
+Lemma~\ref{ok:repeated-kernels}, including its literal $(2,4)$
+exception. Completion proves the assertion.
+\end{proof}
+
+\begin{proposition}[The complete central cone]\label{ok:central-cone}
+For odd $5\le a\le b\le c\le2a-1$, the spider
+$\Sp{a,b,c}$ is root-zero $\alpha$.
+For $a\ge7$ these constructions retain the maximum Walecki $a$-arm.
+\end{proposition}
+\begin{proof}
+The interior $c\le2a-5$ is Corollary~\ref{ok:interior-cone}.
+At $c=2a-3$, either $b=c$, handled by the repeated-arm theorem,
+or $b=c-2$, handled by Lemma~\ref{ok:gap-two-kernels}, or
+$b\le c-4$, handled by $\epsilon=0$ in
+Lemma~\ref{ok:odd-prefix-boundaries}.
+At $c=2a-1$ use Lemma~\ref{ok:reverse-boundary}.
+All three possibilities at each layer exhaust odd $b$.
+For the small minimum $a=5$ the complete minimum-five theorem also
+supplies any branch outside those displayed parameter domains.
+Every construction for $a\ge7$ is a completion or the explicitly
+pinned equal-arm construction. No Walecki pin is asserted for the
+separate minimum-five input.
+\end{proof}
+
+\subsubsection{The far cone, including its resonance}
+
+\begin{lemma}[Even extension at an upper leaf]\label{ok:upper-leaf-extension}
+Suppose a root-zero $\alpha$-labeled tree has index $K$ and an
+upper leaf labeled $K+e$. Any $2z$ vertices, with $z\ge e$, can be
+appended to that leaf while preserving root-zero $\alpha$.
+The new index is $K+z$ and the new leaf has label $K+z+e$.
+\end{lemma}
+\begin{proof}
+Raise every old upper label by $2z$, leaving old lower labels fixed.
+On the new middle interval use an even path on $[1,2z]$
+from lower $e$ to upper $z+e$, adding $K$ to its entries.
+Join its first entry to the former leaf. The join has color
+$(K+e+2z)-(K+e)=2z$, the new internal colors are
+$[1,2z-1]$, and all old colors have risen by $2z$.
+The middle labels fill $[K+1,K+2z]$ exactly. Every edge crosses
+$K+z$, and the asserted new leaf and distance follow.
+\end{proof}
+
+\begin{proposition}[The full odd far cone]\label{ok:far-cone}
+If $7\le a\le b\le c$ are odd and $c\ge a+b-1$, then
+$\Sp{a,b,c}$ is root-zero $\alpha$.
+\end{proposition}
+\begin{proof}
+Write $a=2s+1$, $b=2t+1$, with $s\ge3$.
+The rooted pair on arms $a,b$ is root-zero $\alpha$ of index
+$s+t$, by Corollary~\ref{common:alpha-pair}.
+Since $c>2(s+t)$, Lemma~\ref{common:alpha-extension}
+attaches the $c$-arm except at
+\[
+ c_*=4(s+t)+1=2a+2b-3.
+ \]
+We now construct that value, rather than assume attachment at its
+excluded endpoint.
+
+Take the pinned repeated-arm construction $\Sp{a,b,b}$ from
+Corollary~\ref{ok:repeated-alpha}, including its equal case.
+Put $K=s+2t$ and $N=2K+3=2s+4t+3$.
+All three leaves are upper. If their labels sum to $L$, summing the
+positive edge differences by degrees gives
+\[
+ \frac{N(N+1)}2
+   =2\sum_{j=K+1}^N j-2\sum_{j=1}^Kj-L,
+ \]
+because nonleaf nonroot vertices have degree two and the hub is zero.
+Consequently
+\begin{equation}
+ L=\frac{N(N+1)}2-2K(K+1)=5K+6.
+ \label{ok:signed-leaf-sum}
+\end{equation}
+The Walecki short leaf is $N-s=s+4t+3$.
+The two long leaf labels therefore sum to $4s+6t+3$.
+Their smaller label $U$ satisfies
+\[
+ U\le2s+3t+1,\qquad e=U-K\le s+t+1.
+ \]
+Choose that long arm and append $2(2s+t)$ vertices.
+Since $2s+t\ge s+t+1\ge e$, Lemma~\ref{ok:upper-leaf-extension}
+applies. Its length becomes
+\[
+ b+2(2s+t)=4s+4t+1=c_*.
+ \]
+This supplies the resonance.
+The extension raises all old upper labels uniformly, so the short
+arm remains the maximum Walecki word. The unextended lower labels
+and all new middle labels stay below its final upper label.
+\end{proof}
+
+\subsubsection{The complete short wedge}
+
+\begin{lemma}[Unequal short-wedge kernels]\label{ok:unequal-wedge-kernel}
+Let $s\ge2$, $u\ge2s+2$, and $0\le\delta\le s-1$; put
+$t=u+\delta$. There is a completing kernel $K(s,u,t,v)$, with
+\[
+ v=\begin{cases}
+ s+\delta+3,&\delta\ne s-3,\\
+ 2s-1,&\delta=s-3.
+ \end{cases}
+ \]
+\end{lemma}
+\begin{proof}
+In the nonexceptional case put $r=s+\delta+1$.
+Apply the odd-path interface on $[1,2r+1]$ at upper endpoint
+$2r-s+2$; its other endpoint is $2s+\delta+1$.
+Both entries lie in the upper class. The sole excluded request is
+\[
+ 2(2r-s+1)=3r
+ \quad\Longleftrightarrow\quad r=2s-2
+ \quad\Longleftrightarrow\quad\delta=s-3.
+ \]
+Thus the request is permitted here.
+The word itself, with a new unused possible maximum $2r+2$,
+is $K(s,s+1,r,s+\delta+3)$:
+its hole is $r+v=2r+2$ and its missing color is $2r+1$.
+
+If $\delta=s-3$, then $s\ge3$. Put $q=s-1$ in
+Lemma~\ref{ok:near-max-word}. Its word is
+$K(s,s+1,2s-2,2s-1)$, with missing color $4s-4$.
+This is the needed replacement for the forbidden ordinary path.
+In both cases apply carrier prefix with
+$w=u-s-1\ge s+1$. The carrier becomes $t=u+\delta$,
+the other half becomes $u$, and $v$ is unchanged.
+Since $v\le2s+2\le u$ in the first case and $v=2s-1<u$
+in the second, completion is allowed.
+\end{proof}
+
+\begin{proposition}[Both adjacent short-wedge boundaries]
+\label{ok:short-wedges}
+For odd $5\le a\le b\le c$ with $b\ge2a-1$,
+$\Sp{a,b,c}$ is root-zero $\alpha$.
+\end{proposition}
+\begin{proof}
+We can dispose of $a=5$ using Section~\ref{app:small-alpha};
+write $a=2s+1$ with $s\ge3$ for the far-cone appeals below.
+
+First let $b\ge2a+3$, so its half $u\ge2s+2$.
+Write the largest half as $t=u+\delta$.
+If $0\le\delta\le s-1$, use
+Lemma~\ref{ok:unequal-wedge-kernel} and completion.
+If $\delta\ge s$, then $c\ge a+b-1$ and
+Proposition~\ref{ok:far-cone} applies.
+
+Next let $b=2a+1$, with half $u=2s+1$.
+For $2s+1\le t\le3s$ take the $\epsilon=0$ odd-prefix kernel
+whose source parameters are
+\[
+ S_0=t-s+1,\quad U_0=2S_0-1,\quad T_0=t,\quad V_0=s+2.
+ \]
+Indeed $S_0\ge3$, $S_0\le t\le2S_0-3$,
+as required by Lemma~\ref{ok:odd-prefix-boundaries}.
+Reflecting it gives
+\[
+ K(s,2s+1,t,t-s+1).
+ \]
+The final hole parameter is at most $2s+1$ exactly because
+$t\le3s$. For $t\ge3s+1$ the far cone applies.
+
+Finally let $b=2a-1$, with half $u=2s$.
+If $t=2s$, use the repeated-arm theorem.
+If $t=2s+1$, reflect the gap-two source
+$K(s+1,2s+1,2s,s+4)$ of
+Lemma~\ref{ok:gap-two-kernels}. The result is
+$K(s,2s+1,2s,s-1)$.
+Completing it gives the desired unordered arm triple, with its two
+long arms interchanged. The condition $s\ge3$ ensures $s-1\ge1$.
+For $2s+2\le t\le3s-1$, use the $\epsilon=1$ odd-prefix source
+with $S_0=t-s+1$, $U_0=2S_0$, $T_0=t$, $V_0=s+2$.
+Its source inequalities hold, and reflection gives
+$K(s,2s,t,t-s+1)$. Its final hole condition is exactly
+$t\le3s-1$. For $t\ge3s$, the far cone applies.
+All equality, gap-two, near, and far cases have now been included.
+\end{proof}
+
+\subsubsection{The last transition and its pinned AP ray}
+
+\begin{lemma}[Transition kernels]\label{ok:transition-kernels}
+The following kernels exist:
+\begin{align}
+ K(s,2s+g,s+g+h,h+1),
+ &\quad g\ge1,\ h\ge2,\ s\ge g+h+1; \label{ok:transition-high}\\
+ K(s,2s+g,s+g+1,3),
+ &\quad g\ge1,\ s\ge g+3. \label{ok:transition-one}
+\end{align}
+\end{lemma}
+\begin{proof}
+For \eqref{ok:transition-high}, use the elementary pinned source
+$K(0,0,h,h+1)$ from Lemma~\ref{ok:elementary-seeds}.
+Carrier prefix of size $g$ gives $K(0,g,g+h,h+1)$.
+The inequality $s\ge g+h+1=U+V$ permits asymmetric growth
+by $P=s$, giving the asserted kernel. Its ordinary even appended
+path has lower endpoint $s-g-h\ge1$ and upper endpoint
+$2s-g-h\le2s$.
+
+For \eqref{ok:transition-one}, the literal word
+\[
+ (6,1,4,2,3)=K(0,1,2,3)
+ \]
+has label hole $5$, missing color $4$, and endpoints $6,3$.
+If $g>1$, use carrier prefix of size $g-1$; if $g=1$ do
+nothing. The resulting kernel is $K(0,g,g+1,3)$.
+Asymmetric growth by $s\ge g+3=U+V$ proves the second assertion.
+The final hole parameters $h+1$ and $3$ lie in $[1,2s+g]$,
+so either word can be completed.
+\end{proof}
+
+\begin{lemma}[The pinned limiting AP ray]\label{ok:pinned-ap-ray}
+For every $s\ge3$ there is $K(s,3s-2,2s-1,2)$.
+Its completion is a root-zero $\alpha$-labeling of
+$\Sp{2s+1,4s-1,6s-3}$ with a maximum Walecki short arm.
+\end{lemma}
+\begin{proof}
+The required word has label interval $[1,4s]\setminus\{2s+1\}$,
+cut $2s-1$, palette $[1,4s-1]\setminus\{3\}$, and endpoints
+$3s,3s+1$. At $s=3$ use
+\[
+ (9,5,6,4,11,3,8,2,12,1,10).
+ \]
+At $s=4,5$ use the two controlled initial words
+\begin{align*}
+ Q_4={}&(12,6,8,7,11,2,16,1,14,4,15,3,10,5,13),\\
+ Q_5={}&(15,6,12,8,10,9,14,7,17,5,13,2,20,1,18,4,19,3,16).
+\end{align*}
+They contain the controlled edge $(2,2s+3)$.
+These finite assertions follow by listing their absent label, endpoints,
+and successive absolute differences: the latter give every integer
+from $1$ to $4s-1$ except $3$.
+
+For $s\ge4$ with a controlled word, raise lower entries by $2$
+and upper entries by $6$. The mapped blocks are $[3,2s+1]$ and
+$[2s+6,4s+6]\setminus\{2s+7\}$; the palette is
+$[5,4s+3]\setminus\{7\}$. The controlled edge becomes
+$(4,2s+9)$, of color $2s+5$. Replace it by
+\[
+ (4,4s+8,1,4s+7,2,2s+7,2s+3,2s+4,2s+2,2s+9),
+ \]
+or its reversal as dictated by the old edge orientation.
+Its eight interior entries are the fresh lower labels
+$1,2,2s+2,2s+3$ and upper labels
+$2s+4,2s+7,4s+7,4s+8$.
+Its colors in order are
+\[
+ (4s+4,4s+7,4s+6,4s+5,2s+5,4,1,2,7).
+ \]
+Thus the controlled color is retained; the added colors are
+$1,2,4,7$ and $[4s+4,4s+7]$.
+Together with the mapped old palette these give
+$[1,4s+7]\setminus\{3\}$. The target hole is $2s+5$,
+the new endpoints are $3s+6,3s+7$, and the new controlled edge
+is $(2,2s+7)$. All edges cross $2s+3$.
+The replacement uses fresh entries once and preserves the path topology.
+This is the induction $s\mapsto s+2$; the two bases cover both
+parities. Finally $1\le2\le3s-2$ permits completion.
+\end{proof}
+
+\begin{theorem}[Complete positive odd classification]\label{ok:all-odd-theorem}
+A positive three-arm spider with all arm lengths odd is root-zero
+$\alpha$ if and only if its profile is not $(3,3,3)$.
+\end{theorem}
+\begin{proof}
+Order its lengths $a\le b\le c$.
+First let $a\ge7$ and write $a=2s+1$, $b=2t+1$, $c=2u+1$.
+The complete central cone $u\le2s$, complete short wedge
+$t\ge2s$, and far cone $u\ge s+t$ have already been proved.
+Outside their union,
+\[
+ u\ge2s+1,\qquad t\le2s-1,\qquad u\le s+t-1.
+ \]
+Put $g=u-2s$ and $h=s+t-u$. Then $g,h\ge1$ and
+$t=s+g+h\le2s-1$, or $s\ge g+h+1$.
+For $h\ge2$ use \eqref{ok:transition-high}.
+For $h=1$ and $s\ge g+3$ use \eqref{ok:transition-one}.
+The only remaining case is $h=1$, $s=g+2$, giving
+$(a,b,c)=(2s+1,4s-1,6s-3)$; it is
+Lemma~\ref{ok:pinned-ap-ray}. These alternatives exhaust every
+positive size, without an upper bound or a total-size congruence.
+For $a=5$, the equal profile $(5,5,5)$ is
+Proposition~\ref{ok:equal-odd-three}; every other profile has
+$c\ge7$ and is supplied by the minimum-five theorem in
+Section~\ref{app:small-alpha}.
+
+If $a=1$, the rooted odd pair $\Sp{b,c}$ is root-zero
+$\alpha$ by Corollary~\ref{common:alpha-pair}; its only exceptional
+rooted pair $(2,2)$ cannot occur. Adding a maximum-labeled unit
+leaf preserves its index and proves the assertion.
+If $a=3$ and $c\ge7$, use the complete minimum-three theorem
+in Section~\ref{app:small-alpha}. If $c<7$, the two positive
+profiles have the following explicit words:
+\begin{align*}
+ \Sp{3,3,5}:&
+ \quad(11,1,10)\mid(6,2,9)\mid(8,3,5,4,7),\\
+ \Sp{3,5,5}:&
+ \quad(13,1,12)\mid(10,4,6,5,8)\mid(9,2,7,3,11).
+\end{align*}
+They have cuts $4,5$, respectively, consecutive labels, and
+consecutive color inventories. The sole remaining profile is
+$(3,3,3)$.
+
+For this negative case a root-zero $\alpha$-labeling would have
+cut $3$. Its depth-two labels would be $1,2,3$ and its first and
+last labels $4,\ldots,9$. Equation~\eqref{ok:signed-leaf-sum}
+at $K=3,N=9$ forces the leaf labels to sum to $21$.
+Label $9$ must be a first label, since only an edge incident with
+zero can have color $9$. The only three-element subset of
+$[4,8]$ with sum $21$ is $\{6,7,8\}$; hence the first labels
+are $4,5,9$.
+Color $8$ forces $9$--$1$. Color $7$ then forces $1$--$8$:
+the alternative $9$--$2$ would give degree three to the vertex
+labeled $9$, while $7,8$ cannot be first labels.
+Thus one entire arm is $(9,1,8)$.
+The arm starting with $4$ cannot use middle $2$, because its final
+edge to $6$ or $7$ would repeat root color $4$ or $5$.
+It must therefore be $(4,3,6)$, since leaf $7$ would again repeat
+color $4$. The last arm is then $(5,2,7)$ and repeats colors
+$3,5$. This contradiction proves the exception.
+The conclusion concerns root-zero $\alpha$ labeling; it does not
+assert that $\Sp{3,3,3}$ is nongraceful.
+\end{proof}
+
+\subsection{Odd-pair offsets extracted from kernels}
+\label{construction:odd-pair-kernels}
+
+The basic pair offsets, including the low, high, reverse, equal, and
+maximal constructions, are proved in Section~\ref{app:pair-offsets}.
+The purpose of this section is to prove the additional odd-pair
+intervals used in the eight-arm argument. Each statement is sufficient;
+their union is not asserted to classify every possible offset.
+
+\begin{lemma}[Kernel-to-pair extraction]\label{ok:pair-extraction}
+Let $p$ be $K(r,u,t,V)$, with $t,u\ge1$ and $1\le V\le u$.
+Then
+\[
+ k=t+u+V-1\ \in\ \Om(\Sp{2t+1,2u+1}).
+ \]
+No ordering assumption between $t$ and $u$ is needed.
+\end{lemma}
+\begin{proof}
+Put $m=2t+2u+2$, $H=t+3-V$, and $\ell=u-V+1$.
+Complement the kernel entries in $2t+3$. Its lower set is
+$[1,t+2]\setminus\{H\}$, its upper set $[t+3,2t+2]$,
+and its endpoints are $r+1,u-2r+V$.
+Map its lower entries by $x\mapsto x+k$ and upper entries by
+$x\mapsto x+k+2u$ to form arm $A$.
+The even path on $[1,2u]$ from lower $\ell$ to upper
+$u+\ell$ exists since $1\le\ell\le u$.
+Translate it by $k+t+2$ and append $k+H$ to form arm $B$.
+
+The two words have lengths $2t+1,2u+1$. Their nonroot labels
+partition the following blocks, the indicated hole being filled last:
+\begin{align*}
+ &[k+1,k+t+2]\setminus\{k+H\},\\
+ &[k+t+3,k+t+2u+2],\\
+ &[k+t+2u+3,k+m],\qquad\{k+H\}.
+\end{align*}
+Thus their union is exactly $[k+1,k+m]$.
+Complementation preserves the old differences, so the internal
+colors of $A$ are
+$[2u+1,m-1]\setminus\{D+2u\}$.
+Its root color is $k+r+1=D+2u$.
+The old even path in $B$ supplies $[1,2u-1]$,
+its appended edge has color
+\[
+ (k+t+2+u+\ell)-(k+H)=2u,
+ \]
+and its root color is $k+t+2+\ell=m$.
+Hence every color in $[1,m]$ appears once.
+\end{proof}
+
+\subsubsection{An extended interval for two equal odd arms}
+
+\begin{lemma}[A variable-hole repeated kernel]\label{ok:variable-hole}
+For $s\ge2$ and $1\le V\le s$, some integer $r\ge0$ admits
+$K(r,s,s,V)$.
+\end{lemma}
+\begin{proof}
+Normally put $r=V-1$, so the desired hole parameter is $r+1$.
+For $r=0$, use $Z_s$. For $r=1$, the words in
+\eqref{ok:B-small} apply at $s=3,4$, and carrier prefix of
+size $s-3\ge2$ from $B_3$ applies at $s\ge5$.
+For $r\ge2$, diagonal growth from $Z_{s-r}$ gives the standard
+kernel if $s\le2r-2$, and carrier prefix from
+$K(r,r,r,r+1)$ gives it if $s\ge2r+1$.
+Here $r=V-1\le s-1$, so the diagonal source has positive gap
+whenever it is used.
+
+The two omitted carriers are $s=2(V-1)-1$ and $s=2(V-1)$.
+In these cases change to $r=V-2$.
+If $r=0$, necessarily $(s,V)=(2,2)$, and use
+\[
+ (6,1,5,2,3)=K(0,2,2,2).
+ \]
+If $r\ge1$, put $S=s-r+1$.
+The two carrier alternatives give $S\ge3$ and
+$S\le s\le2S-3$.
+The $\epsilon=0$ odd-prefix source
+of Lemma~\ref{ok:odd-prefix-boundaries} has parameters
+$K(S,2S-1,s,r+2)$.
+Reversing it by $J$ gives $K(r,s,s,r+2)$,
+which has the desired $V$.
+This repairs both excluded carriers without assuming a standard
+kernel whose endpoints would coincide or hit its hole.
+\end{proof}
+
+\begin{proposition}[Equal odd upper interval]\label{ok:equal-odd-offsets}
+For every odd $L=2s+1\ge5$,
+\[
+ [0,3s-1]\ \subseteq\ \Om(\Sp{L,L}).
+ \]
+\end{proposition}
+\begin{proof}
+The basic equal-arm construction in Section~\ref{app:pair-offsets}
+supplies $0\le k<L$. It remains to cover
+$2s\le k\le3s-1$, an interval overlapping the basic one.
+Set $V=k-2s+1$, so $1\le V\le s$.
+Lemma~\ref{ok:variable-hole} supplies $K(r,s,s,V)$,
+and extraction gives $k=s+s+V-1$.
+All endpoint and label/color conditions are exactly those of
+Lemma~\ref{ok:pair-extraction}; no additional path request is hidden.
+\end{proof}
+
+\subsubsection{Consecutive odd lengths}
+
+\begin{lemma}[Consecutive-carrier kernels]\label{ok:consecutive-kernels}
+For every $t\ge3$ and $1\le V\le t+1$, there is some $r$
+and a kernel $K(r,t+1,t,V)$.
+\end{lemma}
+\begin{proof}
+The fifteen initial words in Table~\ref{ok:consecutive-table}
+cover every required $V$ at $t=3,4,5$.
+For a row with parameters $t,V,r$, the missing label is $t+V$,
+the missing color is $r+V-1$, and the two ordered endpoints are
+$2t-r+2,t+2r-V+2$.
+Listing the entries and subtracting successive pairs gives precisely
+those inventories. Thus the table consists of full literal kernels,
+rather than declarations of a finite search outcome.
+
+For $t\ge6$ first note the following ordinary source. For
+$T\ge1$, $T\ne2$, take the odd path on $[1,2T+1]$ with upper
+endpoints $2T,T+2$, and raise upper labels by one.
+Its unique forbidden request would satisfy $2(2T-1)=3T$,
+namely $T=2$. Thus this gives
+\begin{equation}
+ K(1,T+1,T,1)\qquad(T\ge1,\ T\ne2).
+ \label{ok:consecutive-ordinary-seed}
+\end{equation}
+The literal source
+\[
+ M=(6,1,8,2,4,3,7)=K(2,4,3,2)
+ \]
+will repair the missing $T=2$ case where it arises.
+
+At $V=1$, use \eqref{ok:consecutive-ordinary-seed} with $T=t$.
+At $V=2$, use carrier prefix of size $w=t-3\ge3$ on $M$.
+Reflection preserves $U=t+1$ and sends $V$ to $t-V+3$;
+therefore this also gives $V=t+1$.
+
+For $3\le V\le t$ and $2V\ge t+3$, put
+$T=t-V+1$ and $P=V-1$.
+Then $T\ge1$ and $P\ge T+1$.
+If $V\ne t-1$, then $T\ne2$ and diagonal growth of
+\eqref{ok:consecutive-ordinary-seed} gives the desired kernel:
+its new carrier is $T+P=t$, its other half is $t+1$,
+and its hole parameter is $1+P=V$.
+If $V=t-1$, diagonally grow $M$ by $P=t-3\ge3$ instead.
+Its gap $T-S$ is $1$, so this growth is permitted and gives
+$U=t+1$, carrier $t$, and $V=t-1$.
+Finally, every remaining $3\le V\le t$ has $2V<t+3$;
+reflect the already constructed upper-half kernel at
+$V'=t-V+3$. It has $3\le V'\le t$ and $2V'\ge t+3$.
+All hole parameters have now been covered.
+\end{proof}
+
+\begin{longtable}{@{}rrr@{\quad}l@{}}
+\caption{Literal consecutive-carrier kernels.}
+\label{ok:consecutive-table}\\
+\toprule
+$t$&$V$&$r$&Word\\ \midrule
+\endfirsthead
+\toprule $t$&$V$&$r$&Word\\ \midrule
+\endhead
+\bottomrule
+\endfoot
+$3$&$1$&$1$&$(7,2,8,1,5,3,6)$\\
+$3$&$2$&$2$&$(6,1,8,2,4,3,7)$\\
+$3$&$3$&$1$&$(7,2,8,1,5,3,4)$\\
+$3$&$4$&$2$&$(6,2,8,1,4,3,5)$\\
+$4$&$1$&$1$&$(9,1,10,3,6,4,8,2,7)$\\
+$4$&$2$&$3$&$(7,4,5,3,8,2,9,1,10)$\\
+$4$&$3$&$1$&$(9,3,8,1,10,2,6,4,5)$\\
+$4$&$4$&$4$&$(6,4,5,2,7,3,9,1,10)$\\
+$4$&$5$&$2$&$(8,1,10,2,7,3,6,4,5)$\\
+$5$&$1$&$1$&$(11,2,12,1,9,3,10,5,7,4,8)$\\
+$5$&$2$&$2$&$(10,2,11,1,12,5,6,4,8,3,9)$\\
+$5$&$3$&$1$&$(11,2,12,1,9,4,10,3,7,5,6)$\\
+$5$&$4$&$2$&$(10,4,8,1,12,2,11,3,6,5,7)$\\
+$5$&$5$&$3$&$(9,1,12,2,11,5,6,4,7,3,8)$\\
+$5$&$6$&$3$&$(9,4,8,2,12,1,10,3,6,5,7)$\\
+\end{longtable}
+
+\begin{proposition}[Consecutive odd upper interval]\label{ok:consecutive-offsets}
+For odd $a\ge7$,
+\[
+ [a,(3a-1)/2]\ \subseteq\ \Om(\Sp{a,a+2}).
+ \]
+\end{proposition}
+\begin{proof}
+Write $a=2t+1$, $u=t+1$. The preceding lemma supplies every
+$K(r,u,t,V)$ with $1\le V\le t+1=u$.
+Extraction gives $k=2t+V$, ranging from $a$ to $3t+1$.
+\end{proof}
+
+\subsubsection{Two bands from the central and short-wedge kernels}
+
+\begin{proposition}[Short-wedge pair band]\label{ok:short-pair-band}
+Let $1\le t\le u$ and put
+\[
+ S=k-2u-2,\qquad\delta=u-t,\qquad V=k-t-u+1.
+ \]
+If
+\[
+ S\ge2,\quad t\ge2S+2,\quad
+ 0\le\delta\le S-1,\quad\delta\ne S-3,\quad1\le V\le t,
+ \]
+then $k\in\Om(\Sp{2t+1,2u+1})$.
+\end{proposition}
+\begin{proof}
+Lemma~\ref{ok:unequal-wedge-kernel}, in its nonexceptional branch,
+gives $K(S,t,u,S+\delta+3)$.
+Here $S+\delta+3=k-t-u+1=V$.
+Its ordinary odd seed has carrier $r=S+\delta+1$ and upper
+first entry $2r-S+2$; the explicitly excluded request is
+exactly $\delta=S-3$.
+Its even carrier prefix has half-order $w=t-S-1\ge S+1$.
+Thus all the source hypotheses have been checked, not inferred
+from a general three-arm $\alpha$ theorem.
+Apply extraction with carrier $u$ and other half $t$.
+The two lengths are produced in reversed order, and its hypothesis
+is precisely $1\le V\le t$. The offset is $u+t+V-1=k$.
+\end{proof}
+
+\begin{proposition}[Central pair band]\label{ok:central-pair-band}
+Let $1\le t\le u$ and put $S=k-2t$, $V=k-t-u+1$.
+If
+\[
+ 1\le S\le t\le u\le2S-2,\qquad
+ u>S,\quad u\ne2t-S,\quad1\le V\le u,
+ \]
+then $k\in\Om(\Sp{2t+1,2u+1})$.
+\end{proposition}
+\begin{proof}
+The source of Lemma~\ref{ok:central-kernel} has
+\[
+ S_0=u-t,\quad T_0=u-S,\quad
+ U_0=2u-S-t,\quad P=S+t-u.
+ \]
+The stated inequalities give $0\le S_0\le T_0$,
+$T_0,U_0\ge1$, and $P\ge T_0-S_0+2$.
+Its odd-path exception is exactly $u=2t-S$, which has been
+excluded, and diagonal growth gives
+$K(S,u,t,P+1)=K(S,u,t,V)$.
+Extraction now gives the desired pair in its original order and
+offset $t+u+V-1=k$. The extra $u>S$ avoids the equal zero-carrier
+source; no AP or equal exception is silently included.
+\end{proof}
+
+\subsubsection{Asymmetric, strict one-layer, and reflected bands}
+
+\begin{proposition}[Asymmetric pair bands]\label{ok:asymmetric-pair-bands}
+Let $1\le t\le u$ and $V=k-t-u+1$.
+Each of the following conditions suffices for
+$k\in\Om(\Sp{2t+1,2u+1})$.
+\begin{enumerate}
+\item Put $s=k-2t$, $g=u-2s$, and $h=k-t-u$.
+Require
+\[
+ g\ge1,\quad h\ge2,\quad s\ge g+h+1,\quad1\le V\le u.
+ \]
+\item Put $s=u-t+1$ and $g=2t-u-2$.
+Require
+\[
+ k=t+u+2,\quad g\ge1,\quad s\ge g+3,\quad u\ge3.
+ \]
+\item Put
+\[
+ s=3u-k+3,\quad h=t+2u-k+1,\quad
+ g=2k-4u-t-4.
+ \]
+Require
+\[
+ g\ge1,\quad h\ge2,\quad s\ge g+h+1,\quad1\le V\le t.
+ \]
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For the first case substitute the displayed parameters into
+\eqref{ok:transition-high}. They satisfy
+\[
+ 2s+g=u,\qquad s+g+h=t,\qquad h+1=V.
+ \]
+Thus the kernel is $K(s,u,t,V)$ and extraction gives the claim.
+
+For the second case substitute into \eqref{ok:transition-one}.
+Again $2s+g=u$ and $s+g+1=t$, while $V=3$.
+The required completion/extraction inequality is $3\le u$,
+which is explicitly assumed. This is the strict $h=1$ source:
+the limiting AP ray is not included by weakening $s\ge g+3$.
+
+For the third case the source \eqref{ok:transition-high} has
+\[
+ T=s+g+h=u,\qquad U=2s+g=2u-t+2,\qquad W=h+1.
+ \]
+Reflect it using $R$. The resulting carrier remains $u$, its
+other half is $2u-U+2=t$, and its hole parameter is
+\[
+ u-W+3=u-h+2=k-t-u+1=V.
+ \]
+The new shortest parameter is $u-s+1$; its value is already
+realizable because it comes from a genuine reflected word.
+Extraction is used in reversed arm order, and therefore needs
+$1\le V\le t$, not merely $V\le u$.
+This essential guard is retained in the statement.
+\end{proof}
+
+\subsection{Proof dependencies and computational verification}
+\label{ok:verification}
+
+The infinite arguments of this section consist of interval
+partitions, the two classical prescribed-path interfaces, and the
+controlled two-step recurrences. No finite search is used to infer
+the existence of a path for arbitrarily large parameters.
+Every literal initial word required by these arguments is printed
+above. The negative $(3,3,3)$ profile is excluded by the degree and
+color argument in Theorem~\ref{ok:all-odd-theorem}.
+
+The proofs
+of the graph constructions are the formulas and inventory arguments
+in this section; they are not claimed to be formalized in a proof
+assistant.

@@ -1,0 +1,156 @@
+\section{Alpha triples with a short arm}\label{app:small-alpha}
+This section proves the input used when the shortest arm has length at most five. All finite words invoked below are printed in Section~\ref{app:auxiliary-finite}; their role is distinguished from the infinite affine constructions of Section~\ref{app:template-certificates}.
+
+\begin{theorem}\label{sa:main}
+If $1\le a\le b\le c$, $a\le5$, and $c\ge7$, then $\Sp{a,b,c}$ has a root-zero alpha labeling.
+\end{theorem}
+
+\subsection{Explicit fixed-endpoint path words}
+All path words in this section are normalized to the labels $0,\ldots,n-1$. The word has $n$ vertices, and consequently $n-1$ internal differences.
+\begin{lemma}\label{sa:endpoint-one}
+An alpha word starting at lower label $1$ exists for $n\ge3$, $n\ne5$. It can be constructed recursively from
+\[
+(1,2,0),\quad(1,2,0,3),\quad(1,5,0,3,2,4),\quad
+(1,8,0,6,2,7,4,5,3)
+\]
+of lengths $3,4,6,9$, by replacing a word $P$ of length $n$ with
+\[
+(1,n+2,0,n+3)\mathbin\Vert(P+2).
+\]
+For $n=2r+1$ its other endpoint is $r-1$; for $n=2r$ it is $r+1$.
+\end{lemma}
+\begin{proof}
+The four new differences are $n,n+1,n+2,n+3$; the translated old differences are $1,\ldots,n-1$. The new labels $0,1,n+2,n+3$ and the translated old labels partition the full interval, and both classes remain consecutive. The four bases represent the four residues modulo $4$, beginning at the smallest admissible length in that residue. The endpoint identities follow from the signed endpoint sum for odd alpha words and the endpoint difference for even alpha words (Section~\ref{common:foundations}).
+\end{proof}
+
+The same construction has a useful general form. Fix $t\ge1$ and an alpha word $Q$ on $4t$ vertices starting at lower label $t$. Its opposite endpoint is $3t$. Given an alpha word $P$ of length $n$ starting at $t$, raise only the upper labels of $Q$ by $n$ and append $P+2t$. The joining difference is $n$, the first block supplies $n+1,\ldots,n+4t-1$, and the second supplies $1,\ldots,n-1$. The outside lower and upper blocks and the translated old blocks partition the labels. Thus this constructs a new alpha word of length $n+4t$ with the same prescribed endpoint.
+For $t=2,3$, take one verified base in each residue, beginning at $2t+1$, except that the forbidden length $4t+1$ is replaced by $8t+1$. All these words, including $Q$, are printed in Section~\ref{app:auxiliary-finite}. For instance $Q=(2,5,3,4,0,7,1,6)$ works for $t=2$. Cattell's theorem shows that precisely the excluded length is unavailable at this endpoint; direct label and difference checks suffice for every printed base.
+
+\subsection{Even balanced two-arm seeds}
+\begin{lemma}\label{sa:even-balanced}
+For every even $b\ge6$, $\Sp{2,b,b}$ is root-zero alpha.
+\end{lemma}
+\begin{proof}
+First let $b=2k$ with $k\ge3$ odd. The root-zero alpha pair $\Sp{2,2k-2}$ has short word $(2k-1,1)$ and long word $(2k)\Vert(P+2)$, where $P$ is the endpoint-one word of length $2k-3$. Its index is $k$, its differences are $1,\ldots,2k$, and its first long vertex is $2k$. Raise its upper labels by $2k+2$ and attach the reversed Walecki arm
+\[
+D=(2k+2,2k+1,2k+3,2k,\ldots,3k+2,k+1).
+\]
+This yields an alpha spider with arms $2,2k-2,2k+2$, index $2k+1$, and all labels and differences $1,\ldots,4k+2$. The nonshort old arm $A$ is
+\[
+(4k+2)\ \Vert\!!\!\big\Vert_{j=0}^{(k-5)/2}
+(2j+3,4k-1-2j,2j+2,4k-2j)\ \Vert\ (k,3k+3,k-1).
+\]
+When $k=3$ the concatenation of blocks is empty and $A=(14,3,12,2)$.
+
+For $k\equiv3\pmod4$, replace the following edges, matching rows only as lists:
+\[
+\begin{array}{c|c}
+\text{removed}&\text{added}\\\hline
+(0,2k+2)&(0,3k+2)\\
+((k+3)/2,(7k+7)/2)&((k+3)/2,(5k+5)/2)\\
+(k+1,3k+2)&(k+1,2k+2)\\
+((3k+3)/2,(5k+5)/2)&((3k+3)/2,(7k+7)/2)
+\end{array}
+\]
+The removed colors are $2k+2,3k+2,2k+1,k+1$, and the added colors are the same multiset. Every degree and alpha class is preserved. The cuts on $A$ and $D$ have depths $k-1$ and $1,k+2,2k+2$, respectively. Write their resulting vertex segments as $A_0,A_1$ of lengths $k-2,k$, and $D_0,D_1,D_2$ of lengths $k+1,k,1$. The two new long arms are
+\[
+\operatorname{rev}(D_1)\Vert A_1,
+\qquad A_0\Vert\operatorname{rev}(D_0)\Vert D_2,
+\]
+each of length $2k$.
+
+For $k\equiv1\pmod4$, $k\ge5$, use instead
+\[
+\begin{array}{c|c}
+\text{removed}&\text{added}\\\hline
+(0,2k+2)&(0,3k+2)\\
+((k-1)/2,(7k+3)/2)&((k-1)/2,(5k+5)/2)\\
+(k,3k+3)&(k,3k+2)\\
+(k+1,3k+2)&(k+1,2k+2)\\
+(k+2,3k+2)&(k+2,3k+3)\\
+((3k+3)/2,(5k+5)/2)&((3k+3)/2,(7k+3)/2)
+\end{array}
+\]
+The removed colors are $2k+2,3k+2,2k+3,2k+1,2k,k+1$; the new colors are the same in another order. Degrees and classes agree. The $A$ cuts have depths $k-1,2k-3$ and give lengths $k-2,k-2,2$. The $D$ cuts have depths $1,k+2,2k+1,2k+2$ and give lengths $k+1,k-1,1,1$. The long arms become
+\[
+D_2\Vert\operatorname{rev}(A_1)\Vert D_1\Vert A_2,
+\qquad A_0\Vert\operatorname{rev}(D_0)\Vert D_3.
+\]
+Their lengths are again $2k$. These explicit traversals also exclude an unwanted cycle.
+
+If $b\equiv0\pmod4$, $b\ge8$, put $k=b/2$. The pair $\Sp{k,k}$ is alpha because $k\ge4$. Add a unit arm, retaining root zero and index $k$. This gives $\Sp{1,k,k}$ with $2k+1$ edges and balanced index $k$. Balanced subdivision (Section~\ref{app:lifts}) with factor $2$ supplies $\Sp{2,b,b}$. The two residues exhaust even $b\ge6$.
+\end{proof}
+
+\subsection{Minimum two}
+For odd $b\ge5$ the required near bands are $c=b,b+1$; for even $b\ge6$ they are $c=b,b+1,b+2$. The sixteen explicit affine constructions in Section~\ref{app:template-certificates} supply all bands except the even diagonal, which is Lemma~\ref{sa:even-balanced}. Their source is the alpha spider $\Sp{2,b-2,b+\delta+2}$: its pair core is
+\[
+(b-1,1),\qquad (b)\Vert(\operatorname{endpoint\_one}(b-3)+2).
+\]
+Its index is $\floor{b/2}$. Raise upper labels by $n=b+\delta+2$ and fill the middle interval with an $n$-vertex alpha path starting at label $n$. A reversed endpoint-one word, complemented as well when $n$ is odd, gives this endpoint; the even diagonal uses reversed Walecki. The source has the full label and color inventory. The affine trades preserve colors, classes, degrees and the required topology for all parameters above the printed thresholds, by the exact verification theorem of that appendix.
+
+For clarity the inclusive thresholds are
+\[
+\begin{array}{c|rrr}
+b\bmod8&\delta=0&\delta=1&\delta=2\\\hline
+0&\text{Lemma~\ref{sa:even-balanced}}&40&40\\
+1&41&41&--\\
+2&\text{Lemma~\ref{sa:even-balanced}}&42&42\\
+3&35&35&--\\
+4&\text{Lemma~\ref{sa:even-balanced}}&36&36\\
+5&37&21&--\\
+6&\text{Lemma~\ref{sa:even-balanced}}&38&30\\
+7&23&23&--
+\end{array}
+\]
+The exact finite complement has $53$ near-band profiles: $24$ for odd $b$ and $29$ for even $b$. Together with $(2,3,9)$ and $(2,4,13)$ these are the $55$ words printed in Section~\ref{app:auxiliary-finite}.
+
+It remains to justify the two resonances omitted by ordinary alpha attachment. For an alpha spider with $N$ edges and index $K$, summing the positive signed edge differences gives
+\begin{equation}\label{sa:signed-leaves}
+\frac{N(N+1)}2
+=2\left(\sum_{j=K+1}^{N}j-\sum_{j=0}^{K}j\right)
+-\sum_{\text{upper leaves}} f(v)+\sum_{\text{lower leaves}}f(v).
+\end{equation}
+This follows because a nonleaf nonroot vertex has degree two, a leaf has degree one, and the root contributes zero.
+For odd $b$, the seed $\Sp{2,b,b}$ has short leaf $1$ and upper long leaves $U,V$. Substitution gives $U+V=3b+4$. Since this is odd, one leaf has upper distance at most $(b+3)/2$ above index $b$. Extend that arm by the even number $b+3$, using the upper-leaf extension of Section~\ref{app:lifts}. Its length becomes $2b+3$.
+For even $b$, the mixed seed $\Sp{2,b,b+1}$ has its unique upper leaf at distance $e$ from index $b+1$, with $2e\le b+4$. The infinite source and every degree-preserving trade retain upper leaf $3b/2+2$, giving $e=b/2+1$; finite words are checked for the stated sufficient bound. Extend that odd arm by $b+4$ to reach $2b+5$.
+
+All other $c$ follow from the alpha pair $\Sp{2,b}$ and the strict attachment theorem: its index is $1+\floor{b/2}$. Thus the threshold is $c\ge b+2$ for odd $b$, or $c\ge b+3$ for even $b$, with precisely the resonances just proved. For $b=2$, use the published alpha construction for $\Sp{2,2,c}$, $c\ge7$ \cite[Lemma~3.6]{Panpa2025}. For $b=3,4$ attachment leaves exactly $c=9,13$, already printed. This proves Theorem~\ref{sa:main} when $a=2$.
+
+\subsection{Minimum three}
+The following fixed prefix replacement will be used without any search. If a size-$N$ alpha spider has short arm $(N-1,1)$ and another arm begins
+\[
+(N,3,N-3,2,N-2,5,N-5,4,N-4),
+\]
+replace the short arm with $(N,1)$ and that prefix with
+\[
+(N-2,2,N-1,4,N-3,3,N-5,5,N-4).
+\]
+The affected labels agree, and both complete affected color multisets are $[N-10,N]$. Classes and lengths agree. Now replace $(N,1)$ with $(N+1,1,N)$. This adds only label and difference $N+1$, retains the index, and increases the short length from two to three.
+
+No affine two-arm seed trade cuts the short arm. Requiring every cut on the core long arm to have depth at least $10$ protects this prefix. The sixteen thresholds are unchanged except $(b\bmod8,\delta)=(5,1)$, whose threshold becomes $29$. Their exact coordinate inequalities are checked in the affine supplement. For $b\equiv0\pmod4$, $b\ge20$, the balanced-subdivision seed of Lemma~\ref{sa:even-balanced} already has pinned short arm $(N,1)$. For $b\equiv2\pmod4$, $b\ge22$, the explicit edge trade there has its first core cut at $b/2-1\ge10$, so it also admits the prefix replacement.
+
+The remaining $29$ seeds for $b\ge18$ are printed as pinned $(2,b,b+\delta)$ words in Section~\ref{app:auxiliary-finite}. Every required even mixed seed additionally satisfies the same upper-leaf distance bound as above. Applying the short-two-to-three replacement gives every near band for $b\ge18$. For $3\le b\le17$, all $44$ missing near bands and resonances with $c\ge7$ are printed directly as $(3,b,c)$ words.
+
+For odd $b\ge18$, the pinned diagonal two-arm seed has upper leaves summing to $3b+4$. The short upgrade retains those leaves and index $b$, so extension by $b+3$ gives $\Sp{3,b,2b+3}$. For even $b$, upgrade the mixed seed and append $b+4$ to its odd long arm, obtaining $\Sp{3,b,2b+5}$. All remaining longer arms follow from the alpha pair $\Sp{3,b}$, whose index is $1+\floor{b/2}$. This exhausts $a=3$.
+
+\subsection{Minimum four and five}
+For $b\ge9$, $b\ne13$, put $k=\floor{b/2}$, $y=b-4$, $n=b+\delta+4$, $N=2b+\delta+4$. A pair $\Sp{4,b-4}$ is labeled by
+\[
+(b,1,b-1,2),\qquad b-2-\operatorname{endpoint\_two}(b-4).
+\]
+The second arm uses $[3,b-2]$, starts at $b-4$, and has colors $[1,b-5]$. The first arm supplies $b,b-1,b-2,b-3$. Thus the pair is alpha with index $k$. The excluded $b=13$ is exactly the endpoint-two exception.
+Raise its upper labels by $n$. For the new arm take a length-$n$ fixed-endpoint word with endpoint $t=\floor{n/2}-k-1$ when $n$ is even, or $t=\floor{n/2}-k$ when $n$ is odd; reverse it, and in the odd case also complement it, then add $k+1$. Its first label is $n$ by the endpoint identities. For the needed bands $t\in\{1,2,3\}$, and the recurrences above apply. This source is alpha and has short arm $(N,1,N-1,2)$.
+
+The remaining bands are $\delta=0,1,2,3$ for odd $b$, and $\delta=0,1,2,3,4$ for even $b$. Parameterize $b=48h+r$. The $216$ affine recipes, all their inclusive thresholds and complete schema are in Section~\ref{app:template-certificates}. Each proves the target profile $\Sp{4,b,b+\delta}$ and preserves the four short-arm edges. The maximum threshold is $103$. The exact complement for $b\ge9$ comprises $139$ pinned finite words, all printed in Section~\ref{app:auxiliary-finite}; in particular it includes the exceptional source value $b=13$.
+
+Upgrade any such size-$N$ word by replacing
+\[
+(N,1,N-1,2)\quad\hbox{with}\quad(N+1,1,N,2,N-1).
+\]
+The short color interval changes from $[N-3,N]$ to $[N-3,N+1]$. Its two old upper labels are shifted, one new upper label fills the gap, and other arms are fixed. Hence the new spider $\Sp{5,b,b+\delta}$ is alpha with unchanged index and unchanged long leaves.
+
+For odd $b=2k+1$, the diagonal source has long upper leaves $3k+8$ and $3k+3$, with index $2k+2$. Their labels persist under degree-preserving trades. Extend the smaller leaf by $b+7=2k+8$, which is at least twice its upper distance. This gives resonance $c=2b+7$. For even $b=2k$, the $\delta=1$ source has upper long leaf $3k+3$, also at distance $k+1$ above index $2k+2$. Append $b+8=2k+8$ to obtain $c=2b+9$. The finite witnesses satisfy the sufficient bounds $2e\le b+7$ and $2e\le b+8$, respectively. Both arguments also apply after the four-to-five upgrade.
+
+For $b=4$, the ordinary alpha witnesses $(4,4,7),(4,4,8),(4,4,17)$ supply the exceptional cases. For $b=5$, the words $(4,5,7),(5,5,7)$ and pinned helper $(4,5,8)$ give the near band; the pinned $(4,5,5)$ helper gives resonance $17$. For $b=6$, use pinned helpers with $c=7,8,9,10$ and the $c=7$ leaf interface for resonance $21$. For $b=7$, use $c=7,8,9,10$ and again resonance $21$. For $b=8$, use $c=8,9,10,11,12$ and the $c=9$ leaf interface for resonance $25$. These twenty small helper words and all needed interfaces are printed and verified in Section~\ref{app:auxiliary-finite}.
+
+Every remaining $c$ follows from alpha attachment to $\Sp{a,b}$, whose index is $2+\floor{b/2}$ for either $a=4$ or $a=5$. Its strict threshold is $c>b+3$ for odd $b$, or $c>b+4$ for even $b$, and its sole exception is exactly the handled resonance. Finally, when $a=1$ and $c\ge7$, $\Sp{b,c}$ is an alpha pair; add the unit arm using Lemma~\ref{common:unit-stability}. This completes Theorem~\ref{sa:main}.

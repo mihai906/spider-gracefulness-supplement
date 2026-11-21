@@ -1,0 +1,274 @@
+\section{Exact eight-arm construction predicates}
+\label{eight:specification}
+This section specifies the predicates $\mathsf A_8^\epsilon$, $\mathsf O_8^\epsilon$ and $\mathsf H_8^\epsilon$ used in the article, with $\epsilon=o$ or $e$. Within each of the two domains below we suppress the subscript and superscript: $\A$, $\mathsf O$ and $\Hh$ always mean that domain's eight-arm predicates. They do not mean the ten-family predicate $\mathsf A_7$. Set $K(I)=\sum_{i\in I}\floor{L_i/2}$; Outer-route complements are taken in the eight-element index set; within a recursive rule, a complementary pair or triple is taken within the selected subset. All offsets are nonnegative integers.
+
+\begin{lemma}\label{eight:single-equal-offsets}
+An arm of length $L$ admits every offset $0\le k<L$.  More generally,
+for $r,L\ge1$, the equal-arm spider $\Sp{L^r}$ admits every such offset.
+\end{lemma}
+\begin{proof}
+For the single arm, take an ordinary graceful permutation of
+$1,\ldots,L$ beginning at $L-k$, and add $k$ to each entry.  The root
+edge has color $L$, and the internal colors are $1,\ldots,L-1$.
+The prescribed-first-label path theorem is
+Lemma~\ref{common:prescribed-first-path}; it includes the ordinary
+non-alpha permutations needed at the exceptional odd-order requests.
+For the equal-arm assertion, subdivide the root-zero $r$-leaf unit star
+by factor $L$.  Theorem~\ref{common:offset-subdivision}, applied at source
+offset zero, gives every residue $0,\ldots,L-1$.
+\end{proof}
+
+\subsection{The twelve odd-pair clauses}\label{eight:odd-pairs}
+
+For $a=2t+1\le b=2u+1$, where $t,u\ge1$, define $P_o(a,b;k)$ to mean
+$k\ge0$ and at least one of the following twelve conditions.  Parameters
+introduced in one condition are local to that condition.
+
+\begin{enumerate}
+\item[(P1)] $u\le k\le a-1$, and either
+  $4k\ne4a-b-3$ or $3\mid a$ and $3\mid b$.
+\item[(P2)] $k\le t$, and either $4k\ne a-1$ or $2b\le3a-1$.
+\item[(P3)] $k\le u$, $k+u\le a-1$, and $4k\ne b-1$.
+\item[(P4)] $a=b$ and $k<a$.
+\item[(P5)] $a=b\ge5$ and $2k\le3a-5$.
+\item[(P6)] $a\ge7$, $b=a+2$, and $k=2a$.
+\item[(P7)] $a\ge7$, $b=a+2$, $a\le k$, and $2k\le3a-1$.
+\item[(P8)] With $S=k-2u-2$, $\delta=u-t$, and $V=k-t-u+1$,
+  \[
+   S\ge2,\quad t\ge2S+2,\quad 0\le\delta\le S-1,
+   \quad\delta\ne S-3,\quad1\le V\le t.
+  \]
+\item[(P9)] With $S=k-2t$ and $V=k-t-u+1$,
+  \[
+   1\le S\le t\le u\le2S-2,\quad u>S,
+   \quad u\ne2t-S,\quad1\le V\le u.
+  \]
+\item[(P10)] With $S=k-2t$, $g=u-2S$, $h=k-t-u$, and $V=k-t-u+1$,
+  \[
+   g\ge1,\quad h\ge2,\quad S\ge g+h+1,\quad1\le V\le u.
+  \]
+\item[(P11)] With $S=u-t+1$ and $g=2t-u-2$,
+  \[
+   k=t+u+2,\quad g\ge1,\quad S\ge g+3,\quad u\ge3.
+  \]
+\item[(P12)] With $S=3u-k+3$, $h=t+2u-k+1$,
+  $g=2k-4u-t-4$, and $V=k-t-u+1$,
+  \[
+   g\ge1,\quad h\ge2,\quad S\ge g+h+1,\quad1\le V\le t.
+  \]
+\end{enumerate}
+
+\begin{lemma}\label{eight:odd-pair-sufficiency}
+If $P_o(a,b;k)$ holds, then $k\in\Om(\Sp{a,b})$.
+\end{lemma}
+\begin{proof}
+Clauses (P1)--(P3) are the HIGH, LOW, and reversed-LOW constructions,
+with their exact exceptions and repairs, proved in
+Section~\ref{app:pair-offsets}.  Clause (P4) is
+Lemma~\ref{eight:single-equal-offsets}.  The extended equal-odd interval
+(P5), the consecutive interval (P7), the two general kernel bands
+(P8)--(P9), and the three asymmetric bands (P10)--(P12) are constructed
+in Section~\ref{construction:odd-pair-kernels}.  The consecutive maximum
+(P6) also follows from the complete maximal-pair theorem in
+Section~\ref{app:pair-offsets}.
+
+In (P12) the kernel construction interchanges the order of the two
+arms.  This does not change the rooted spider, but the restriction
+$V\le t$ is part of its even-path premise and must be retained.
+The consecutive construction includes its fifteen literal small kernels;
+the kernel-band proofs include all source endpoint and hole conditions.
+
+The divisibility repair in (P1) is used only within its source scope.
+Indeed, if $a=3$, HIGH gives $u\le k\le2$.  If also $3\mid b$ and
+$b\ge a$, this forces $b=3$.  Its exceptional equality would be
+$4k=6$, impossible for integer $k$.  Every active repaired exceptional
+request therefore has $a,b\ge9$, so its quotient lengths are at least
+three.  No small forbidden source request is used.
+\end{proof}
+
+\subsection{Finite recursive construction rules}\label{eight:recursions}
+
+This section first treats odd lengths $L_i\ge3$.  Every index subset
+inherits the increasing order of the full list.  The same recursions
+will later be used for one even minimum, with the pair predicate and
+the insertion capacities changed as explicitly stated there.
+
+\begin{definition}\label{eight:alpha-rule}
+The predicate $\A(I)$ is defined by the following finite recursion.
+\begin{enumerate}
+\item For $|I|=1$ or $2$, it is true.
+\item For $|I|=3$, it means $\max_{i\in I}L_i\ge5$.
+\item For $|I|\ge4$, it holds if either $|I|=4$ and all four lengths
+  are equal odd integers at least seven, or some $j\in I$ satisfies
+  \[
+   \A(I\setminus\{j\}),\qquad
+   L_j>2K(I\setminus\{j\}),\qquad
+   L_j\ne4K(I\setminus\{j\})+1.
+  \]
+\end{enumerate}
+\end{definition}
+
+These are root-zero alpha constructions of index $K(I)$.  The triple
+rule uses the complete odd triple theorem: among odd lengths at least
+three, the only omitted profile is $(3,3,3)$
+(Section~\ref{construction:all-odd-alpha3}).  The equal-four rule uses
+Section~\ref{construction:equal-odd-alpha4}; its lower bound seven is
+retained.  The last rule is Lemma~\ref{common:alpha-extension}, with
+both its strict threshold and its exceptional length intact.
+
+\begin{definition}\label{eight:offset-rule}
+Require $k\ge0$.  For one arm, $\mathsf O(\{i\},k)$ means $k<L_i$;
+for two arms, it means $P_o(L_i,L_j;k)$.  For three ordered lengths
+$x\le y\le z$, let $T(x,y,z;k)$ be the disjunction of:
+\begin{enumerate}
+\item $k=0$;
+\item $y=z$, $\floor{y/2}\le k\le x-1$, and either $x=y$ or both
+  \[
+   4k\ne3(y-1),\qquad 4k\ne4x-y-3;
+  \]
+\item $x=z$ and $k<x$;
+\item some arm $L_j$ satisfies
+  \[
+   k\le\floor{L_j/2},\qquad4k\ne L_j-1,
+  \]
+  and its complementary pair has predicate $P_o$ at offset
+  $k+\floor{L_j/2}$.
+\end{enumerate}
+This is $\mathsf O(I,k)$ when $|I|=3$.  For $|I|=4$, let
+$\mathsf O(I,k)$ hold if all four lengths agree and $k$ is below that
+common length, or if some $j\in I$ satisfies the same two displayed
+conditions and its complementary triple satisfies $T$ at offset
+$k+\floor{L_j/2}$.  Put $\mathsf O(I,k)=\mathrm{false}$ for $|I|\ge5$.
+\end{definition}
+
+The triple rule at $k=0$ uses ordinary hub-zero gracefulness, not an
+alpha assertion about $(3,3,3)$.  The repeated-long rule and the one-leg
+insertion rule, including their excluded equalities, are proved in
+Section~\ref{app:triple-offsets}.  The equal-arm rules follow from
+Lemma~\ref{eight:single-equal-offsets}.  Thus each true offset predicate
+has the stated offset realization.
+
+\begin{definition}\label{eight:hub-rule}
+Put $\Hh(I)=\mathrm{true}$ for $|I|\le3$.  For four ordered lengths
+$a\le b\le c\le d$, let $\Hh(I)$ be the disjunction of:
+\begin{enumerate}
+\item $a\le5$;
+\item $a=b$ and $c=d$;
+\item some triple $J\subset I$ has $\A(J)$, and its complementary
+  arm $j$ satisfies $L_j>K(J)$;
+\item some arm $j$ has
+  $\mathsf O(I\setminus\{j\},\floor{L_j/2})$;
+\item some pair $J\subset I$ has $\mathsf O(I\setminus J,K(J))$.
+\end{enumerate}
+For $|I|\ge5$, put
+\[
+ \Hh(I)=\A(I)\ \lor\!
+ \bigvee_{\varnothing\ne J\subsetneq I}
+ \bigl(\A(J)\land\mathsf O(I\setminus J,K(J))\bigr).
+\]
+\end{definition}
+
+\begin{lemma}\label{eight:predicate-soundness}
+Every true $\A(I)$ supplies a root-zero alpha labeling of index $K(I)$;
+every true $\mathsf O(I,k)$ supplies offset $k$; and every true $\Hh(I)$
+supplies an ordinary hub-zero graceful labeling.
+\end{lemma}
+\begin{proof}
+The alpha and offset assertions follow by induction on arity from the
+construction lemmas just specified.  The first two four-arm hub rules
+follow from Lemma~\ref{seven:four-short} and
+Section~\ref{po:paired-four}, respectively. The other three are
+alpha-offset amalgamation, using respectively an offset single arm,
+an alpha single arm, or an alpha pair.  The pair-root exception $(2,2)$
+cannot occur on odd lengths.  The higher-arity hub rule is exactly
+alpha-offset amalgamation, or the alpha labeling itself.  Its
+singleton-offset term is the ordinary arm-attachment condition $L>K$;
+it must not be confused with the alpha-preserving condition
+$L>2K$, $L\ne4K+1$.
+\end{proof}
+
+\subsection{One even minimum}\label{eight:even-minimum}
+
+For this section put
+\[
+ L_0=2h_0,\qquad L_i=2h_i+1\quad(1\le i\le7),
+ \qquad2\le L_0<L_1\le\cdots\le L_7,
+ \qquad L_1\ge3.
+\]
+The even length is the unique even arm and the shortest arm of this
+eight-arm core.  The equality $L_0=L_1$ is impossible by parity.
+
+Every one- or two-arm selection is root-zero alpha, since $(2,2)$
+cannot occur.  For three arms the exact sufficient predicate remains
+\begin{equation}\label{eight:small-triple-guard}
+ \A(I)\quad\Longleftrightarrow\quad\max_{i\in I}L_i\ge5.
+\end{equation}
+Here this is a statement about the specified sufficient predicate.
+A triple avoiding index zero is odd and its only omitted profile is
+$(3,3,3)$.  A triple containing zero has EOO parity with an even
+minimum, and its only omitted profile is $(2,3,3)$.
+The complete positive constructions, including minima two and four,
+are in Sections~\ref{construction:all-odd-alpha3},
+\ref{construction:all-eoo-alpha3}, and~\ref{app:small-alpha}.
+Thus no unconditional all-triples alpha shortcut is used.
+For larger alpha pieces keep Definition~\ref{eight:alpha-rule}; its
+equal-four clause is available only on four odd arms of common length
+at least seven.
+
+\subsubsection{The mixed-pair predicate}\label{eight:mixed-pairs}
+
+For any selected ordered pair $a\le b$, put
+$t=\floor{a/2}$, $u=\floor{b/2}$ and
+$c(a)=\ceil{a/2}-1$, $c(b)=\ceil{b/2}-1$.  Define $P_e(a,b;k)$ to
+require $k\ge0$ and one of the following six base clauses:
+\begin{enumerate}
+\item[(M1)] $u\le k\le a-1$, and either $4k\ne4a-b-3$ or
+  $a\ge6$, $3\mid a$, and $3\mid b$.
+\item[(M2)] $k\le c(a)$, and either $4k\ne a-1$ or $2b\le3a-1$.
+\item[(M3)] $k\le c(b)$, $k+u\le a-1$, and $4k\ne b-1$.
+\item[(M4)] $a=b$ and $k<a$.
+\item[(M5)] $k=a+b-2$, with $(a,b)\notin\{(2,2),(3,3)\}$.
+\item[(M6)] $3\mid a$, $3\mid b$, $(a,b)\notin\{(6,6),(9,9)\}$,
+  and $a+b-6\le k\le a+b-4$.
+\end{enumerate}
+If both selected arms are odd, also allow exactly clauses
+(P5)--(P12), with their displayed guards.  None of those eight clauses
+is applied to a mixed pair.
+
+\begin{lemma}\label{eight:mixed-pair-sufficiency}
+Each clause defining $P_e(a,b;k)$ supplies an offset-$k$ labeling.
+\end{lemma}
+\begin{proof}
+Clauses (M1)--(M3) are the mixed HIGH, LOW and reversed-LOW
+constructions in Section~\ref{app:pair-offsets}.  The extra guard
+$a\ge6$ in the divisible-by-three repair gives shortest quotient at
+least two; it is not removed at the present minimum.  Clause (M4)
+is Lemma~\ref{eight:single-equal-offsets}.  Clause (M5) is the complete
+maximal-pair theorem, including both small exceptions, in
+Section~\ref{app:pair-offsets}.  For (M6), apply that theorem to
+$(a/3,b/3)$ and then apply factor-three offset subdivision.  The
+three residues give the interval
+\[
+ 3\bigl((a+b)/3-2\bigr)+\{0,1,2\}
+   =[a+b-6,a+b-4].
+\]
+The two excluded target pairs are exactly the forbidden quotient pairs
+$(2,2)$ and $(3,3)$.  Quotient $(1,1)$ is allowed; thus this clause
+also validly supplies offsets $0,1,2$ on $(3,3)$.  It does not supply
+the forbidden maximal offset four there.  The remaining odd-only
+clauses follow from Lemma~\ref{eight:odd-pair-sufficiency}.
+\end{proof}
+
+Use the same offset and hub recursions as before, replacing $P_o$ by
+$P_e$ and replacing each one-leg insertion capacity
+$\floor{L_j/2}$ by
+\[
+ c(L_j)=\ceil{L_j/2}-1.
+\]
+The shifted source offset is still $k+\floor{L_j/2}$, and the guard
+$4k\ne L_j-1$ is retained.  Equal-arm and repeated-long direct clauses
+are unchanged.  The ordinary $k=0$ triple rule refers to hub-zero
+gracefulness, so it makes no alpha claim about either exceptional
+triple.  In the four-arm hub rule the alpha-triple test
+\eqref{eight:small-triple-guard} remains explicit.
+
